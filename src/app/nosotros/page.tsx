@@ -1,30 +1,46 @@
 'use client';
 
+import React from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import ParticleNetwork from '@/components/ParticleNetwork';
+import EcuadorMapAnimation from '@/components/EcuadorMapAnimation';
+import BuildingObjectives from '@/components/BuildingObjectives';
+import MissionVisionAnchor from '@/components/MissionVisionAnchor';
 
-const VALUES = [
-  { icon: '🛡️', title: 'Seguridad Primero', desc: 'La protección de cada trabajador es nuestra prioridad absoluta en cada proyecto que ejecutamos.' },
-  { icon: '⚙️', title: 'Ingeniería de Precisión', desc: 'Cada sistema es diseñado con cálculos estructurales y validado bajo normativas internacionales.' },
-  { icon: '🤝', title: 'Compromiso Total', desc: 'Acompañamos a nuestros clientes desde la consultoría inicial hasta la certificación final del sistema.' },
-  { icon: '📋', title: 'Normativa OSHA/ANSI', desc: 'Cumplimos con los estándares más exigentes de la industria a nivel mundial.' },
-  { icon: '🌎', title: 'Cobertura Nacional', desc: 'Operamos en todo Ecuador con equipos móviles y soporte técnico permanente.' },
-  { icon: '🏆', title: 'Respaldo Longdyes', desc: 'Somos los únicos representantes autorizados de la marca líder mundial en protección contra caídas.' }
+const VALORES = [
+  { icon: '🛡️', title: 'Seguridad', desc: 'La protección de la vida y la integridad de las personas es nuestra máxima prioridad.' },
+  { icon: '🤝', title: 'Compromiso', desc: 'Trabajamos con responsabilidad y dedicación para cumplir los objetivos de nuestros clientes.' },
+  { icon: '⭐', title: 'Calidad', desc: 'Garantizamos altos estándares técnicos y operativos en todos nuestros servicios.' },
+  { icon: '💡', title: 'Innovación', desc: 'Incorporamos nuevas tecnologías y soluciones inteligentes para mejorar continuamente.' },
+  { icon: '🎓', title: 'Profesionalismo', desc: 'Contamos con personal técnico altamente capacitado y certificado.' },
+  { icon: '🏆', title: 'Excelencia', desc: 'Buscamos superar las expectativas mediante el rigor técnico y la mejora continua en cada obra.' }
+];
+
+const OBJETIVOS = [
+  "Garantizar la seguridad y protección de las personas que realizan trabajos en altura.",
+  "Ofrecer soluciones integrales y personalizadas con altos estándares de calidad.",
+  "Diseñar e implementar sistemas anticaídas certificados y confiables.",
+  "Fortalecer la cultura de prevención y seguridad industrial.",
+  "Mantener procesos de mejora continua e innovación tecnológica.",
+  "Expandir nuestros servicios a nivel nacional e internacional.",
+  "Consolidar relaciones de confianza y largo plazo con nuestros clientes."
 ];
 
 export default function Nosotros() {
   return (
     <>
-      <section className="page-hero">
+      {/* Hero Section */}
+      <section className="page-hero" style={{ backgroundImage: 'linear-gradient(rgba(11, 19, 32, 0.8), rgba(11, 19, 32, 0.95)), url(/especialista-seguridad.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed' }}>
         <div className="container">
-          <motion.span className="page-hero-subtitle" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-            Conócenos
+          <motion.span className="page-hero-subtitle" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}>
+            Presentación Corporativa
           </motion.span>
-          <motion.h1 className="page-hero-title" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1 }}>
-            Sobre Altura Global Solutions
+          <motion.h1 className="page-hero-title" initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}>
+            Altura Global Solutions
           </motion.h1>
-          <motion.p className="page-hero-desc" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.2 }}>
-            Más de 15 años de experiencia protegiendo la vida de los trabajadores en la industria ecuatoriana.
+          <motion.p className="page-hero-desc" initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }} style={{ fontStyle: 'italic', fontSize: '1.4rem' }}>
+            “Soluciones inteligentes en sistemas de protección contra caídas”
           </motion.p>
           <div className="page-hero-breadcrumb">
             <Link href="/">Inicio</Link><span>/</span>Nosotros
@@ -32,96 +48,256 @@ export default function Nosotros() {
         </div>
       </section>
 
-      {/* Quiénes Somos */}
-      <section className="about-section bg-white">
+      {/* Quiénes Somos & Historia */}
+      <section className="about-section bg-white" style={{ paddingTop: '3.5rem', paddingBottom: '1.5rem' }}>
         <div className="container">
-          <motion.div className="about-grid" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
+          <motion.div className="about-grid" initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}>
             <div className="about-text-block">
-              <span style={{ color: 'var(--primary-orange)', fontWeight: 700, letterSpacing: '2px', textTransform: 'uppercase', fontSize: '0.85rem', display: 'block', marginBottom: '0.75rem' }}>Nuestra Historia</span>
-              <h2>ESPECIALISTAS EN <span className="text-orange">SEGURIDAD INDUSTRIAL</span></h2>
-              <p>
-                En <strong>Altura Global Solutions</strong> entendemos que la seguridad no es negociable. Somos una empresa ecuatoriana fundada con la misión de salvaguardar la vida de los trabajadores en la industria, construcción y telecomunicaciones.
+              <span style={{ color: 'var(--primary-orange)', fontWeight: 800, letterSpacing: '2px', textTransform: 'uppercase', fontSize: '0.9rem', display: 'block', marginBottom: '1rem' }}>QUIÉNES SOMOS E HISTORIA</span>
+              <h2 style={{ fontSize: '2.5rem', marginBottom: '1.5rem', lineHeight: 1.2, fontFamily: 'var(--font-heading)' }}>ESPECIALISTAS EN <span className="text-orange">TRABAJOS EN ALTURA</span></h2>
+              <p style={{ fontSize: '1.1rem', color: '#555', marginBottom: '1.5rem', lineHeight: 1.7, textAlign: 'justify' }}>
+                <strong>ALTURA GLOBAL SOLUTIONS</strong> es una empresa ecuatoriana especializada en soluciones integrales para trabajos en altura, enfocada en el diseño, instalación, certificación y mantenimiento de sistemas de protección contra caídas.
               </p>
-              <p>
-                Liderados por el <strong>Ing. Kevin Bravo</strong>, nuestro equipo técnico cuenta con más de 15 años de experiencia acumulada en la ingeniería de protección contra caídas, abarcando desde el diseño hasta la certificación final de cada sistema instalado.
+              <p style={{ fontSize: '1.1rem', color: '#555', marginBottom: '1.5rem', lineHeight: 1.7, textAlign: 'justify' }}>
+                Fundada el <strong>14 de mayo de 2010 por el Ing. Kevin Bravo</strong>, con la visión de crear una empresa especializada capaz de ofrecer soluciones técnicas de alto nivel en el Ecuador. Desde nuestra creación, hemos trabajado con compromiso e innovación para brindar soluciones confiables a empresas e instituciones públicas y privadas.
               </p>
-              <p>
-                Como representantes autorizados de <strong>Longdyes</strong> en Ecuador, importamos e instalamos sistemas anticaídas de la más alta resistencia estructural, cumpliendo con las exigencias de normativas OSHA y ANSI.
-              </p>
+              <ul className="responsive-two-col" style={{ listStyle: 'none', padding: 0, marginTop: '2rem', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+                {['Líneas de vida certificadas', 'Sistemas anticaídas', 'Ingeniería y diseño especializado', 'Instalación y certificación', 'Inspección y mantenimiento', 'Seguridad industrial'].map((item, idx) => (
+                  <li key={idx} style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '1.05rem', color: '#222', fontWeight: 600 }}>
+                    <span style={{ color: 'var(--primary-orange)' }}>✔</span> {item}
+                  </li>
+                ))}
+              </ul>
             </div>
             <div className="about-img-wrapper">
-              <img src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?q=80&w=1000&auto=format&fit=crop" alt="Equipo de ingeniería en campo" />
-            </div>
-          </motion.div>
-
-          {/* Misión y Visión */}
-          <motion.div className="about-grid reverse" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
-            <div className="about-img-wrapper">
-              <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=1000&auto=format&fit=crop" alt="Operaciones en altura" />
-            </div>
-            <div className="about-text-block">
-              <span style={{ color: 'var(--primary-orange)', fontWeight: 700, letterSpacing: '2px', textTransform: 'uppercase', fontSize: '0.85rem', display: 'block', marginBottom: '0.75rem' }}>Misión y Visión</span>
-              <h2>PROTEGIENDO VIDAS CON <span className="text-orange">TECNOLOGÍA</span></h2>
-              <p>
-                <strong>Misión:</strong> Proveer soluciones integrales de seguridad en altura con los más altos estándares de calidad, protegiendo la vida de cada trabajador con ingeniería de precisión y equipos certificados internacionalmente.
-              </p>
-              <p>
-                <strong>Visión:</strong> Ser la empresa líder en protección contra caídas en la región andina, reconocida por nuestra excelencia técnica, innovación y compromiso inquebrantable con la seguridad industrial.
-              </p>
+              <video suppressHydrationWarning src="/about_video.mp4" autoPlay loop muted playsInline style={{ width: '100%', maxHeight: '400px', aspectRatio: '4/3', borderRadius: '16px', boxShadow: '0 20px 40px rgba(0,0,0,0.1)', objectFit: 'cover' }} />
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Valores */}
-      <section className="bg-light" style={{ padding: '5rem 0' }}>
+      {/* Misión y Visión */}
+      <MissionVisionAnchor />
+
+      {/* Personal Técnico (IRATA) */}
+      <section style={{ padding: '3.5rem 0', backgroundColor: '#0b1320', backgroundImage: 'radial-gradient(at 0% 0%, rgba(237, 108, 35, 0.15) 0px, transparent 50%), radial-gradient(at 100% 100%, rgba(13, 105, 120, 0.15) 0px, transparent 50%), url("data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'0.03\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")', backgroundSize: '100% 100%, 100% 100%, 30px 30px', color: '#fff' }}>
         <div className="container">
-          <div className="section-title-center" style={{ textAlign: 'center', marginBottom: '3rem' }}>
-            <h2 className="section-title" style={{ display: 'inline-block' }}>NUESTROS <span className="text-orange">VALORES</span></h2>
-          </div>
-          <div className="values-grid">
-            {VALUES.map((val, idx) => (
-              <motion.div
-                key={idx}
-                className="value-card"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: idx * 0.1 }}
-              >
-                <span className="value-card-icon">{val.icon}</span>
-                <h3>{val.title}</h3>
-                <p>{val.desc}</p>
-              </motion.div>
-            ))}
+          <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }} style={{ textAlign: 'center', maxWidth: '900px', margin: '0 auto' }}>
+            <span style={{ color: 'var(--primary-orange)', fontWeight: 800, letterSpacing: '2px', textTransform: 'uppercase', fontSize: '0.9rem', display: 'block', marginBottom: '1rem' }}>Capacidad Operativa</span>
+            <h2 style={{ fontSize: '2.8rem', marginBottom: '2rem', fontFamily: 'var(--font-heading)' }}>PERSONAL TÉCNICO ALTAMENTE CAPACITADO</h2>
+            <p style={{ fontSize: '1.6rem', color: '#ddd', marginBottom: '2rem', lineHeight: 1.7, fontWeight: 500 }}>
+              Contamos con un equipo técnico especializado que cumple con todos los requisitos de la normativa ecuatoriana y los más altos estándares internacionales en materia de seguridad y salud ocupacional.
+            </p>
+          </motion.div>
+
+          <div className="responsive-two-col" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '3rem', marginTop: '2rem' }}>
+            <motion.div initial={{ opacity: 0, x: -40 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }} style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 100%)', backdropFilter: 'blur(10px)', padding: '2rem', borderRadius: '16px', border: '1px solid rgba(255,255,255,0.1)', boxShadow: '0 20px 40px rgba(0,0,0,0.2)' }}>
+              <h3 style={{ color: 'var(--primary-orange)', fontSize: '1.5rem', marginBottom: '1.5rem' }}>Nuestro personal cuenta con:</h3>
+              <ul style={{ listStyle: 'none', padding: 0 }}>
+                {['Certificaciones en trabajos en altura', 'Formación en prevención de riesgos', 'Capacitación en rescate', 'Entrenamiento en EPP', 'Instalación de sistemas anticaídas'].map((item, idx) => (
+                  <li key={idx} style={{ marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '10px' }}><span style={{ color: 'var(--primary-orange)' }}>✓</span> {item}</li>
+                ))}
+              </ul>
+            </motion.div>
+
+            <motion.div initial={{ opacity: 0, x: 40 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }} style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 100%)', backdropFilter: 'blur(10px)', padding: '2rem', borderRadius: '16px', border: '1px solid rgba(255,255,255,0.1)', boxShadow: '0 20px 40px rgba(0,0,0,0.2)' }}>
+              <h3 style={{ color: 'var(--primary-teal)', fontSize: '1.5rem', marginBottom: '1.5rem' }}>Certificaciones Internacionales</h3>
+              <p style={{ color: '#ccc', marginBottom: '1.5rem' }}>Nuestro equipo posee certificaciones internacionales que avalan sus competencias en acceso por cuerdas:</p>
+              <div style={{ display: 'flex', gap: '20px', marginBottom: '2rem' }}>
+                <div style={{ background: 'var(--primary-teal)', padding: '10px 20px', borderRadius: '8px', fontWeight: 'bold' }}>IRATA Nivel I</div>
+                <div style={{ background: 'var(--primary-teal)', padding: '10px 20px', borderRadius: '8px', fontWeight: 'bold' }}>IRATA Nivel II</div>
+              </div>
+              <p style={{ color: '#ccc', fontSize: '0.9rem' }}>Priorizamos la actualización técnica bajo normativas ecuatorianas e internacionales, OSHA y ANSI.</p>
+            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Líder / Equipo */}
-      <section className="team-section">
-        <div className="container" style={{ textAlign: 'center' }}>
-          <div style={{ marginBottom: '3rem' }}>
-            <h2 className="section-title" style={{ display: 'inline-block' }}>NUESTRO <span className="text-orange">LÍDER</span></h2>
-          </div>
-          <motion.div
-            className="team-card"
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=800&auto=format&fit=crop" alt="Ing. Kevin Bravo" />
-            <div className="team-card-body">
-              <h3>Ing. Kevin Bravo</h3>
-              <span>Gerente de Operaciones</span>
-              <p>Ingeniero con más de 15 años de experiencia en sistemas de protección contra caídas, certificado en normativas OSHA y ANSI. Líder en la implementación de soluciones de seguridad a nivel industrial en Ecuador.</p>
-            </div>
-          </motion.div>
+      {/* Valores Corporativos */}
+      {/* Valores Corporativos */}
+      <section
+        style={{
+          padding: '4rem 0',
+          minHeight: '100vh',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          position: 'relative',
+          overflow: 'hidden',
+          backgroundColor: '#f8fafc',
+          backgroundImage: 'radial-gradient(circle at 15% 30%, rgba(13,105,120,0.5) 0%, transparent 60%), radial-gradient(circle at 85% 70%, rgba(237,108,35,0.3) 0%, transparent 60%), url("/valores-bg.png")',
+          backgroundSize: '100% 100%, 100% 100%, cover',
+          backgroundPosition: 'center, center, center',
+          backgroundAttachment: 'scroll, scroll, fixed',
+          color: '#1e293b',
+        }}
+      >
+        {/* Subtle Grid Base Overlay */}
+        <div style={{ position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(rgba(13,105,120,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(13,105,120,0.05) 1px, transparent 1px)', backgroundSize: '40px 40px', pointerEvents: 'none' }} />
 
-          <div style={{ marginTop: '4rem' }}>
-            <Link href="/contacto" className="btn btn-primary">TRABAJA CON NOSOTROS</Link>
+        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
+          <div className="section-title-center" style={{ textAlign: 'center', marginBottom: '2rem' }}>
+            <h2 className="section-title" style={{ display: 'inline-block', color: '#0f172a' }}>VALORES <span className="text-orange">CORPORATIVOS</span></h2>
           </div>
+          <div className="valores-circular-container" style={{ maxWidth: '1400px', margin: '0 auto', aspectRatio: '2/1' }}>
+            {/* SVG Connecting Lines - Líneas de Vida Certificadas */}
+            <svg className="valores-svg-lines" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: 2, pointerEvents: 'none' }}>
+              {VALORES.map((_, idx) => {
+                const positions = [
+                  { x: 18, y: 15 },
+                  { x: 2, y: 50 },
+                  { x: 18, y: 85 },
+                  { x: 82, y: 15 },
+                  { x: 98, y: 50 },
+                  { x: 82, y: 85 }
+                ];
+                const pos = positions[idx];
+
+                // Calculate start point to avoid crossing under the central logo
+                const dx = pos.x - 50;
+                const dy = pos.y - 50;
+                const length = Math.sqrt(dx * dx + dy * dy);
+                // 24% empty radius creates a nice clear area for the enlarged logo
+                const emptyRadius = 24;
+                const startX = 50 + dx * (emptyRadius / length);
+                const startY = 50 + dy * (emptyRadius / length);
+
+                return (
+                  <g key={`line-${idx}`}>
+                    {/* Shadow / Base Cable */}
+                    <line
+                      x1={`${startX}%`}
+                      y1={`${startY}%`}
+                      x2={`${pos.x}%`}
+                      y2={`${pos.y}%`}
+                      stroke="#cbd5e1"
+                      strokeWidth="6"
+                      strokeLinecap="round"
+                    />
+                    {/* Rope Texture (Línea de vida certificada) */}
+                    <line
+                      x1={`${startX}%`}
+                      y1={`${startY}%`}
+                      x2={`${pos.x}%`}
+                      y2={`${pos.y}%`}
+                      stroke="var(--primary-teal)"
+                      strokeWidth="3"
+                      strokeDasharray="10 5"
+                      strokeLinecap="round"
+                    />
+                    {/* Connection Node (Mosquetón / Anclaje) */}
+                    <circle cx={`${pos.x}%`} cy={`${pos.y}%`} r="6" fill="var(--primary-orange)" stroke="#fff" strokeWidth="2" />
+                    {/* Central anchor points (where lines start) */}
+                    <circle cx={`${startX}%`} cy={`${startY}%`} r="4" fill="var(--primary-teal)" />
+                  </g>
+                );
+              })}
+            </svg>
+
+            {/* Center Logo */}
+            <div className="valores-center-logo" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+              <img src="/logo_alturas_global.png" alt="Altura Global Solutions" style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain', transform: 'scale(0.75)' }} />
+            </div>
+
+            {/* Circles */}
+            {VALORES.map((val, idx) => {
+              const positions = [
+                { x: 18, y: 15 },
+                { x: 2, y: 50 },
+                { x: 18, y: 85 },
+                { x: 82, y: 15 },
+                { x: 98, y: 50 },
+                { x: 82, y: 85 }
+              ];
+              const pos = positions[idx];
+
+              return (
+                <motion.div
+                  key={idx}
+                  className="valor-circle"
+                  initial={{ opacity: 0, top: '50%', left: '50%', x: '-50%', y: '-50%', scale: 0.5 }}
+                  animate={{ opacity: 1, top: `${pos.y}%`, left: `${pos.x}%`, scale: 1 }}
+                  transition={{ duration: 0.8, delay: idx * 0.1, type: "spring", stiffness: 80, damping: 15 }}
+                  style={{
+                    position: 'absolute',
+                    border: '3px solid #fff',
+                    boxShadow: '0 10px 30px rgba(0,0,0,0.15)'
+                  }}
+                >
+                  <ParticleNetwork color="#ffffff" particleCount={30} interactive={true} />
+                  <div style={{ position: 'relative', zIndex: 10, pointerEvents: 'none' }}>
+                    <h3>{val.title}</h3>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Objetivos Institucionales */}
+      <section style={{ padding: '3.5rem 0', backgroundColor: '#0f172a', backgroundImage: 'radial-gradient(circle at 50% 0%, rgba(13,105,120,0.2) 0%, transparent 60%), linear-gradient(0deg, rgba(15,23,42,1) 0%, rgba(11,19,32,1) 100%)', color: '#fff', position: 'relative', overflow: 'hidden' }}>
+        <div style={{ position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)', backgroundSize: '30px 30px', pointerEvents: 'none' }} />
+        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
+          <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}>
+            <h2 style={{ fontSize: '2.5rem', textAlign: 'center', marginBottom: '1rem', fontFamily: 'var(--font-heading)', color: '#fff' }}>OBJETIVOS <span className="text-orange">INSTITUCIONALES</span></h2>
+            <BuildingObjectives />
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Nuestra Cobertura */}
+      <section style={{ padding: '3.5rem 0', backgroundColor: '#080c16', color: '#fff', position: 'relative', overflow: 'hidden' }}>
+        <div style={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(circle at 80% 50%, rgba(237,108,35,0.15) 0%, transparent 50%), radial-gradient(circle at 20% 50%, rgba(13,105,120,0.15) 0%, transparent 50%)', pointerEvents: 'none' }} />
+        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
+          <h2 style={{ fontSize: '2.5rem', textAlign: 'center', marginBottom: '2.5rem', fontFamily: 'var(--font-heading)', color: '#fff' }}>NUESTRA <span className="text-orange">COBERTURA</span></h2>
+          <div className="responsive-two-col" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '4rem', alignItems: 'center' }}>
+            <motion.div initial={{ opacity: 0, x: -40 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}>
+              <EcuadorMapAnimation />
+            </motion.div>
+
+            <motion.div initial={{ opacity: 0, x: 40 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}>
+              <div style={{ background: 'rgba(255,255,255,0.05)', backdropFilter: 'blur(5px)', padding: '2rem', borderRadius: '12px', marginBottom: '2rem', border: '1px solid rgba(255,255,255,0.1)' }}>
+                <h3 style={{ fontSize: '1.5rem', color: '#fff', marginBottom: '1.2rem', display: 'flex', alignItems: 'center', gap: '10px' }}>🇪🇨 Atención Nacional</h3>
+                <p style={{ color: '#ccc', marginBottom: '1.5rem', lineHeight: 1.6 }}>Brindamos atención en todo el Ecuador, con presencia fuerte en Costa, Sierra, Oriente y Galápagos. Cubriendo ciudades principales como:</p>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
+                  {['Quito', 'Guayaquil', 'Cuenca', 'Manta', 'Ambato', 'Santo Domingo', 'Esmeraldas', 'Machala', 'Amazonía'].map(city => (
+                    <span key={city} style={{ background: 'rgba(255,255,255,0.1)', padding: '6px 16px', borderRadius: '20px', fontSize: '0.9rem', border: '1px solid rgba(255,255,255,0.2)', color: '#fff', fontWeight: 500 }}>{city}</span>
+                  ))}
+                </div>
+              </div>
+
+              <div style={{ background: 'rgba(255,255,255,0.05)', backdropFilter: 'blur(5px)', padding: '2rem', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.1)' }}>
+                <h3 style={{ fontSize: '1.5rem', color: '#fff', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '10px' }}>🌎 Atención Internacional</h3>
+                <p style={{ color: '#ccc', margin: 0, lineHeight: 1.6 }}>Capacidad operativa para proyectos y asesoría técnica especializada en sistemas de protección contra caídas y trabajos verticales a nivel internacional.</p>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Compromiso Final */}
+      <section style={{
+        padding: '4rem 0',
+        backgroundColor: 'var(--primary-teal)',
+        backgroundImage: 'radial-gradient(circle at 10% 90%, rgba(237, 108, 35, 0.2) 0%, transparent 60%), radial-gradient(circle at 90% 10%, rgba(255, 255, 255, 0.15) 0%, transparent 50%), url("data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'0.05\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")',
+        color: '#fff',
+        textAlign: 'center',
+        position: 'relative',
+        boxShadow: 'inset 0 10px 30px rgba(0,0,0,0.1)'
+      }}>
+        <div className="container" style={{ maxWidth: '900px', position: 'relative', zIndex: 2 }}>
+          <motion.div initial={{ opacity: 0, scale: 0.9, y: 30 }} animate={{ opacity: 1, scale: 1, y: 0 }} transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}>
+            <h2 style={{ fontSize: '3rem', marginBottom: '1.5rem', fontFamily: 'var(--font-heading)', textShadow: '0 2px 10px rgba(0,0,0,0.2)' }}>NUESTRO COMPROMISO</h2>
+            <p style={{ fontSize: '1.3rem', lineHeight: 1.8, marginBottom: '3.5rem', opacity: 0.95, fontWeight: 300 }}>
+              Trabajamos cada día para brindar soluciones eficientes, seguras y confiables que permitan proteger vidas y fortalecer la seguridad en las operaciones de nuestros clientes. Seguiremos creciendo como una empresa líder, manteniendo la excelencia y la innovación.
+            </p>
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} style={{ display: 'inline-block' }}>
+              <a href="https://wa.me/593980001234?text=Hola,%20deseo%20m%C3%A1s%20informaci%C3%B3n%20sobre%20Altura%20Global%20Solutions" target="_blank" rel="noreferrer" className="btn" style={{ background: '#fff', color: 'var(--primary-teal)', padding: '1.2rem 3.5rem', fontSize: '1.2rem', fontWeight: 800, borderRadius: '50px', display: 'inline-block', boxShadow: '0 15px 30px rgba(0,0,0,0.15)', textTransform: 'uppercase', letterSpacing: '1px' }}>
+                CONTÁCTANOS HOY
+              </a>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
     </>

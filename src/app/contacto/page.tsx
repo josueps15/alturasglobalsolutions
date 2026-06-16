@@ -6,7 +6,7 @@ import Link from 'next/link';
 export default function Contacto() {
   return (
     <>
-      <section className="page-hero">
+      <section className="page-hero" style={{ backgroundImage: 'linear-gradient(rgba(11, 19, 32, 0.8), rgba(11, 19, 32, 0.95)), url(/inspection-bg.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed' }}>
         <div className="container">
           <motion.span className="page-hero-subtitle" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
             Estamos para ayudarte
@@ -49,7 +49,7 @@ export default function Contacto() {
                 <div className="contact-item-icon">📞</div>
                 <div className="contact-item-text">
                   <strong>Teléfono / WhatsApp</strong>
-                  <a href="tel:+593993868371">+593 99 386 8371</a>
+                  <a href="tel:+593980001234">+593 98 000 1234</a>
                 </div>
               </div>
 
@@ -57,7 +57,7 @@ export default function Contacto() {
                 <div className="contact-item-icon">✉️</div>
                 <div className="contact-item-text">
                   <strong>Correo Electrónico</strong>
-                  <a href="mailto:ingkevin1@hotmail.com">ingkevin1@hotmail.com</a>
+                  <a href="https://mail.google.com/mail/?view=cm&fs=1&to=ventas@alturasglobalsolutions.com" target="_blank" rel="noreferrer">ventas@alturasglobalsolutions.com</a>
                 </div>
               </div>
 
@@ -79,7 +79,7 @@ export default function Contacto() {
                 </div>
               </div>
 
-              <a href="https://wa.me/593993868371" target="_blank" rel="noreferrer" className="btn btn-primary" style={{ marginTop: '1rem', width: '100%', textAlign: 'center' }}>
+              <a href="https://wa.me/593980001234" target="_blank" rel="noreferrer" className="btn btn-primary" style={{ marginTop: '1rem', width: '100%', textAlign: 'center' }}>
                 💬 ABRIR CHAT DE WHATSAPP
               </a>
             </motion.div>
@@ -115,12 +115,12 @@ export default function Contacto() {
                 <div className="form-group">
                   <label htmlFor="contact-service">Servicio de Interés</label>
                   <select id="contact-service">
-                    <option>Cotización de Líneas de Vida Longdyes</option>
+                    <option>Instalación de Puntos de Anclaje</option>
+                    <option>Cotización de Líneas de Vida Certificadas Longdyes</option>
                     <option>Certificación de Sistemas Existentes</option>
-                    <option>Pintura en Altura</option>
+                    <option>Servicio de Pintura en Altura</option>
                     <option>Hidrolavado de Fachadas</option>
-                    <option>Izaje de Cargas Pesadas</option>
-                    <option>Rescate y Capacitación</option>
+                    <option>Capacitación</option>
                     <option>Mantenimiento Industrial</option>
                     <option>Asesoría en Ingeniería</option>
                   </select>

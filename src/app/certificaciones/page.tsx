@@ -12,7 +12,7 @@ const CERTS = [
   {
     badge: 'Internacional',
     title: 'ANSI Z359',
-    desc: 'Código americano de protección contra caídas. Define directrices rigurosas para el diseño, fabricación, prueba y uso de anclajes, arneses de cuerpo completo, líneas de vida y dispositivos de desaceleración.'
+    desc: 'Código americano de protección contra caídas. Define directrices rigurosas para el diseño, fabricación, prueba y uso de anclajes, arneses de cuerpo completo, líneas de vida certificadas y dispositivos de desaceleración.'
   },
   {
     badge: 'Europa',
@@ -39,7 +39,7 @@ const CERTS = [
 export default function Certificaciones() {
   return (
     <>
-      <section className="page-hero">
+      <section className="page-hero" style={{ backgroundImage: 'linear-gradient(rgba(11, 19, 32, 0.8), rgba(11, 19, 32, 0.95)), url(/hero-certificaciones.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed' }}>
         <div className="container">
           <motion.span className="page-hero-subtitle" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
             Calidad Garantizada
@@ -56,28 +56,46 @@ export default function Certificaciones() {
         </div>
       </section>
 
-      <section className="bg-light" style={{ padding: '5rem 0' }}>
-        <div className="container">
-          <div className="services-intro">
-            <p>
+      <section className="certifications-building-section" style={{ position: 'relative', overflow: 'hidden' }}>
+        {/* Building/Architecture Background Elements */}
+        <div className="building-bg-pattern"></div>
+        <div className="building-gradient-overlay"></div>
+
+        <div className="container" style={{ position: 'relative', zIndex: 10 }}>
+          <div className="services-intro" style={{ color: '#fff', marginBottom: '4rem' }}>
+            <p style={{ fontSize: '1.2rem', textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}>
               Todo equipo de la marca <strong>Longdyes</strong> que instalamos cumple con las exigencias más rigurosas a nivel europeo y americano. Cada sistema es validado y certificado antes de su puesta en operación.
             </p>
           </div>
 
-          <div className="cert-grid">
+          {/* The Lifeline Vertical Timeline */}
+          <div className="lifeline-timeline">
+            <div className="lifeline-cable"></div>
+            
             {CERTS.map((cert, idx) => (
-              <motion.div
-                key={idx}
-                className="cert-card"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: idx * 0.1 }}
-              >
-                <span className="cert-card-badge">{cert.badge}</span>
-                <h3>{cert.title}</h3>
-                <p>{cert.desc}</p>
-              </motion.div>
+              <div key={idx} className={`lifeline-node-container ${idx % 2 === 0 ? 'left-side' : 'right-side'}`}>
+                <motion.div 
+                  className="lifeline-anchor-point"
+                  initial={{ scale: 0 }}
+                  whileInView={{ scale: 1 }}
+                  viewport={{ once: true, amount: 0.5 }}
+                  transition={{ type: 'spring', delay: idx * 0.15 }}
+                />
+                <motion.div
+                  className="lifeline-card"
+                  initial={{ opacity: 0, x: idx % 2 === 0 ? -50 : 50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 0.6, delay: idx * 0.15 + 0.1 }}
+                >
+                  <span className="cert-card-badge">{cert.badge}</span>
+                  <h3>{cert.title}</h3>
+                  <p>{cert.desc}</p>
+                  
+                  {/* Visual carabiner/connector to the cable */}
+                  <div className="lifeline-connector"></div>
+                </motion.div>
+              </div>
             ))}
           </div>
 
@@ -87,12 +105,20 @@ export default function Certificaciones() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
+            style={{ position: 'relative', zIndex: 10, background: 'linear-gradient(135deg, rgba(13,105,120,0.95), rgba(8,45,68,0.95))', backdropFilter: 'blur(10px)', border: '1px solid rgba(255,255,255,0.1)' }}
           >
-            <h2>Respaldados por <span className="text-orange">Longdyes</span></h2>
-            <p>
+            <h2 style={{ color: '#fff', fontSize: '1.5rem', marginBottom: '1.5rem', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '2px' }}>
+              Respaldados por
+            </h2>
+            <div style={{ background: 'rgba(0, 0, 0, 0.25)', padding: '1.5rem 3rem', borderRadius: '12px', display: 'inline-block', marginBottom: '2rem', boxShadow: 'inset 0 2px 10px rgba(0,0,0,0.2), 0 15px 30px rgba(0,0,0,0.3)', border: '1px solid rgba(255,255,255,0.05)' }}>
+              <img src="/logo_longdyes.png" alt="Longdyes" style={{ height: '80px', objectFit: 'contain' }} />
+            </div>
+            <p style={{ color: '#e2e8f0', maxWidth: '800px', margin: '0 auto 2.5rem', fontSize: '1.15rem' }}>
               Como únicos representantes autorizados en Ecuador, cada producto que instalamos viene con la garantía directa del fabricante, asegurando trazabilidad completa y soporte técnico permanente.
             </p>
-            <Link href="/contacto" className="btn btn-primary">VALIDAR SISTEMAS EXISTENTES</Link>
+            <a href="https://wa.me/593980001234?text=Hola,%20deseo%20validar%20sistemas%20existentes" target="_blank" rel="noreferrer" className="btn btn-primary" style={{ padding: '1.2rem 3rem', fontSize: '1.1rem', letterSpacing: '1px', borderRadius: '50px', boxShadow: '0 8px 25px rgba(237,108,35,0.4)' }}>
+              VALIDAR SISTEMAS EXISTENTES
+            </a>
           </motion.div>
         </div>
       </section>
