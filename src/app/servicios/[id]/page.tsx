@@ -387,39 +387,35 @@ export default function ServicioDetail({ params }: { params: Promise<{ id: strin
             <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, background: 'radial-gradient(circle at 20% 80%, rgba(13,105,120,0.3) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(56,189,248,0.15) 0%, transparent 40%)', pointerEvents: 'none', zIndex: 1 }} />
             <div style={{ position: 'absolute', top: '-50%', right: '-20%', width: '500px', height: '500px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(237,108,35,0.08) 0%, transparent 70%)', pointerEvents: 'none', zIndex: 1 }} />
 
-            {/* Header / Title Centered Above Everything */}
-            <div style={{ position: 'relative', zIndex: 2, textAlign: 'center', paddingTop: 'clamp(2.5rem, 5vw, 4rem)' }}>
-              {/* Badge */}
-              <motion.div
-                initial={{ opacity: 0, y: -20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.3 }}
-                style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'rgba(237,108,35,0.15)', border: '1px solid rgba(237,108,35,0.3)', borderRadius: '50px', padding: '6px 16px', marginBottom: '1rem', width: 'fit-content', margin: '0 auto' }}
-              >
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ed6c23" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 5L9 9M19 5L15 9M5 19L9 15M19 19L15 15" /><circle cx="12" cy="12" r="3" /><circle cx="5" cy="5" r="2" /><circle cx="19" cy="5" r="2" /><circle cx="5" cy="19" r="2" /><circle cx="19" cy="19" r="2" /></svg>
-                <span style={{ color: '#ed6c23', fontSize: '0.8rem', fontWeight: 700, letterSpacing: '1.5px', textTransform: 'uppercase' }}>
-                  {resolvedParams.id === 'inspeccion-tecnica-drone' ? 'Tecnología Avanzada' : 'Servicio Complementario'}
-                </span>
-              </motion.div>
-
-              <motion.h3
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.4 }}
-                style={{ fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', fontFamily: 'var(--font-heading)', color: '#fff', margin: '1rem auto 1.5rem', lineHeight: 1.2, maxWidth: '800px' }}
-              >
-                {resolvedParams.id === 'inspeccion-tecnica-drone'
-                  ? <><span style={{ color: '#ed6c23' }}>Inspección Técnica Aérea</span> de Alta Precisión</>
-                  : <>Potencia tu Servicio con <span style={{ color: '#ed6c23' }}>Inspección Aérea</span></>
-                }
-              </motion.h3>
-            </div>
-
-            <div style={{ display: 'flex', flexWrap: 'wrap', position: 'relative', zIndex: 2, alignItems: 'center' }}>
+            <div style={{ display: 'flex', flexWrap: 'wrap', position: 'relative', zIndex: 2 }}>
               {/* Text Content */}
-              <div style={{ flex: '1 1 420px', padding: 'clamp(1rem, 2vw, 2rem) clamp(2rem, 4vw, 4rem)', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+              <div style={{ flex: '1 1 420px', padding: 'clamp(2rem, 4vw, 4rem)', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                {/* Badge */}
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.3 }}
+                  style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'rgba(56,189,248,0.15)', border: '1px solid rgba(56,189,248,0.3)', borderRadius: '50px', padding: '6px 16px', marginBottom: '1.5rem', width: 'fit-content' }}
+                >
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 5L9 9M19 5L15 9M5 19L9 15M19 19L15 15" /><circle cx="12" cy="12" r="3" /><circle cx="5" cy="5" r="2" /><circle cx="19" cy="5" r="2" /><circle cx="5" cy="19" r="2" /><circle cx="19" cy="19" r="2" /></svg>
+                  <span style={{ color: '#38bdf8', fontSize: '0.8rem', fontWeight: 700, letterSpacing: '1.5px', textTransform: 'uppercase' }}>
+                    {resolvedParams.id === 'inspeccion-tecnica-drone' ? 'Tecnología Avanzada' : 'Servicio Complementario'}
+                  </span>
+                </motion.div>
+
+                <motion.h3
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.4 }}
+                  style={{ fontSize: 'clamp(1.6rem, 3vw, 2.4rem)', fontFamily: 'var(--font-heading)', color: '#fff', margin: '0 0 1.2rem 0', lineHeight: 1.2 }}
+                >
+                  {resolvedParams.id === 'inspeccion-tecnica-drone'
+                    ? <><span style={{ color: '#38bdf8' }}>Inspección Técnica Aérea</span> de Alta Precisión</>
+                    : <>Potencia tu Servicio con <span style={{ color: '#ed6c23' }}>Inspección Aérea</span></>
+                  }
+                </motion.h3>
 
                 <motion.p
                   initial={{ opacity: 0, y: 20 }}
