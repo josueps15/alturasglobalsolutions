@@ -329,6 +329,130 @@ export default function Home() {
         </div>
       </motion.section>
 
+      {/* Drone Inspection Promo Section */}
+      <section style={{
+        position: 'relative',
+        overflow: 'hidden',
+        background: 'linear-gradient(160deg, #0f172a 0%, #1e293b 50%, #0f172a 100%)',
+        padding: 'clamp(4rem, 8vw, 7rem) 0',
+      }}>
+        {/* Background decorative elements */}
+        <div style={{ position: 'absolute', top: '-150px', right: '-150px', width: '500px', height: '500px', background: 'radial-gradient(circle, rgba(56,189,248,0.08), transparent 70%)', pointerEvents: 'none' }} />
+        <div style={{ position: 'absolute', bottom: '-100px', left: '-100px', width: '400px', height: '400px', background: 'radial-gradient(circle, rgba(237,108,35,0.06), transparent 70%)', pointerEvents: 'none' }} />
+        <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, backgroundImage: 'radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px)', backgroundSize: '30px 30px', pointerEvents: 'none' }} />
+
+        <div className="container" style={{ position: 'relative', zIndex: 2 }}>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'clamp(2rem, 4vw, 3rem)', alignItems: 'center' }}>
+            {/* Video Side */}
+            <motion.div
+              style={{ flex: '1 1 480px', position: 'relative' }}
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
+              <div style={{
+                position: 'relative',
+                borderRadius: '20px',
+                overflow: 'hidden',
+                boxShadow: '0 30px 80px rgba(0,0,0,0.5), 0 0 40px rgba(56,189,248,0.1)',
+                border: '1px solid rgba(56,189,248,0.15)',
+              }}>
+                <video
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  style={{ width: '100%', height: '380px', objectFit: 'cover', display: 'block' }}
+                >
+                  <source src="/video-inspeccion-drone.mp4" type="video/mp4" />
+                </video>
+                {/* Gradient overlay on video */}
+                <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '100px', background: 'linear-gradient(to top, rgba(15,23,42,0.8), transparent)', pointerEvents: 'none' }} />
+                {/* Live badge */}
+                <div style={{
+                  position: 'absolute', top: '16px', left: '16px',
+                  display: 'flex', alignItems: 'center', gap: '8px',
+                  background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(10px)',
+                  borderRadius: '50px', padding: '6px 14px',
+                  border: '1px solid rgba(255,255,255,0.1)',
+                }}>
+                  <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#ef4444', boxShadow: '0 0 8px #ef4444', animation: 'pulse 2s infinite' }} />
+                  <span style={{ color: '#fff', fontSize: '0.75rem', fontWeight: 700, letterSpacing: '1px', textTransform: 'uppercase' }}>Vista Aérea</span>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Text Side */}
+            <motion.div
+              style={{ flex: '1 1 420px' }}
+              initial={{ opacity: 0, x: 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              {/* Badge */}
+              <div style={{
+                display: 'inline-flex', alignItems: 'center', gap: '8px',
+                background: 'rgba(56,189,248,0.12)', border: '1px solid rgba(56,189,248,0.25)',
+                borderRadius: '50px', padding: '6px 16px', marginBottom: '1.5rem',
+              }}>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 5L9 9M19 5L15 9M5 19L9 15M19 19L15 15" /><circle cx="12" cy="12" r="3" /><circle cx="5" cy="5" r="2" /><circle cx="19" cy="5" r="2" /><circle cx="5" cy="19" r="2" /><circle cx="19" cy="19" r="2" /></svg>
+                <span style={{ color: '#38bdf8', fontSize: '0.8rem', fontWeight: 700, letterSpacing: '1.5px', textTransform: 'uppercase' }}>Nuevo Servicio</span>
+              </div>
+
+              <h2 style={{
+                fontSize: 'clamp(1.8rem, 3.5vw, 2.6rem)',
+                fontFamily: 'var(--font-heading)',
+                color: '#ffffff',
+                lineHeight: 1.15,
+                marginBottom: '1.2rem',
+              }}>
+                Inspección Técnica con{' '}
+                <span style={{ color: '#38bdf8' }}>Drone</span>
+              </h2>
+
+              <p style={{
+                color: '#94a3b8',
+                fontSize: '1.05rem',
+                lineHeight: 1.8,
+                marginBottom: '2rem',
+                maxWidth: '520px',
+              }}>
+                Complementa tus servicios de seguridad con inspecciones aéreas de alta precisión. Llegamos a los lugares más inaccesibles sin exponer a tu equipo, entregando reportes visuales detallados con imágenes y video en alta resolución.
+              </p>
+
+              {/* Feature list */}
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1rem', marginBottom: '2.5rem' }}>
+                {[
+                  { icon: '📡', text: 'Captura 4K' },
+                  { icon: '🛡️', text: 'Cero riesgos' },
+                  { icon: '📋', text: 'Reporte técnico' },
+                  { icon: '⚡', text: 'Resultados rápidos' },
+                ].map((feat, i) => (
+                  <div key={i} style={{
+                    display: 'flex', alignItems: 'center', gap: '10px',
+                    background: 'rgba(255,255,255,0.04)', borderRadius: '12px',
+                    padding: '12px 16px', border: '1px solid rgba(255,255,255,0.06)',
+                  }}>
+                    <span style={{ fontSize: '1.2rem' }}>{feat.icon}</span>
+                    <span style={{ color: '#e2e8f0', fontSize: '0.9rem', fontWeight: 600 }}>{feat.text}</span>
+                  </div>
+                ))}
+              </div>
+
+              <Link href="/servicios/inspeccion-tecnica-drone" className="btn btn-primary" style={{
+                padding: '1rem 2.5rem', fontSize: '1rem',
+                display: 'inline-flex', alignItems: 'center', gap: '10px',
+              }}>
+                Conocer más
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+              </Link>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       {/* Longdyes Brand Section */}
       <motion.section
         className="fullscreen-section longdyes-brand-section services-showcase-section"
