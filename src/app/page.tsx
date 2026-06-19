@@ -337,7 +337,7 @@ export default function Home() {
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundAttachment: 'fixed',
-        padding: 'clamp(4rem, 8vw, 7rem) 0',
+        padding: 'clamp(3rem, 5vw, 5rem) 0',
       }}>
         {/* Background decorative elements */}
         <div style={{ position: 'absolute', top: '-150px', right: '-150px', width: '500px', height: '500px', background: 'radial-gradient(circle, rgba(56,189,248,0.08), transparent 70%)', pointerEvents: 'none' }} />
@@ -366,7 +366,7 @@ export default function Home() {
                   loop
                   muted
                   playsInline
-                  style={{ width: '100%', height: '380px', objectFit: 'cover', display: 'block' }}
+                  style={{ width: '100%', height: '320px', objectFit: 'cover', display: 'block' }}
                 >
                   <source src="/video-inspeccion-drone.mp4" type="video/mp4" />
                 </video>
@@ -421,6 +421,7 @@ export default function Home() {
                 lineHeight: 1.8,
                 marginBottom: '2rem',
                 maxWidth: '520px',
+                textAlign: 'justify',
               }}>
                 Complementa tus servicios de seguridad con inspecciones aéreas de alta precisión. Llegamos a los lugares más inaccesibles sin exponer a tu equipo, entregando reportes visuales detallados con imágenes y video en alta resolución.
               </p>
@@ -428,17 +429,17 @@ export default function Home() {
               {/* Feature list */}
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1rem', marginBottom: '2.5rem' }}>
                 {[
-                  { icon: '📡', text: 'Captura 4K' },
-                  { icon: '🛡️', text: 'Cero riesgos' },
-                  { icon: '📋', text: 'Reporte técnico' },
-                  { icon: '⚡', text: 'Resultados rápidos' },
+                  { text: 'Captura 4K' },
+                  { text: 'Cero riesgos' },
+                  { text: 'Reporte técnico' },
+                  { text: 'Resultados rápidos' },
                 ].map((feat, i) => (
                   <div key={i} style={{
-                    display: 'flex', alignItems: 'center', gap: '10px',
-                    background: 'rgba(255,255,255,0.04)', borderRadius: '12px',
-                    padding: '12px 16px', border: '1px solid rgba(255,255,255,0.06)',
+                    display: 'flex', alignItems: 'center', gap: '8px',
+                    background: 'rgba(255,255,255,0.04)', borderRadius: '8px',
+                    padding: '10px 14px', border: '1px solid rgba(255,255,255,0.06)',
                   }}>
-                    <span style={{ fontSize: '1.2rem' }}>{feat.icon}</span>
+                    <span style={{ color: '#38bdf8', fontSize: '1rem', fontWeight: 800 }}>✓</span>
                     <span style={{ color: '#e2e8f0', fontSize: '0.9rem', fontWeight: 600 }}>{feat.text}</span>
                   </div>
                 ))}

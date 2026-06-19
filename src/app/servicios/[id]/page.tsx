@@ -422,7 +422,7 @@ export default function ServicioDetail({ params }: { params: Promise<{ id: strin
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.5 }}
-                  style={{ color: '#94a3b8', fontSize: '1.05rem', marginBottom: '2rem', lineHeight: '1.9', maxWidth: '520px' }}
+                  style={{ color: '#94a3b8', fontSize: '1.05rem', marginBottom: '2rem', lineHeight: '1.9', maxWidth: '520px', textAlign: 'justify' }}
                 >
                   {resolvedParams.id === 'inspeccion-tecnica-drone'
                     ? 'Utilizamos drones de última generación para llegar a los lugares más inaccesibles. Observa cómo realizamos inspecciones con precisión milimétrica, garantizando seguridad total sin exponer a tu equipo.'
