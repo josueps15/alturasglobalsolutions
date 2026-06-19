@@ -333,7 +333,10 @@ export default function Home() {
       <section style={{
         position: 'relative',
         overflow: 'hidden',
-        background: 'linear-gradient(160deg, #0f172a 0%, #1e293b 50%, #0f172a 100%)',
+        backgroundImage: 'linear-gradient(rgba(15,23,42,0.8), rgba(15,23,42,0.95)), url("/drone-tech-bg.png")',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundAttachment: 'fixed',
         padding: 'clamp(4rem, 8vw, 7rem) 0',
       }}>
         {/* Background decorative elements */}
