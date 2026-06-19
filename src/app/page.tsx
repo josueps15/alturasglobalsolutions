@@ -345,6 +345,32 @@ export default function Home() {
         <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, backgroundImage: 'radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px)', backgroundSize: '30px 30px', pointerEvents: 'none' }} />
 
         <div className="container" style={{ position: 'relative', zIndex: 2 }}>
+          {/* Header / Title Centered Above Everything */}
+          <div style={{ position: 'relative', zIndex: 2, textAlign: 'center', marginBottom: '3rem' }}>
+            {/* Badge */}
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+              style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'rgba(237,108,35,0.15)', border: '1px solid rgba(237,108,35,0.3)', borderRadius: '50px', padding: '6px 16px', marginBottom: '1rem', width: 'fit-content', margin: '0 auto' }}
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ed6c23" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 5L9 9M19 5L15 9M5 19L9 15M19 19L15 15" /><circle cx="12" cy="12" r="3" /><circle cx="5" cy="5" r="2" /><circle cx="19" cy="5" r="2" /><circle cx="5" cy="19" r="2" /><circle cx="19" cy="19" r="2" /></svg>
+              <span style={{ color: '#ed6c23', fontSize: '0.8rem', fontWeight: 700, letterSpacing: '1.5px', textTransform: 'uppercase' }}>Nuevo Servicio</span>
+            </motion.div>
+
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4 }}
+              style={{ fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', fontFamily: 'var(--font-heading)', color: '#ffffff', margin: '1rem auto 0', lineHeight: 1.15, maxWidth: '800px' }}
+            >
+              Inspección Técnica con{' '}
+              <span style={{ color: '#ed6c23' }}>Drone</span>
+            </motion.h2>
+          </div>
+
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'clamp(2rem, 4vw, 3rem)', alignItems: 'center' }}>
             {/* Video Side */}
             <motion.div
@@ -394,27 +420,6 @@ export default function Home() {
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              {/* Badge */}
-              <div style={{
-                display: 'inline-flex', alignItems: 'center', gap: '8px',
-                background: 'rgba(56,189,248,0.12)', border: '1px solid rgba(56,189,248,0.25)',
-                borderRadius: '50px', padding: '6px 16px', marginBottom: '1.5rem',
-              }}>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 5L9 9M19 5L15 9M5 19L9 15M19 19L15 15" /><circle cx="12" cy="12" r="3" /><circle cx="5" cy="5" r="2" /><circle cx="19" cy="5" r="2" /><circle cx="5" cy="19" r="2" /><circle cx="19" cy="19" r="2" /></svg>
-                <span style={{ color: '#38bdf8', fontSize: '0.8rem', fontWeight: 700, letterSpacing: '1.5px', textTransform: 'uppercase' }}>Nuevo Servicio</span>
-              </div>
-
-              <h2 style={{
-                fontSize: 'clamp(1.8rem, 3.5vw, 2.6rem)',
-                fontFamily: 'var(--font-heading)',
-                color: '#ffffff',
-                lineHeight: 1.15,
-                marginBottom: '1.2rem',
-              }}>
-                Inspección Técnica con{' '}
-                <span style={{ color: '#38bdf8' }}>Drone</span>
-              </h2>
-
               <p style={{
                 color: '#94a3b8',
                 fontSize: '1.05rem',
