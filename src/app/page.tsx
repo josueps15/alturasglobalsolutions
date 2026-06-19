@@ -34,10 +34,10 @@ function AnimatedCounter({ from, to, prefix = '', suffix = '' }: { from: number,
 const SLIDES = [
   {
     id: 1,
-    video: '/video-final-2.mp4',
+    video: '/video-portada-nueva.mp4',
     titleOrange: 'Expertos en',
     titleWhite: 'Instalación de Líneas de Vida Certificadas',
-    desc: 'Representantes oficiales de Longdyes en Ecuador. Ingeniería, montaje y certificación bajo normativas internacionales.',
+    desc: 'Representantes oficiales de Longdyes en Ecuador. Ingeniería, montaje y certificación de líneas de vida bajo normativas internacionales.',
     primaryBtn: { text: 'Solicitar Inspección', link: '/contacto' },
     secondaryBtn: { text: 'Ver Catálogo', link: '/soluciones' }
   },
@@ -45,8 +45,8 @@ const SLIDES = [
     id: 2,
     video: '/video-1-1.mp4',
     titleOrange: 'Mantenimiento y',
-    titleWhite: 'Servicios en Altura',
-    desc: 'Especialistas en instalación de puntos de anclaje, líneas de vida certificadas, servicio de pintura en altura y hidrolavado de fachadas de forma segura y eficiente.',
+    titleWhite: 'Servicios en Alturas',
+    desc: 'Especialistas en líneas de vida certificadas y puntos de anclaje. Somos Representantes oficiales de Longdyes en Ecuador. Servicio de pintura en alturas. Servicio de hidrolavado y fachadas de forma segura y eficiente.',
     primaryBtn: { text: 'Cotizar Servicio', link: '/contacto' },
     secondaryBtn: { text: 'Nuestros Trabajos', link: '/trabajos' }
   },
@@ -162,7 +162,7 @@ export default function Home() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              INGENIERÍA Y SEGURIDAD CERTIFICADA EN ALTURA
+              INGENIERÍA Y SEGURIDAD CERTIFICADA EN ALTURAS
             </motion.span>
           </div>
 
@@ -170,7 +170,7 @@ export default function Home() {
             {[
               {
                 title: "INSTALACIÓN LÍNEAS DE VIDA CERTIFICADAS",
-                img: "/lineas-de-vida.png",
+                img: "/foto-lineas-de-vida.jpeg",
                 icon: (
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="service-svg-icon">
                     <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
@@ -182,7 +182,7 @@ export default function Home() {
               },
               {
                 title: "INSTALACIÓN PUNTOS DE ANCLAJE",
-                img: "/anclaje-industrial.png",
+                img: "/foto-de-puntos-de-anclaje.jpeg",
                 icon: (
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="service-svg-icon">
                     <circle cx="12" cy="5" r="3" />
@@ -193,7 +193,7 @@ export default function Home() {
                 link: "/servicios/instalacion-puntos-anclaje"
               },
               {
-                title: "SERVICIO DE PINTURA EN ALTURA",
+                title: "SERVICIO DE PINTURA EN ALTURAS",
                 img: "/pintura-altura.png",
                 icon: (
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="service-svg-icon">
@@ -212,6 +212,18 @@ export default function Home() {
                   </svg>
                 ),
                 link: "/servicios/hidrolavado-fachadas"
+              },
+              {
+                title: "VENTA DE EQUIPOS ESPECIALIZADOS PARA TRABAJOS EN ALTURAS",
+                img: "/kit-longdyes.png",
+                icon: (
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="service-svg-icon">
+                    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+                    <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
+                    <line x1="12" y1="22.08" x2="12" y2="12" />
+                  </svg>
+                ),
+                link: "/kits-altura"
               }
             ].map((item, idx) => (
               <Link href={item.link} key={idx}>
@@ -292,7 +304,7 @@ export default function Home() {
             <span style={{ color: 'var(--primary-orange)', fontWeight: 700, letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '1rem', display: 'block' }}>Representantes</span>
             <h2 className="section-title" style={{ textAlign: 'left' }}>ESPECIALISTAS EN <span className="text-orange">SEGURIDAD INDUSTRIAL</span></h2>
             <p style={{ color: 'var(--text-grey)', fontSize: '1.1rem', marginBottom: '1.5rem', lineHeight: 1.8 }}>
-              En <strong>Altura Global Solutions</strong> entendemos que la seguridad no es negociable. Somos representantes oficiales de <strong>Longdyes</strong> en Ecuador, líderes mundiales en sistemas de protección contra caídas.
+              En <strong>Alturas Global Solutions</strong> entendemos que la seguridad no es negociable. Somos representantes oficiales de <strong>Longdyes</strong> en Ecuador, líderes mundiales en sistemas de protección contra caídas.
             </p>
             <p style={{ color: 'var(--text-grey)', fontSize: '1.1rem', marginBottom: '1.5rem', lineHeight: 1.8 }}>
               Contamos con un equipo de expertos liderado por el <strong>Ing. Kevin Bravo</strong>, dedicados al diseño, instalación y validación de sistemas para trabajo seguro.
@@ -364,7 +376,7 @@ export default function Home() {
                 title: "Líneas de Vida Certificadas & Anclajes",
                 desc: "Sistemas anticaídas de alta resistencia diseñados a medida bajo estrictas especificaciones estructurales.",
                 spec: "Certificación EN 795 & OSHA",
-                img: "/lineas_vida_anclajes_longdyes.png"
+                img: "/longdyes-3.jpeg"
               }
             ].map((prod, idx) => (
               <motion.div
@@ -466,7 +478,7 @@ export default function Home() {
             viewport={{ once: true }}
             style={{ flex: '1 1 300px', color: '#fff', display: 'flex', flexDirection: 'column', alignItems: 'center' }}
           >
-            <h2 style={{ fontSize: 'clamp(2rem, 5vw, 3.2rem)', fontWeight: 800, marginBottom: '1.2rem', fontFamily: 'var(--font-heading)', textShadow: '0 4px 10px rgba(0,0,0,0.3)' }}>¿Buscas Kits para Trabajo en Altura?</h2>
+            <h2 style={{ fontSize: 'clamp(2rem, 5vw, 3.2rem)', fontWeight: 800, marginBottom: '1.2rem', fontFamily: 'var(--font-heading)', textShadow: '0 4px 10px rgba(0,0,0,0.3)' }}>¿Buscas Kits para Trabajo en Alturas?</h2>
             <p style={{ fontSize: '1.1rem', marginBottom: '2.5rem', maxWidth: '600px', color: '#e2e8f0', lineHeight: '1.7' }}>
               Equipados con todo lo necesario para una respuesta rápida y efectiva, garantizamos la seguridad de tus trabajadores en cualquier situación de riesgo con equipos de la marca Longdyes.
             </p>
@@ -481,7 +493,7 @@ export default function Home() {
             transition={{ duration: 0.6, type: 'spring' }}
             style={{ flex: '1 1 300px', textAlign: 'center' }}
           >
-            <img src="/kit-longdyes.png" alt="Kit de Trabajo en Altura Longdyes" style={{ maxWidth: '100%', height: 'auto', borderRadius: '20px', boxShadow: '0 20px 50px rgba(0,0,0,0.4)', border: '1px solid rgba(255,255,255,0.1)' }} />
+            <img src="/kit-longdyes.png" alt="Kit de Trabajo en Alturas Longdyes" style={{ maxWidth: '100%', height: 'auto', borderRadius: '20px', boxShadow: '0 20px 50px rgba(0,0,0,0.4)', border: '1px solid rgba(255,255,255,0.1)' }} />
           </motion.div>
         </div>
       </section>
@@ -505,7 +517,7 @@ export default function Home() {
           <div className="masonry-grid">
             {[
               { src: '/gallery/linea_vida_1.jpeg', alt: 'Líneas de Vida Certificadas' },
-              { src: '/gallery/pintura_1.png', alt: 'Pintura en Altura' },
+              { src: '/gallery/pintura_1.png', alt: 'Pintura en Alturas' },
               { src: '/gallery/capacitacion_china_1.jpeg', alt: 'Capacitación (China)' },
               { src: '/gallery/hidrolavado_1.png', alt: 'Hidrolavado' },
               { src: '/gallery/anclaje_1.jpeg', alt: 'Puntos de Anclaje' },

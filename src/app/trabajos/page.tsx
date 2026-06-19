@@ -17,7 +17,7 @@ const CATEGORY_COLORS: Record<string, string> = {
 
 // Use Unsplash images that perfectly represent each category for clear identification
 const rawProjects = [
-  { img: '/gallery/linea_vida_1.jpeg', category: 'Líneas de Vida Certificadas', title: 'Línea de Vida Horizontal' },
+  { img: '/foto-en-portada-de-lineas-de-vida.jpeg', category: 'Líneas de Vida Certificadas', title: 'Línea de Vida Horizontal' },
   { img: '/gallery/linea_vida_2.jpeg', category: 'Líneas de Vida Certificadas', title: 'Sistemas Anticaídas' },
   { img: '/gallery/linea_vida_3.jpeg', category: 'Líneas de Vida Certificadas', title: 'Instalación en Techos' },
   { img: '/gallery/linea_vida_4.jpeg', category: 'Líneas de Vida Certificadas', title: 'Certificación de Puntos' },

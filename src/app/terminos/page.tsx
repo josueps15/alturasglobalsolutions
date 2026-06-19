@@ -2,8 +2,8 @@ import React from 'react';
 import Link from 'next/link';
 
 export const metadata = {
-  title: 'Términos y Condiciones | Altura Global Solutions',
-  description: 'Términos y condiciones de servicio de Altura Global Solutions.',
+  title: 'Términos y Condiciones | Alturas Global Solutions',
+  description: 'Términos y condiciones de servicio de Alturas Global Solutions.',
 };
 
 export default function TerminosPage() {
@@ -11,12 +11,12 @@ export default function TerminosPage() {
     {
       num: '01',
       title: 'Introducción',
-      content: 'Bienvenido a Altura Global Solutions. Al acceder y utilizar nuestros servicios, usted acepta estar sujeto a los presentes términos y condiciones. Estos términos regulan la relación contractual entre Altura Global Solutions y sus clientes en todo el territorio ecuatoriano.'
+      content: 'Bienvenido a Alturas Global Solutions. Al acceder y utilizar nuestros servicios, usted acepta estar sujeto a los presentes términos y condiciones. Estos términos regulan la relación contractual entre Alturas Global Solutions y sus clientes en todo el territorio ecuatoriano.'
     },
     {
       num: '02',
       title: 'Prestación de Servicios',
-      content: 'Altura Global Solutions se compromete a ejecutar los proyectos de instalación de líneas de vida certificadas, mantenimiento industrial e izaje bajo los más estrictos estándares normativos vigentes (OSHA, ANSI). Todos los trabajos incluyen documentación técnica, certificados de conformidad y garantía escrita.'
+      content: 'Alturas Global Solutions se compromete a ejecutar los proyectos de instalación de líneas de vida certificadas, mantenimiento industrial e izaje bajo los más estrictos estándares normativos vigentes (OSHA, ANSI). Todos los trabajos incluyen documentación técnica, certificados de conformidad y garantía escrita.'
     },
     {
       num: '03',
@@ -26,12 +26,12 @@ export default function TerminosPage() {
     {
       num: '04',
       title: 'Propiedad Intelectual',
-      content: 'Toda la información técnica, diseños, planos de ingeniería y manuales provistos son propiedad exclusiva de Altura Global Solutions y marcas asociadas como Longdyes. Queda prohibida su reproducción, distribución o modificación sin autorización expresa por escrito.'
+      content: 'Toda la información técnica, diseños, planos de ingeniería y manuales provistos son propiedad exclusiva de Alturas Global Solutions y marcas asociadas como Longdyes. Queda prohibida su reproducción, distribución o modificación sin autorización expresa por escrito.'
     },
     {
       num: '05',
       title: 'Garantías y Responsabilidad',
-      content: 'Nuestros sistemas cuentan con certificaciones internacionales. La empresa no se responsabiliza por modificaciones o manipulación de los sistemas realizados por personal ajeno a Altura Global Solutions. Las garantías están sujetas al correcto uso y mantenimiento periódico según las recomendaciones del fabricante.'
+      content: 'Nuestros sistemas cuentan con certificaciones internacionales. La empresa no se responsabiliza por modificaciones o manipulación de los sistemas realizados por personal ajeno a Alturas Global Solutions. Las garantías están sujetas al correcto uso y mantenimiento periódico según las recomendaciones del fabricante.'
     },
     {
       num: '06',

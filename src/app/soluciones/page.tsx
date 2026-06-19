@@ -8,7 +8,7 @@ const SERVICES = [
   {
     title: "Instalación de Líneas de Vida Certificadas",
     id: "instalacion-lineas-vida",
-    img: "/lineas-de-vida.png",
+    img: "/lineas-de-vida-soluciones.jpeg",
     desc: "Diseñamos, fabricamos e instalamos sistemas de líneas de vida certificadas horizontales y verticales, tanto temporales como permanentes. Como representantes oficiales de Longdyes en Ecuador, garantizamos productos de la más alta calidad y resistencia estructural.",
     features: ["Líneas de vida certificadas horizontales y verticales", "Puntos de anclaje certificados", "Sistemas temporales y permanentes", "Ingeniería personalizada por proyecto"],
     theme: "lineas-vida"
@@ -16,7 +16,7 @@ const SERVICES = [
   {
     title: "Instalación de Puntos de Anclaje",
     id: "instalacion-puntos-anclaje",
-    img: "/anclaje-industrial.png",
+    img: "/puntos-de-anclaje-soluciones.jpeg",
     desc: "Instalación certificada de puntos de anclaje estructurales para trabajos en altura. Utilizamos anclajes químicos y mecánicos de alta resistencia, garantizando puntos de conexión seguros y certificados según normativas internacionales.",
     features: ["Anclajes químicos y mecánicos", "Pruebas de tracción certificadas", "Diseño según normativa EN 795", "Inspección y recertificación anual"],
     theme: "anclaje"
@@ -52,6 +52,14 @@ const SERVICES = [
     desc: "Programas integrales de capacitación técnica en trabajo seguro en alturas. Formamos a su personal con instructores certificados, combinando teoría normativa y prácticas intensivas en escenarios reales para prevenir accidentes laborales.",
     features: ["Certificación en trabajo seguro en alturas", "Manejo de equipos de protección contra caídas", "Normativa nacional e internacional OSHA/ANSI", "Formación de brigadas de emergencia"],
     theme: "capacitacion"
+  },
+  {
+    title: "Inspección Técnica con Drone",
+    id: "inspeccion-tecnica-drone",
+    img: "/foto-inspeccion-drone.png",
+    desc: "Ofrecemos servicios de inspección técnica aérea mediante drones industriales equipados con cámaras de alta resolución. Ideal para estructuras de gran altura, cubiertas y espacios de difícil acceso, reduciendo riesgos y costos operativos.",
+    features: ["Inspección visual de alta resolución", "Evaluación de estructuras en altura", "Reducción de riesgos laborales", "Reportes técnicos detallados"],
+    theme: "drone"
   }
 ];
 
@@ -84,6 +92,16 @@ const ICONS: Record<string, React.ReactNode> = {
   "capacitacion": (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="service-section-icon">
       <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" /><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+    </svg>
+  ),
+  "drone": (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="service-section-icon">
+      <path d="M5 5L9 9M19 5L15 9M5 19L9 15M19 19L15 15" />
+      <circle cx="12" cy="12" r="3" />
+      <circle cx="5" cy="5" r="2" />
+      <circle cx="19" cy="5" r="2" />
+      <circle cx="5" cy="19" r="2" />
+      <circle cx="19" cy="19" r="2" />
     </svg>
   )
 };

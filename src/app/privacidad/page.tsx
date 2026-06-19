@@ -2,8 +2,8 @@ import React from 'react';
 import Link from 'next/link';
 
 export const metadata = {
-  title: 'Políticas de Privacidad | Altura Global Solutions',
-  description: 'Políticas de privacidad y tratamiento de datos de Altura Global Solutions.',
+  title: 'Políticas de Privacidad | Alturas Global Solutions',
+  description: 'Políticas de privacidad y tratamiento de datos de Alturas Global Solutions.',
 };
 
 export default function PrivacidadPage() {

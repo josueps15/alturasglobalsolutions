@@ -37,7 +37,7 @@ export default function Nosotros() {
             Presentación Corporativa
           </motion.span>
           <motion.h1 className="page-hero-title" initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}>
-            Altura Global Solutions
+            Alturas Global Solutions
           </motion.h1>
           <motion.p className="page-hero-desc" initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }} style={{ fontStyle: 'italic', fontSize: '1.4rem' }}>
             “Soluciones inteligentes en sistemas de protección contra caídas”
@@ -54,9 +54,9 @@ export default function Nosotros() {
           <motion.div className="about-grid" initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}>
             <div className="about-text-block">
               <span style={{ color: 'var(--primary-orange)', fontWeight: 800, letterSpacing: '2px', textTransform: 'uppercase', fontSize: '0.9rem', display: 'block', marginBottom: '1rem' }}>QUIÉNES SOMOS E HISTORIA</span>
-              <h2 style={{ fontSize: '2.5rem', marginBottom: '1.5rem', lineHeight: 1.2, fontFamily: 'var(--font-heading)' }}>ESPECIALISTAS EN <span className="text-orange">TRABAJOS EN ALTURA</span></h2>
+              <h2 style={{ fontSize: '2.5rem', marginBottom: '1.5rem', lineHeight: 1.2, fontFamily: 'var(--font-heading)' }}>ESPECIALISTAS EN <span className="text-orange">TRABAJOS EN ALTURAS</span></h2>
               <p style={{ fontSize: '1.1rem', color: '#555', marginBottom: '1.5rem', lineHeight: 1.7, textAlign: 'justify' }}>
-                <strong>ALTURA GLOBAL SOLUTIONS</strong> es una empresa ecuatoriana especializada en soluciones integrales para trabajos en altura, enfocada en el diseño, instalación, certificación y mantenimiento de sistemas de protección contra caídas.
+                <strong>ALTURAS GLOBAL SOLUTIONS</strong> es una empresa ecuatoriana especializada en soluciones integrales para trabajos en alturas, enfocada en el diseño, instalación, certificación y mantenimiento de sistemas de protección contra caídas.
               </p>
               <p style={{ fontSize: '1.1rem', color: '#555', marginBottom: '1.5rem', lineHeight: 1.7, textAlign: 'justify' }}>
                 Fundada el <strong>14 de mayo de 2010 por el Ing. Kevin Bravo</strong>, con la visión de crear una empresa especializada capaz de ofrecer soluciones técnicas de alto nivel en el Ecuador. Desde nuestra creación, hemos trabajado con compromiso e innovación para brindar soluciones confiables a empresas e instituciones públicas y privadas.
@@ -94,7 +94,7 @@ export default function Nosotros() {
             <motion.div initial={{ opacity: 0, x: -40 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }} style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 100%)', backdropFilter: 'blur(10px)', padding: '2rem', borderRadius: '16px', border: '1px solid rgba(255,255,255,0.1)', boxShadow: '0 20px 40px rgba(0,0,0,0.2)' }}>
               <h3 style={{ color: 'var(--primary-orange)', fontSize: '1.5rem', marginBottom: '1.5rem' }}>Nuestro personal cuenta con:</h3>
               <ul style={{ listStyle: 'none', padding: 0 }}>
-                {['Certificaciones en trabajos en altura', 'Formación en prevención de riesgos', 'Capacitación en rescate', 'Entrenamiento en EPP', 'Instalación de sistemas anticaídas'].map((item, idx) => (
+                {['Certificaciones en trabajos en alturas', 'Formación en prevención de riesgos', 'Capacitación en rescate', 'Entrenamiento en EPP', 'Instalación de sistemas anticaídas'].map((item, idx) => (
                   <li key={idx} style={{ marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '10px' }}><span style={{ color: 'var(--primary-orange)' }}>✓</span> {item}</li>
                 ))}
               </ul>
@@ -196,7 +196,7 @@ export default function Nosotros() {
 
             {/* Center Logo */}
             <div className="valores-center-logo" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-              <img src="/logo_alturas_global.png" alt="Altura Global Solutions" style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain', transform: 'scale(0.75)' }} />
+              <img src="/logo_alturas_global.png" alt="Alturas Global Solutions" style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain', transform: 'scale(0.75)' }} />
             </div>
 
             {/* Circles */}

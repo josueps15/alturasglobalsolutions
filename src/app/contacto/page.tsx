@@ -118,7 +118,7 @@ export default function Contacto() {
                     <option>Instalación de Puntos de Anclaje</option>
                     <option>Cotización de Líneas de Vida Certificadas Longdyes</option>
                     <option>Certificación de Sistemas Existentes</option>
-                    <option>Servicio de Pintura en Altura</option>
+                    <option>Servicio de Pintura en Alturas</option>
                     <option>Hidrolavado de Fachadas</option>
                     <option>Capacitación</option>
                     <option>Mantenimiento Industrial</option>
@@ -151,7 +151,7 @@ export default function Contacto() {
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="Ubicación de Altura Global Solutions - Quito, Ecuador"
+                title="Ubicación de Alturas Global Solutions - Quito, Ecuador"
               ></iframe>
             </div>
           </motion.div>
