@@ -248,7 +248,7 @@ export default function KitsAlturaPage() {
                 transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
                 style={{ overflow: 'hidden' }}
               >
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1.8rem', paddingTop: '1rem' }}>
+                <div className="catalogos-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1.8rem', paddingTop: '1rem' }}>
                   {CATALOGOS.map((cat, idx) => (
                     <motion.div
                       key={idx}
@@ -262,7 +262,7 @@ export default function KitsAlturaPage() {
                         borderRadius: '20px',
                         overflow: 'hidden',
                         display: 'flex',
-                        flexDirection: 'row',
+                        flexDirection: 'row' as const,
                         transition: 'all 0.3s ease',
                         cursor: 'default'
                       }}
@@ -280,7 +280,7 @@ export default function KitsAlturaPage() {
                       }}
                     >
                       {/* Image */}
-                      <div style={{ width: '200px', minHeight: '220px', flexShrink: 0, overflow: 'hidden', position: 'relative' }}>
+                      <div className="catalogo-card-img" style={{ width: '200px', minHeight: '220px', flexShrink: 0, overflow: 'hidden', position: 'relative' }}>
                         <img
                           src={cat.img}
                           alt={cat.title}

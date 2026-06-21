@@ -5308,3 +5308,20 @@ section {
     width: 100%;
   }
 }
+
+/* Responsive Catalogs Grid for Kits Page */
+@media (max-width: 992px) {
+  .catalogos-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .catalogos-grid > div {
+    flex-direction: column !important;
+  }
+  .catalogo-card-img {
+    width: 100% !important;
+    min-height: 180px !important;
+  }
+}
