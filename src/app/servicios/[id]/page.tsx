@@ -286,9 +286,9 @@ export default function ServicioDetail({ params }: { params: Promise<{ id: strin
           <div className="service-full-layout">
             <motion.div className="service-full-content" initial={{ opacity: 0, x: -40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}>
               <h2 className="servicio-detalle-titulo" style={{ color: theme.textDark, fontFamily: 'var(--font-heading)', fontSize: 'clamp(1.6rem, 3vw, 2.2rem)', fontWeight: 800, marginBottom: '1.5rem' }}>Descripción del Servicio</h2>
-              <p className="servicio-detalle-desc" style={{ color: theme.textMuted, fontSize: '1.1rem', lineHeight: 1.9, marginBottom: '1.5rem', textAlign: 'justify' }}>{service.desc}</p>
+              <p className="servicio-detalle-desc mobile-justify-text" style={{ color: theme.textMuted, fontSize: '1.1rem', lineHeight: 1.9, marginBottom: '1.5rem', textAlign: 'justify' }}>{service.desc}</p>
               {service.longDesc && (
-                <p className="servicio-detalle-desc" style={{ color: theme.textMuted, fontSize: '1.05rem', lineHeight: 1.8, marginBottom: '2rem', textAlign: 'justify' }}>{service.longDesc}</p>
+                <p className="servicio-detalle-desc mobile-justify-text" style={{ color: theme.textMuted, fontSize: '1.05rem', lineHeight: 1.8, marginBottom: '2rem', textAlign: 'justify' }}>{service.longDesc}</p>
               )}
               <h3 style={{ color: theme.accent, fontFamily: 'var(--font-heading)', fontSize: '1.3rem', fontWeight: 700, marginBottom: '1.2rem' }}>Aplicaciones</h3>
               <ul>

@@ -90,7 +90,7 @@ export default function Certificaciones() {
                 >
                   <span className="cert-card-badge">{cert.badge}</span>
                   <h3>{cert.title}</h3>
-                  <p>{cert.desc}</p>
+                  <p className="mobile-justify-text">{cert.desc}</p>
                   
                   {/* Visual carabiner/connector to the cable */}
                   <div className="lifeline-connector"></div>

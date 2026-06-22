@@ -259,7 +259,7 @@ export default function Nosotros() {
             <motion.div initial={{ opacity: 0, x: 40 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}>
               <div style={{ background: 'rgba(255,255,255,0.05)', backdropFilter: 'blur(5px)', padding: '2rem', borderRadius: '12px', marginBottom: '2rem', border: '1px solid rgba(255,255,255,0.1)' }}>
                 <h3 style={{ fontSize: '1.5rem', color: '#fff', marginBottom: '1.2rem', display: 'flex', alignItems: 'center', gap: '10px' }}>🇪🇨 Atención Nacional</h3>
-                <p style={{ color: '#ccc', marginBottom: '1.5rem', lineHeight: 1.6 }}>Brindamos atención en todo el Ecuador, con presencia fuerte en Costa, Sierra, Oriente y Galápagos. Cubriendo ciudades principales como:</p>
+                <p className="mobile-justify-text" style={{ color: '#ccc', marginBottom: '1.5rem', lineHeight: 1.6 }}>Brindamos atención en todo el Ecuador, con presencia fuerte en Costa, Sierra, Oriente y Galápagos. Cubriendo ciudades principales como:</p>
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
                   {['Quito', 'Guayaquil', 'Cuenca', 'Manta', 'Ambato', 'Santo Domingo', 'Esmeraldas', 'Machala', 'Amazonía'].map(city => (
                     <span key={city} style={{ background: 'rgba(255,255,255,0.1)', padding: '6px 16px', borderRadius: '20px', fontSize: '0.9rem', border: '1px solid rgba(255,255,255,0.2)', color: '#fff', fontWeight: 500 }}>{city}</span>
@@ -269,7 +269,7 @@ export default function Nosotros() {
 
               <div style={{ background: 'rgba(255,255,255,0.05)', backdropFilter: 'blur(5px)', padding: '2rem', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.1)' }}>
                 <h3 style={{ fontSize: '1.5rem', color: '#fff', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '10px' }}>🌎 Atención Internacional</h3>
-                <p style={{ color: '#ccc', margin: 0, lineHeight: 1.6 }}>Capacidad operativa para proyectos y asesoría técnica especializada en sistemas de protección contra caídas y trabajos verticales a nivel internacional.</p>
+                <p className="mobile-justify-text" style={{ color: '#ccc', margin: 0, lineHeight: 1.6 }}>Capacidad operativa para proyectos y asesoría técnica especializada en sistemas de protección contra caídas y trabajos verticales a nivel internacional.</p>
               </div>
             </motion.div>
           </div>
