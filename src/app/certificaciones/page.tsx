@@ -110,8 +110,8 @@ export default function Certificaciones() {
             <h2 style={{ color: '#fff', fontSize: '1.5rem', marginBottom: '1.5rem', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '2px' }}>
               Respaldados por
             </h2>
-            <div style={{ background: 'rgba(0, 0, 0, 0.25)', padding: '1.5rem 3rem', borderRadius: '12px', display: 'inline-block', marginBottom: '2rem', boxShadow: 'inset 0 2px 10px rgba(0,0,0,0.2), 0 15px 30px rgba(0,0,0,0.3)', border: '1px solid rgba(255,255,255,0.05)' }}>
-              <img src="/logo_longdyes.png" alt="Longdyes" style={{ height: '80px', objectFit: 'contain' }} />
+            <div className="longdyes-logo-box">
+              <img src="/logo_longdyes.png" alt="Longdyes" style={{ height: '80px', objectFit: 'contain', margin: '0 auto', display: 'block', maxWidth: '100%' }} />
             </div>
             <p style={{ color: '#e2e8f0', maxWidth: '800px', margin: '0 auto 2.5rem', fontSize: '1.15rem' }}>
               Como únicos representantes autorizados en Ecuador, cada producto que instalamos viene con la garantía directa del fabricante, asegurando trazabilidad completa y soporte técnico permanente.
