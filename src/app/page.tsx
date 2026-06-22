@@ -314,7 +314,9 @@ export default function Home() {
               <li style={{ marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '1rem', fontWeight: 600 }}><span style={{ color: 'var(--primary-orange)', fontSize: '1.2rem' }}>✔</span> Cumplimiento Normativa Internacional</li>
               <li style={{ marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '1rem', fontWeight: 600 }}><span style={{ color: 'var(--primary-orange)', fontSize: '1.2rem' }}>✔</span> Cobertura y Soporte Técnico en Todo Ecuador</li>
             </ul>
-            <a href="https://wa.me/593980001234?text=Hola,%20me%20gustar%C3%ADa%20obtener%20m%C3%A1s%20informaci%C3%B3n" target="_blank" rel="noreferrer" className="btn btn-primary">CONTÁCTANOS HOY</a>
+            <div className="mobile-center-block" style={{ width: '100%', display: 'flex', justifyContent: 'flex-start' }}>
+              <a href="https://wa.me/593980001234?text=Hola,%20me%20gustar%C3%ADa%20obtener%20m%C3%A1s%20informaci%C3%B3n" target="_blank" rel="noreferrer" className="btn btn-primary">CONTÁCTANOS HOY</a>
+            </div>
           </motion.div>
 
           <motion.div
