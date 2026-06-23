@@ -40,7 +40,7 @@ const SERVICES_DATA: Record<string, any> = {
       { step: "04", title: "Certificación Final", desc: "Emisión de certificado de conformidad bajo normativas EN 795 y OSHA." }
     ],
     norms: ["EN 795:2012", "EN 353-1", "EN 353-2", "OSHA 1926.502", "ANSI Z359.1"],
-    gallery: ["/gallery/glsln1.jpeg", "/gallery/glslv2.jpeg", "/gallery/linea_vida_3.jpeg"]
+    gallery: ["/gallery/linea_vida_new_1.jpeg", "/gallery/linea_vida_new_2.jpeg", "/gallery/linea_vida_3.jpeg"]
   },
   "instalacion-puntos-anclaje": {
     title: "Instalación de Puntos de Anclaje",
