@@ -7,7 +7,7 @@ import { useState } from 'react';
 const PRODUCTS = [
   {
     id: 'arnes-cuerpo-completo',
-    name: 'Arnés de Cuerpo Completo Longdyes',
+    name: 'Arnés de Cuerpo Completo',
     desc: 'Arnés industrial multipropósito con 4 puntos de anclaje, diseñado para detención de caídas, posicionamiento y rescate. Fabricado con cintas de poliéster de alta resistencia y herrajes de acero forjado.',
     img: '/arnes_longdyes.png',
     specs: ['Certificación ANSI Z359.11', 'Capacidad 140kg', 'Acolchado ergonómico']
@@ -21,7 +21,7 @@ const PRODUCTS = [
   },
   {
     id: 'casco-seguridad-industrial',
-    name: 'Casco de Seguridad Industrial Tipo II',
+    name: 'Casco de Seguridad Industrial',
     desc: 'Casco dieléctrico de alto impacto con barbiquejo de 4 puntos. Diseño sin visera para facilitar la visión vertical durante trabajos en alturas.',
     img: '/casco_longdyes.png',
     specs: ['Certificación ANSI Z89.1', 'Ajuste tipo rachet', 'Clase E (Dieléctrico)']
