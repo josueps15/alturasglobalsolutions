@@ -34,7 +34,7 @@ function AnimatedCounter({ from, to, prefix = '', suffix = '' }: { from: number,
 const SLIDES = [
   {
     id: 1,
-    video: '/video-portada-nueva.mp4',
+    video: '/video-portada-nuevo-cambio.mp4',
     titleOrange: 'Expertos en',
     titleWhite: 'Instalación de Líneas de Vida Certificadas',
     desc: 'Representantes oficiales de Longdyes en Ecuador. Ingeniería, montaje y certificación de líneas de vida bajo normativas internacionales.',
