@@ -320,7 +320,7 @@ export default function ServicioDetail({ params }: { params: Promise<{ id: strin
                       {cat.sub.map((sub: any, si: number) => (
                         <motion.div key={si} className="service-type-card" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: ci * 0.15 + si * 0.1 }}>
                           {sub.img && (
-                            <img src={sub.img} alt={sub.name} style={{ width: '100%', height: '140px', objectFit: 'cover', borderRadius: '8px', marginBottom: '1rem', border: '1px solid rgba(0,0,0,0.05)' }} />
+                            <img src={sub.img} alt={sub.name} style={{ width: '100%', height: sub.name === "Flexibles" && cat.category === "Verticales" ? 'auto' : '140px', maxHeight: sub.name === "Flexibles" && cat.category === "Verticales" ? '350px' : 'none', objectFit: sub.name === "Flexibles" && cat.category === "Verticales" ? 'contain' : 'cover', borderRadius: '8px', marginBottom: '1rem', border: '1px solid rgba(0,0,0,0.05)' }} />
                           )}
                           <span className="service-type-card-name">{sub.name}</span>
                           <span className="service-type-card-norm">{sub.norm}</span>

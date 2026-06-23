@@ -50,6 +50,7 @@ export default function Header() {
                     <Link href="/servicios/hidrolavado-fachadas">Hidrolavado de Fachadas</Link>
                     <Link href="/servicios/mantenimiento-industrial">Mantenimiento Industrial</Link>
                     <Link href="/servicios/capacitacion">Capacitación</Link>
+                    <Link href="/kits-altura">Productos</Link>
                   </div>
                 </li>
                 <li><Link href="/nosotros">NOSOTROS</Link></li>
@@ -129,6 +130,7 @@ export default function Header() {
               <Link href="/servicios/hidrolavado-fachadas" className="mobile-nav-sublink" onClick={closeMenu}>Hidrolavado de Fachadas</Link>
               <Link href="/servicios/mantenimiento-industrial" className="mobile-nav-sublink" onClick={closeMenu}>Mantenimiento Industrial</Link>
               <Link href="/servicios/capacitacion" className="mobile-nav-sublink" onClick={closeMenu}>Capacitación</Link>
+              <Link href="/kits-altura" className="mobile-nav-sublink" onClick={closeMenu}>Productos</Link>
             </div>
           </div>
 
