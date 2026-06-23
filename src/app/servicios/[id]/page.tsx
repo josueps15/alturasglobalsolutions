@@ -19,7 +19,7 @@ const SERVICES_DATA: Record<string, any> = {
         {
           category: "Verticales",
           sub: [
-            { name: "Flexibles", norm: "CE EN 353-2", materials: ["Cable", "Cuerda"], img: "/lineas-vida-verticales.jpeg" },
+            { name: "Flexibles", norm: "CE EN 353-2", materials: ["Cable", "Cuerda"], img: "/lineas-vida-verticales-rot.jpeg" },
             { name: "Rígidas", norm: "CE EN 353-1", materials: ["Cable", "Rail"], img: "/lineas-vida-rigidas.jpeg" }
           ]
         },
