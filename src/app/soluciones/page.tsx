@@ -175,7 +175,7 @@ export default function Soluciones() {
         <div className="service-final-cta-deco" />
         <div className="container" style={{ position: 'relative', zIndex: 2 }}>
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} style={{ textAlign: 'center' }}>
-            <h2>¿Necesitas una solución a medida?</h2>
+            <h2>¿Necesitas una solución a tu medida?</h2>
             <p>Nuestro equipo de ingeniería diseña sistemas personalizados para cada proyecto. Contáctanos para una consulta sin compromiso.</p>
             <a href="https://wa.me/593980001234?text=Hola,%20deseo%20solicitar%20una%20cotizaci%C3%B3n%20de%20sus%20soluciones" target="_blank" rel="noreferrer" className="btn btn-primary service-full-btn">SOLICITAR COTIZACIÓN</a>
           </motion.div>

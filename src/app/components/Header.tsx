@@ -50,10 +50,10 @@ export default function Header() {
                     <Link href="/servicios/hidrolavado-fachadas">Hidrolavado de Fachadas</Link>
                     <Link href="/servicios/mantenimiento-industrial">Mantenimiento Industrial</Link>
                     <Link href="/servicios/capacitacion">Capacitación</Link>
-                    <Link href="/kits-altura">Productos</Link>
                   </div>
                 </li>
                 <li><Link href="/nosotros">NOSOTROS</Link></li>
+                <li><Link href="/kits-altura">PRODUCTOS</Link></li>
                 <li><Link href="/trabajos">NUESTROS TRABAJOS</Link></li>
                 <li><Link href="/contacto">CONTÁCTANOS</Link></li>
               </ul>
@@ -130,11 +130,11 @@ export default function Header() {
               <Link href="/servicios/hidrolavado-fachadas" className="mobile-nav-sublink" onClick={closeMenu}>Hidrolavado de Fachadas</Link>
               <Link href="/servicios/mantenimiento-industrial" className="mobile-nav-sublink" onClick={closeMenu}>Mantenimiento Industrial</Link>
               <Link href="/servicios/capacitacion" className="mobile-nav-sublink" onClick={closeMenu}>Capacitación</Link>
-              <Link href="/kits-altura" className="mobile-nav-sublink" onClick={closeMenu}>Productos</Link>
             </div>
           </div>
 
           <Link href="/nosotros" className="mobile-nav-link" onClick={closeMenu}>Nosotros</Link>
+          <Link href="/kits-altura" className="mobile-nav-link" onClick={closeMenu}>Productos</Link>
           <Link href="/longdyes" className="mobile-nav-link" onClick={closeMenu}>Longdyes</Link>
           <Link href="/trabajos" className="mobile-nav-link" onClick={closeMenu}>Nuestros Trabajos</Link>
           <Link href="/contacto" className="mobile-nav-link" onClick={closeMenu}>Contáctanos</Link>

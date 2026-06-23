@@ -248,7 +248,7 @@ export default function Home() {
           </div>
           <div style={{ textAlign: 'center', marginTop: '3rem' }}>
             <Link href="/soluciones" className="btn btn-primary" style={{ padding: '1rem 2.5rem', fontSize: '1.1rem' }}>
-              Mira todos nuestros servicios
+              Descubre todos nuestros servicios
             </Link>
           </div>
         </div>

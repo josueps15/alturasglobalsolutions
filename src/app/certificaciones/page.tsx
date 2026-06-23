@@ -64,7 +64,7 @@ export default function Certificaciones() {
         <div className="container" style={{ position: 'relative', zIndex: 10 }}>
           <div className="services-intro" style={{ color: '#fff', marginBottom: '4rem' }}>
             <p style={{ fontSize: '1.2rem', textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}>
-              Todo equipo de la marca <strong>Longdyes</strong> que instalamos cumple con las exigencias más rigurosas a nivel europeo y americano. Cada sistema es validado y certificado antes de su puesta en operación.
+              Todo equipo de la marca <strong>Longdyes</strong> que instalamos cumple con las exigencias más rigurosas a nivel europeo y americano. Cada sistema anti caidas es validado y certificado antes de su puesta en operación.
             </p>
           </div>
 
@@ -114,10 +114,10 @@ export default function Certificaciones() {
               <img src="/logo_longdyes.png" alt="Longdyes" style={{ height: '80px', objectFit: 'contain', margin: '0 auto', display: 'block', maxWidth: '100%' }} />
             </div>
             <p style={{ color: '#e2e8f0', maxWidth: '800px', margin: '0 auto 2.5rem', fontSize: '1.15rem' }}>
-              Como únicos representantes autorizados en Ecuador, cada producto que instalamos viene con la garantía directa del fabricante, asegurando trazabilidad completa y soporte técnico permanente.
+              Como representantes autorizados en Ecuador, cada producto que instalamos viene con la garantía directa del fabricante, asegurando trazabilidad completa y soporte técnico permanente.
             </p>
             <a href="https://wa.me/593980001234?text=Hola,%20deseo%20validar%20sistemas%20existentes" target="_blank" rel="noreferrer" className="btn btn-primary" style={{ padding: '1.2rem 3rem', fontSize: '1.1rem', letterSpacing: '1px', borderRadius: '50px', boxShadow: '0 8px 25px rgba(237,108,35,0.4)' }}>
-              VALIDAR SISTEMAS EXISTENTES
+              VALIDAR SISTEMAS DE LÍNEAS DE VIDA
             </a>
           </motion.div>
         </div>
