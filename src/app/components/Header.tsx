@@ -37,7 +37,7 @@ export default function Header() {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="header-actions desktop-only" style={{ display: 'flex', alignItems: 'center', gap: 'clamp(0.5rem, 1vw, 1rem)' }}>
+          <div className="header-actions desktop-only" style={{ display: 'flex', alignItems: 'center', gap: 'clamp(0.5rem, 1vw, 1rem)', transform: 'translateX(30px)' }}>
             <div className="nav-menu">
               <ul className="nav-links">
                 <li><Link href="/">INICIO</Link></li>
