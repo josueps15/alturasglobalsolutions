@@ -326,7 +326,7 @@ export default function Home() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <img src="/especialista-seguridad.png" alt="Ingeniero Especialista en Seguridad Industrial" className="about-img" />
+            <img src="/coto.jpeg" alt="Ingeniero Especialista en Seguridad Industrial" className="about-img" />
           </motion.div>
         </div>
       </motion.section>

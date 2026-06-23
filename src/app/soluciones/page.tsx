@@ -40,7 +40,7 @@ const SERVICES = [
   {
     title: "Mantenimiento Industrial",
     id: "mantenimiento-industrial",
-    img: "/especialista-seguridad.png",
+    img: "/coto.jpeg",
     desc: "Servicio integral de mantenimiento preventivo y correctivo en instalaciones industriales de difícil acceso. Nuestro equipo técnico trabaja en alturas con total seguridad y eficiencia operativa.",
     features: ["Mantenimiento de estructuras metálicas", "Reparación de cubiertas y techos", "Instalación de equipos en altura"],
     theme: "mantenimiento"

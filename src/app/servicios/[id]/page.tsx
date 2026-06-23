@@ -152,7 +152,7 @@ const SERVICES_DATA: Record<string, any> = {
   },
   "mantenimiento-industrial": {
     title: "Mantenimiento Industrial",
-    bg: "/especialista-seguridad.png",
+    bg: "/coto.jpeg",
     theme: "mantenimiento",
     desc: "Servicio integral de mantenimiento preventivo y correctivo en instalaciones industriales de difícil acceso. Nuestro equipo técnico trabaja en alturas con total seguridad y eficiencia operativa.",
     longDesc: "El mantenimiento industrial en altura es una actividad crítica que requiere personal altamente capacitado y procedimientos de trabajo seguro rigurosos. Nuestro equipo realiza desde inspecciones rutinarias hasta reparaciones complejas en estructuras metálicas, cubiertas, torres de telecomunicaciones y equipos industriales ubicados en zonas de difícil acceso. Cada intervención se documenta con informes técnicos detallados y registros fotográficos.",
@@ -184,7 +184,7 @@ const SERVICES_DATA: Record<string, any> = {
       { step: "04", title: "Informe y Seguimiento", desc: "Documentación fotográfica, informe técnico y recomendaciones futuras." }
     ],
     norms: ["ISO 55000", "EN 13306", "OSHA 1926", "TIA-222-H", "ISO 17359"],
-    gallery: ["/especialista-seguridad.png", "/gallery/linea_vida_2.jpeg", "/gallery/capacitacion_china_1.jpeg"]
+    gallery: ["/coto.jpeg", "/gallery/linea_vida_2.jpeg", "/gallery/capacitacion_china_1.jpeg"]
   },
   "capacitacion": {
     title: "Capacitación",
