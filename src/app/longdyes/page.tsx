@@ -64,7 +64,7 @@ const PRODUCTS = [
 ];
 
 const STATS = [
-  { num: '+500', label: 'Proyectos Ejecutados', isCounter: true, endValue: 500, prefix: '+', suffix: '' },
+  { num: '+472', label: 'Proyectos Ejecutados', isCounter: true, endValue: 472, prefix: '+', suffix: '' },
   { num: '100%', label: 'Normativa Cumplida', isCounter: true, endValue: 100, prefix: '', suffix: '%' },
   { num: '+50', label: 'Clientes Satisfechos', isCounter: true, endValue: 50, prefix: '+', suffix: '' },
   { num: 'Ecuador', label: 'Representante Oficial', isCounter: false },

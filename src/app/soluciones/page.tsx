@@ -9,7 +9,7 @@ const SERVICES = [
     title: "Instalación de Líneas de Vida Certificadas",
     id: "instalacion-lineas-vida",
     img: "/lineas-de-vida-soluciones.jpeg",
-    desc: "Diseñamos, fabricamos e instalamos sistemas de líneas de vida certificadas horizontales y verticales, tanto temporales como permanentes. Como representantes oficiales de Longdyes en Ecuador, garantizamos productos de la más alta calidad y resistencia estructural.",
+    desc: <>Diseño e instalación de sistemas de protección anti caídas, líneas de vida certificadas bajo las normas UNE -EN 795 y <a href="https://epishop.es/lineas-de-vida-que-son/" target="_blank" rel="noopener noreferrer" style={{textDecoration: 'underline'}}>UNE-EN 353</a> horizontales y verticales, tanto temporales como permanentes, dispositivos de anticaídas retractiles bajo la normativa EN 360.<br/><br/>Como representantes oficiales de Longdyes en Ecuador, garantizamos productos de la más alta calidad y resistencia estructural.</>,
     features: ["Líneas de vida certificadas horizontales y verticales", "Puntos de anclaje certificados", "Sistemas temporales y permanentes", "Ingeniería personalizada por proyecto"],
     theme: "lineas-vida"
   },

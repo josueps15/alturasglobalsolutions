@@ -29,7 +29,7 @@ export default function Header() {
           <div className="logo-container">
             <Link href="/">
               <img
-                src="/logo_oficial_v3.png"
+                src="/logo_secundario.png"
                 alt="Alturas Global Solutions"
                 className="logo-img"
               />
@@ -37,26 +37,51 @@ export default function Header() {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="header-actions desktop-only" style={{ display: 'flex', alignItems: 'center', gap: 'clamp(0.5rem, 1vw, 1rem)', transform: 'translateX(30px)' }}>
-            <div className="nav-menu">
+          <div className="header-actions desktop-only" style={{ display: 'flex', alignItems: 'center', gap: 'clamp(0.5rem, 1vw, 1rem)' }}>
+            <div style={{ position: 'relative', display: 'flex', justifyContent: 'center' }}>
+              <div className="nav-menu">
               <ul className="nav-links">
                 <li><Link href="/">INICIO</Link></li>
                 <li className="nav-dropdown-parent">
                   <Link href="/soluciones">SERVICIOS <span className="dropdown-arrow">▾</span></Link>
                   <div className="nav-dropdown">
-                    <Link href="/servicios/instalacion-lineas-vida">Instalación Líneas de Vida Certificadas</Link>
-                    <Link href="/servicios/instalacion-puntos-anclaje">Instalación Puntos de Anclaje</Link>
+                    <Link href="/servicios/instalacion-lineas-vida" style={{ fontWeight: 700, fontSize: '103%' }}>Instalación Líneas de Vida Certificadas</Link>
+                    <Link href="/servicios/instalacion-puntos-anclaje" style={{ fontWeight: 700, fontSize: '103%' }}>Instalación Puntos de Anclaje</Link>
                     <Link href="/servicios/pintura-en-altura">Servicio de Pintura en Alturas</Link>
                     <Link href="/servicios/hidrolavado-fachadas">Hidrolavado de Fachadas</Link>
                     <Link href="/servicios/mantenimiento-industrial">Mantenimiento Industrial</Link>
                     <Link href="/servicios/capacitacion">Capacitación</Link>
                   </div>
                 </li>
-                <li><Link href="/nosotros">NOSOTROS</Link></li>
                 <li><Link href="/kits-altura">PRODUCTOS</Link></li>
                 <li><Link href="/trabajos">NUESTROS TRABAJOS</Link></li>
+                <li><Link href="/nosotros">NOSOTROS</Link></li>
                 <li><Link href="/contacto">CONTÁCTANOS</Link></li>
               </ul>
+            </div>
+              {/* Eslogan — absoluto, centrado bajo la pastilla, sin afectar el layout */}
+              <div style={{
+                position: 'absolute',
+                top: 'calc(100% + 1.1rem)',
+                left: '50%',
+                transform: 'translateX(-50%)',
+                whiteSpace: 'nowrap',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}>
+                <span style={{
+                  fontFamily: 'var(--font-heading), Montserrat, sans-serif',
+                  fontSize: 'clamp(0.694rem, 0.918vw, 0.816rem)',
+                  fontWeight: 600,
+                  letterSpacing: '0.14em',
+                  textTransform: 'uppercase',
+                  color: 'rgba(255,255,255,0.5)',
+                }}>
+                  Soluciones Inteligentes en{' '}
+                  <span style={{ color: 'var(--primary-orange)', fontWeight: 800 }}>Protección contra Caídas</span>
+                </span>
+              </div>
             </div>
 
             <div className="header-cta">
@@ -70,14 +95,14 @@ export default function Header() {
             </div>
 
             <div className="header-socials" style={{ display: 'flex', gap: 'clamp(0.3rem, 1vw, 1rem)' }}>
-              <a href="#" className="social-round-btn" aria-label="Facebook">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path></svg>
+              <a href="https://www.facebook.com/share/1Dwm9SuQtj/?mibextid=wwXIfr" target="_blank" rel="noreferrer" className="social-round-btn" aria-label="Facebook">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path></svg>
               </a>
-              <a href="#" className="social-round-btn" aria-label="Instagram">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+              <a href="https://www.instagram.com/alturasglobalsolutions?igsh=MTZ6enk2NGVxdmNvcQ%3D%3D&utm_source=qr" target="_blank" rel="noreferrer" className="social-round-btn" aria-label="Instagram">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
               </a>
-              <a href="#" className="social-round-btn" aria-label="TikTok">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.34-6.34V9.48a8.18 8.18 0 004.76 1.52V7.56a4.83 4.83 0 01-1-.87z"></path></svg>
+              <a href="https://www.tiktok.com/@alturasglobalsolutions?_r=1&_t=ZS-972xFgehEiD" target="_blank" rel="noreferrer" className="social-round-btn" aria-label="TikTok">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.34-6.34V9.48a8.18 8.18 0 004.76 1.52V7.56a4.83 4.83 0 01-1-.87z"></path></svg>
               </a>
             </div>
           </div>
@@ -93,6 +118,8 @@ export default function Header() {
             <span className="hamburger-line"></span>
           </button>
         </nav>
+
+
       </div>
 
       {/* Mobile Drawer Overlay */}
@@ -104,7 +131,7 @@ export default function Header() {
       {/* Mobile Drawer */}
       <div className={`mobile-drawer ${mobileMenuOpen ? 'active' : ''}`}>
         <div className="mobile-drawer-header" style={{ justifyContent: 'center' }}>
-          <img src="/logo_oficial_v3.png" alt="Alturas Global Solutions" className="mobile-drawer-logo" />
+          <img src="/logo_secundario.png" alt="Alturas Global Solutions" className="mobile-drawer-logo" />
         </div>
 
         <nav className="mobile-drawer-nav">

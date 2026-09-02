@@ -8,6 +8,13 @@ export const metadata: Metadata = {
   description: 'Sistemas inteligentes y soluciones profesionales en protección contra caídas.',
 };
 
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  userScalable: true,
+};
+
 export default function RootLayout({
   children,
 }: {
@@ -25,7 +32,7 @@ export default function RootLayout({
         <footer className="footer-ianasa-style" style={{ backgroundColor: '#0f172a', backgroundImage: 'radial-gradient(circle at 50% 0%, rgba(13,105,120,0.3) 0%, transparent 70%), linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px)', backgroundSize: '100% 100%, 30px 30px', padding: '5rem 0 0 0', position: 'relative', overflow: 'hidden' }}>
 
           <div className="container" style={{ textAlign: 'center', marginBottom: '4rem', position: 'relative', zIndex: 2 }}>
-            <img src="/logo_oficial_v3.png" alt="Alturas Global Solutions" style={{ height: '180px', display: 'inline-block', filter: 'drop-shadow(0 15px 25px rgba(0,0,0,0.6))' }} />
+            <img src="/logo_principal.png" alt="Alturas Global Solutions" style={{ height: 'auto', width: '100%', maxWidth: '360px', display: 'inline-block', filter: 'drop-shadow(0 15px 25px rgba(0,0,0,0.6))' }} />
             <p style={{ maxWidth: '650px', margin: '1.5rem auto 0 auto', color: '#cbd5e1', fontSize: '1.15rem', lineHeight: '1.7' }}>
               Somos especialistas en Ingeniería Vertical, Líneas de Vida Certificadas y Trabajos en Alturas, ofreciendo soluciones inteligentes y seguras.
             </p>

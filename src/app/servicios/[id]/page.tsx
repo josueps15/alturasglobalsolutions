@@ -10,7 +10,7 @@ const SERVICES_DATA: Record<string, any> = {
     title: "Instalación de Líneas de Vida Certificadas",
     bg: "/foto-en-portada-de-lineas-de-vida.jpeg",
     theme: "lineas-vida",
-    desc: "Diseñamos, fabricamos e instalamos sistemas de líneas de vida certificadas horizontales y verticales, tanto temporales como permanentes. Como representantes oficiales de Longdyes en Ecuador, garantizamos productos de la más alta calidad y resistencia estructural.",
+    desc: <>Diseño e instalación de sistemas de protección anti caídas, líneas de vida certificadas bajo las normas UNE -EN 795 y <a href="https://epishop.es/lineas-de-vida-que-son/" target="_blank" rel="noopener noreferrer" style={{textDecoration: 'underline'}}>UNE-EN 353</a> horizontales y verticales, tanto temporales como permanentes, dispositivos de anticaídas retractiles bajo la normativa EN 360.<br/><br/>Como representantes oficiales de Longdyes en Ecuador, garantizamos productos de la más alta calidad y resistencia estructural.</>,
     longDesc: "Una línea de vida es un sistema de protección contra caídas que permite a los trabajadores desplazarse de forma segura por zonas elevadas mientras permanecen conectados a un punto de anclaje continuo. Nuestros sistemas cumplen con las normativas más exigentes a nivel internacional y son diseñados a medida para cada proyecto, considerando factores como la geometría de la cubierta, el número de usuarios simultáneos y las condiciones climáticas.",
     features: ["Líneas de vida certificadas horizontales y verticales", "Puntos de anclaje certificados", "Sistemas temporales y permanentes", "Ingeniería personalizada por proyecto"],
     types: {
@@ -462,7 +462,7 @@ export default function ServicioDetail({ params }: { params: Promise<{ id: strin
               {/* Video */}
               <div style={{ flex: '1 1 420px', position: 'relative', minHeight: '350px' }}>
                 <video
-                  src="/video-inspeccion-drone.mp4"
+                  src="/video-inspeccion-drone-new.mp4"
                   autoPlay
                   loop
                   muted

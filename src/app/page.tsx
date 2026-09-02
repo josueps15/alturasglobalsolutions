@@ -34,7 +34,7 @@ function AnimatedCounter({ from, to, prefix = '', suffix = '' }: { from: number,
 const SLIDES = [
   {
     id: 1,
-    video: '/video-portada-nuevo-cambio.mp4',
+    video: '/video-expertos-instalacion.mp4',
     titleOrange: 'Expertos en',
     titleWhite: 'Instalación de Líneas de Vida Certificadas',
     desc: 'Representantes oficiales de Longdyes en Ecuador. Ingeniería, montaje y certificación de líneas de vida bajo normativas internacionales.',
@@ -43,19 +43,19 @@ const SLIDES = [
   },
   {
     id: 2,
-    video: '/video-1-1.mp4',
+    video: '/video-mantenimiento-alturas.mp4',
     titleOrange: 'Mantenimiento y',
     titleWhite: 'Servicios en Alturas',
-    desc: 'Especialistas en líneas de vida certificadas y puntos de anclaje. Somos Representantes oficiales de Longdyes en Ecuador. Servicio de pintura en alturas. Servicio de hidrolavado y fachadas de forma segura y eficiente.',
+    desc: 'Servicio de pintura en alturas. Servicio de hidrolavado y fachadas de forma segura y eficiente.',
     primaryBtn: { text: 'Cotizar Servicio', link: '/contacto' },
     secondaryBtn: { text: 'Nuestros Trabajos', link: '/trabajos' }
   },
   {
     id: 3,
-    video: '/video-portada-3-final-su.mp4',
-    titleOrange: 'Máxima Seguridad',
-    titleWhite: 'Rescate Industrial',
-    desc: 'Diseño e implementación de sistemas de protección contra caídas y operaciones de alto riesgo.',
+    video: '/video-maximo-seguridad.mp4',
+    titleOrange: 'Máxima seguridad',
+    titleWhite: 'para tus trabajos en altura',
+    desc: 'Soluciones inteligentes en el Diseño e implementación de sistemas de protección contra caídas y operaciones de alto riesgo.',
     primaryBtn: { text: 'Nuestros Servicios', link: '/nosotros' },
     secondaryBtn: { text: 'Contáctanos', link: '/contacto' }
   }
@@ -107,6 +107,8 @@ export default function Home() {
             loop
             muted
             playsInline
+            preload="auto"
+            crossOrigin="anonymous"
             suppressHydrationWarning
             className="hero-video-bg"
           >
@@ -394,9 +396,12 @@ export default function Home() {
                   loop
                   muted
                   playsInline
+                  preload="auto"
+                  crossOrigin="anonymous"
+                  suppressHydrationWarning
                   style={{ width: '100%', height: '320px', objectFit: 'cover', display: 'block' }}
                 >
-                  <source src="/video-inspeccion-drone.mp4" type="video/mp4" />
+                  <source src="/video-inspeccion-drone-new.mp4" type="video/mp4" />
                 </video>
                 {/* Gradient overlay on video */}
                 <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '100px', background: 'linear-gradient(to top, rgba(15,23,42,0.8), transparent)', pointerEvents: 'none' }} />
@@ -556,7 +561,7 @@ export default function Home() {
 
           <div className="longdyes-stats-bar">
             {[
-              { num: "+500", label: "Proyectos Ejecutados", isCounter: true, endValue: 500, prefix: "+", suffix: "" },
+              { num: "+472", label: "Proyectos Ejecutados", isCounter: true, endValue: 472, prefix: "+", suffix: "" },
               { num: "100%", label: "Normativa Cumplida", isCounter: true, endValue: 100, prefix: "", suffix: "%" },
               { num: "+50", label: "Clientes Satisfechos", isCounter: true, endValue: 50, prefix: "+", suffix: "" },
               { num: "Ecuador", label: "Representante Oficial", isCounter: false }
