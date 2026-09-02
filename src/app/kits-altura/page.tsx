@@ -281,9 +281,7 @@ const SingleProductSection = ({ title, bgImage, product, colorTheme = 'teal', sh
 
           <motion.div initial={{ opacity: 0, scale: 0.9, x: reverse ? -30 : 30 }} whileInView={{ opacity: 1, scale: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.2 }} style={{ flex: '1 1 400px', display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'relative' }}>
             <div style={{ position: 'absolute', width: '100%', paddingBottom: '100%', background: 'radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 60%)', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', zIndex: 1 }} />
-            <div style={{ position: 'relative', width: '100%', maxWidth: '600px', aspectRatio: '1/1', zIndex: 2, filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.6))', transform: 'scale(1.1)' }}>
-              <Image src={product.img} alt={product.name} fill style={{ objectFit: 'contain' }} sizes="(max-width: 768px) 100vw, 600px" />
-            </div>
+            <img src={product.img} alt={product.name} loading="lazy" style={{ width: '100%', maxWidth: '600px', height: 'auto', objectFit: 'contain', zIndex: 2, filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.6))', transform: 'scale(1.1)' }} />
           </motion.div>
 
         </div>
@@ -355,7 +353,7 @@ const ProductGrid = ({ title, desc, bgImage, products, showCatalogBtn = false, c
               >
                 <div style={{ height: '220px', overflow: 'hidden', position: 'relative', background: 'radial-gradient(circle, #ffffff 0%, #f4f7f9 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center', borderBottom: '1px solid #eee' }}>
                   <div style={{ position: 'absolute', width: '180px', height: '180px', borderRadius: '50%', background: theme.text, opacity: 0.04, top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }} />
-                  <Image src={prod.img} alt={prod.name} fill style={{ objectFit: 'contain', padding: '15px' }} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
+                  <img src={prod.img} alt={prod.name} loading="lazy" style={{ width: '85%', height: '85%', objectFit: 'contain', transition: 'transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)', zIndex: 2 }} onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.08) rotate(-1deg)'} onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1) rotate(0deg)'} />
                 </div>
                 <div style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
                   <h3 style={{ fontSize: '1.15rem', fontFamily: 'var(--font-heading)', color: theme.text, marginBottom: '0.8rem', fontWeight: 800, lineHeight: 1.3 }}>{prod.name}</h3>

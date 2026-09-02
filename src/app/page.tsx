@@ -240,7 +240,7 @@ export default function Home() {
                     visible: { opacity: 1, y: 0, transition: { duration: 0.5, delay: idx * 0.1 } }
                   }}
                 >
-                  <Image src={item.img} alt={item.title} fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
+                  <img src={item.img} alt={item.title} loading="lazy" />
                   <div className="catalog-overlay">
                     <div className="catalog-icon">{item.icon}</div>
                     <h3 className="catalog-title">{item.title}</h3>
