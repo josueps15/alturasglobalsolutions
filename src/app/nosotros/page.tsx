@@ -1,8 +1,9 @@
 'use client';
 
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 import ParticleNetwork from '@/components/ParticleNetwork';
 import EcuadorMapAnimation from '@/components/EcuadorMapAnimation';
 import BuildingObjectives from '@/components/BuildingObjectives';
@@ -70,7 +71,7 @@ export default function Nosotros() {
               </ul>
             </div>
             <div className="about-img-wrapper">
-              <video suppressHydrationWarning src="/about_video.mp4" autoPlay loop muted playsInline style={{ width: '100%', maxHeight: '400px', aspectRatio: '4/3', borderRadius: '16px', boxShadow: '0 20px 40px rgba(0,0,0,0.1)', objectFit: 'cover' }} />
+              <video suppressHydrationWarning src="/about_video.mp4" autoPlay loop muted playsInline preload="metadata" style={{ width: '100%', maxHeight: '400px', aspectRatio: '4/3', borderRadius: '16px', boxShadow: '0 20px 40px rgba(0,0,0,0.1)', objectFit: 'cover' }} />
             </div>
           </motion.div>
         </div>
@@ -196,7 +197,7 @@ export default function Nosotros() {
 
             {/* Center Logo */}
             <div className="valores-center-logo" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-              <img src="/logo_alturas_global.png" alt="Alturas Global Solutions" style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain', transform: 'scale(0.75)' }} />
+              <Image src="/logo_alturas_global.png" alt="Alturas Global Solutions" width={250} height={250} style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain', transform: 'scale(0.75)' }} />
             </div>
 
             {/* Circles */}
