@@ -2,8 +2,8 @@
 
 import { motion, AnimatePresence, useScroll, useTransform, useInView, useMotionValue, animate } from 'framer-motion';
 import { useState, useEffect, useRef } from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
+import Image from 'next/image';
 import MeetingSection from './components/MeetingSection';
 
 function AnimatedCounter({ from, to, prefix = '', suffix = '' }: { from: number, to: number, prefix?: string, suffix?: string }) {
@@ -108,7 +108,7 @@ export default function Home() {
             loop
             muted
             playsInline
-            preload="metadata"
+            preload="auto"
             crossOrigin="anonymous"
             suppressHydrationWarning
             className="hero-video-bg"
@@ -240,7 +240,7 @@ export default function Home() {
                     visible: { opacity: 1, y: 0, transition: { duration: 0.5, delay: idx * 0.1 } }
                   }}
                 >
-                  <Image src={item.img} alt={item.title} fill sizes="(max-width: 768px) 100vw, 350px" style={{ objectFit: 'contain', padding: '1rem' }} />
+                  <Image src={item.img} alt={item.title} fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
                   <div className="catalog-overlay">
                     <div className="catalog-icon">{item.icon}</div>
                     <h3 className="catalog-title">{item.title}</h3>
@@ -329,7 +329,7 @@ export default function Home() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <Image src="/coto.jpeg" alt="Ingeniero Especialista en Seguridad Industrial" width={600} height={600} className="about-img" />
+            <img src="/coto.jpeg" alt="Ingeniero Especialista en Seguridad Industrial" className="about-img" />
           </motion.div>
         </div>
       </motion.section>
@@ -397,7 +397,7 @@ export default function Home() {
                   loop
                   muted
                   playsInline
-                  preload="auto"
+                  preload="none"
                   crossOrigin="anonymous"
                   suppressHydrationWarning
                   style={{ width: '100%', height: '320px', objectFit: 'cover', display: 'block' }}
@@ -488,7 +488,7 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
-              <Image src="/longdyes_logo.png" alt="Longdyes Logo" width={300} height={100} className="longdyes-brand-logo-img" />
+              <img src="/longdyes_logo.png" alt="Longdyes Logo" className="longdyes-brand-logo-img" />
             </motion.div>
             <motion.p
               className="longdyes-brand-tagline"
@@ -532,7 +532,7 @@ export default function Home() {
                 whileHover={{ y: -8, transition: { duration: 0.2 } }}
               >
                 <div className="longdyes-card-img-wrapper">
-                  <Image src={prod.img} alt={prod.title} fill sizes="(max-width: 768px) 100vw, 350px" style={{ objectFit: 'contain', padding: '1rem' }} />
+                  <img src={prod.img} alt={prod.title} />
                   <span className="longdyes-card-spec">{prod.spec}</span>
                 </div>
                 <div className="longdyes-card-body">
@@ -636,7 +636,7 @@ export default function Home() {
             transition={{ duration: 0.6, type: 'spring' }}
             style={{ flex: '1 1 300px', textAlign: 'center' }}
           >
-            <Image src="/kit-longdyes.png" alt="Kit de Trabajo en Alturas Longdyes" width={800} height={500} style={{ width: '100%', height: 'auto', borderRadius: '20px', boxShadow: '0 20px 50px rgba(0,0,0,0.4)', border: '1px solid rgba(255,255,255,0.1)' }} />
+            <img src="/kit-longdyes.png" alt="Kit de Trabajo en Alturas Longdyes" style={{ maxWidth: '100%', height: 'auto', borderRadius: '20px', boxShadow: '0 20px 50px rgba(0,0,0,0.4)', border: '1px solid rgba(255,255,255,0.1)' }} />
           </motion.div>
         </div>
       </section>
@@ -666,8 +666,8 @@ export default function Home() {
               { src: '/gallery/anclaje_1.jpeg', alt: 'Puntos de Anclaje' },
               { src: '/gallery/linea_vida_2.jpeg', alt: 'Líneas de Vida Certificadas' }
             ].map((img, idx) => (
-              <div className="masonry-item" key={idx} style={{ position: 'relative', minHeight: '200px' }}>
-                <Image src={img.src} alt={img.alt} fill sizes="(max-width: 768px) 100vw, 300px" style={{ objectFit: 'cover', transition: 'transform 0.5s ease', cursor: 'pointer' }} onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.05)'} onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'} />
+              <div className="masonry-item" key={idx}>
+                <img src={img.src} alt={img.alt} loading="lazy" />
                 <div className="masonry-overlay">
                   <span>{img.alt}</span>
                 </div>

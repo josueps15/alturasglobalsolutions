@@ -2,8 +2,8 @@
 
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
-import { useState } from 'react';
 import Image from 'next/image';
+import { useState } from 'react';
 
 const LINEAS_DE_VIDA = [
   {
@@ -281,7 +281,9 @@ const SingleProductSection = ({ title, bgImage, product, colorTheme = 'teal', sh
 
           <motion.div initial={{ opacity: 0, scale: 0.9, x: reverse ? -30 : 30 }} whileInView={{ opacity: 1, scale: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.2 }} style={{ flex: '1 1 400px', display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'relative' }}>
             <div style={{ position: 'absolute', width: '100%', paddingBottom: '100%', background: 'radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 60%)', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', zIndex: 1 }} />
-            <Image src={product.img} alt={product.name} width={600} height={600} style={{ width: '100%', maxWidth: '600px', height: 'auto', objectFit: 'contain', zIndex: 2, filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.6))', transform: 'scale(1.1)' }} />
+            <div style={{ position: 'relative', width: '100%', maxWidth: '600px', aspectRatio: '1/1', zIndex: 2, filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.6))', transform: 'scale(1.1)' }}>
+              <Image src={product.img} alt={product.name} fill style={{ objectFit: 'contain' }} sizes="(max-width: 768px) 100vw, 600px" />
+            </div>
           </motion.div>
 
         </div>
@@ -353,7 +355,7 @@ const ProductGrid = ({ title, desc, bgImage, products, showCatalogBtn = false, c
               >
                 <div style={{ height: '220px', overflow: 'hidden', position: 'relative', background: 'radial-gradient(circle, #ffffff 0%, #f4f7f9 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center', borderBottom: '1px solid #eee' }}>
                   <div style={{ position: 'absolute', width: '180px', height: '180px', borderRadius: '50%', background: theme.text, opacity: 0.04, top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }} />
-                  <Image src={prod.img} alt={prod.name} fill sizes="(max-width: 768px) 100vw, 300px" style={{ objectFit: 'contain', transition: 'transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)', zIndex: 2, padding: '15px' }} onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.08) rotate(-1deg)'} onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1) rotate(0deg)'} />
+                  <Image src={prod.img} alt={prod.name} fill style={{ objectFit: 'contain', padding: '15px' }} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
                 </div>
                 <div style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
                   <h3 style={{ fontSize: '1.15rem', fontFamily: 'var(--font-heading)', color: theme.text, marginBottom: '0.8rem', fontWeight: 800, lineHeight: 1.3 }}>{prod.name}</h3>
@@ -476,7 +478,7 @@ export default function KitsAlturaPage() {
             style={{ flex: '1 1 500px' }}
           >
             <div style={{ marginBottom: '2.5rem', display: 'flex', justifyContent: 'center' }}>
-              <Image src="/logo_longdyes.png" alt="Longdyes Logo Oficial" width={380} height={150} style={{ width: '100%', maxWidth: '380px', height: 'auto', objectFit: 'contain', filter: 'drop-shadow(0 15px 25px rgba(0,0,0,0.4))' }} />
+              <img src="/logo_longdyes.png" alt="Longdyes Logo Oficial" style={{ width: '100%', maxWidth: '380px', height: 'auto', objectFit: 'contain', filter: 'drop-shadow(0 15px 25px rgba(0,0,0,0.4))' }} />
             </div>
 
             <div style={{ display: 'flex', alignItems: 'center', gap: '15px', marginBottom: '1.2rem', justifyContent: 'center' }}>
@@ -510,19 +512,19 @@ export default function KitsAlturaPage() {
           >
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gridTemplateRows: '140px 140px 140px', gap: '1rem', width: '100%' }}>
               <div style={{ gridColumn: 'span 2', gridRow: 'span 2', borderRadius: '16px', overflow: 'hidden', position: 'relative', border: '1px solid rgba(255,255,255,0.05)', boxShadow: '0 15px 30px rgba(0,0,0,0.4)' }}>
-                <Image src="/galeria-longdyes/trabajo-01.jpeg" alt="Sistemas Longdyes 1" fill sizes="(max-width: 768px) 100vw, 400px" style={{ objectFit: 'cover', transition: 'transform 0.5s ease' }} onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.05)'} onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'} />
+                <img src="/galeria-longdyes/trabajo-01.jpeg" alt="Sistemas Longdyes 1" style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.5s ease' }} onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.05)'} onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'} />
               </div>
               <div style={{ gridColumn: 'span 1', gridRow: 'span 1', borderRadius: '16px', overflow: 'hidden', position: 'relative', border: '1px solid rgba(255,255,255,0.05)', boxShadow: '0 10px 20px rgba(0,0,0,0.3)' }}>
-                <Image src="/galeria-longdyes/trabajo-17.jpeg" alt="Sistemas Longdyes 2" fill sizes="(max-width: 768px) 100vw, 200px" style={{ objectFit: 'cover', transition: 'transform 0.5s ease' }} onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.05)'} onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'} />
+                <img src="/galeria-longdyes/trabajo-17.jpeg" alt="Sistemas Longdyes 2" style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.5s ease' }} onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.05)'} onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'} />
               </div>
               <div style={{ gridColumn: 'span 1', gridRow: 'span 1', borderRadius: '16px', overflow: 'hidden', position: 'relative', border: '1px solid rgba(255,255,255,0.05)', boxShadow: '0 10px 20px rgba(0,0,0,0.3)' }}>
-                <Image src="/galeria-longdyes/trabajo-21.jpeg" alt="Sistemas Longdyes 3" fill sizes="(max-width: 768px) 100vw, 200px" style={{ objectFit: 'cover', transition: 'transform 0.5s ease' }} onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.05)'} onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'} />
+                <img src="/galeria-longdyes/trabajo-21.jpeg" alt="Sistemas Longdyes 3" style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.5s ease' }} onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.05)'} onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'} />
               </div>
               <div style={{ gridColumn: 'span 1', gridRow: 'span 1', borderRadius: '16px', overflow: 'hidden', position: 'relative', border: '1px solid rgba(255,255,255,0.05)', boxShadow: '0 10px 20px rgba(0,0,0,0.3)' }}>
-                <Image src="/galeria-longdyes/trabajo-04.jpeg" alt="Sistemas Longdyes 4" fill sizes="(max-width: 768px) 100vw, 200px" style={{ objectFit: 'cover', transition: 'transform 0.5s ease' }} onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.05)'} onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'} />
+                <img src="/galeria-longdyes/trabajo-04.jpeg" alt="Sistemas Longdyes 4" style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.5s ease' }} onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.05)'} onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'} />
               </div>
               <div style={{ gridColumn: 'span 2', gridRow: 'span 1', borderRadius: '16px', overflow: 'hidden', position: 'relative', border: '1px solid rgba(255,255,255,0.05)', boxShadow: '0 15px 30px rgba(0,0,0,0.4)' }}>
-                <Image src="/galeria-longdyes/trabajo-10.jpeg" alt="Sistemas Longdyes 5" fill sizes="(max-width: 768px) 100vw, 400px" style={{ objectFit: 'cover', transition: 'transform 0.5s ease' }} onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.05)'} onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'} />
+                <img src="/galeria-longdyes/trabajo-10.jpeg" alt="Sistemas Longdyes 5" style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.5s ease' }} onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.05)'} onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'} />
               </div>
             </div>
           </motion.div>

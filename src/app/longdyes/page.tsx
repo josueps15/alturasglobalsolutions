@@ -3,7 +3,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-
 import { motion, AnimatePresence, useInView, useMotionValue, animate } from 'framer-motion';
 
 function AnimatedCounter({ from, to, prefix = '', suffix = '' }: { from: number, to: number, prefix?: string, suffix?: string }) {
@@ -93,7 +92,7 @@ export default function LongdyesPage() {
             style={{ textAlign: 'center' }}
           >
             <div style={{ marginBottom: '2rem', display: 'flex', justifyContent: 'center' }}>
-              <Image src="/logo-longdyes-altura.png" alt="Longdyes x Alturas Global Solutions" className="longdyes-hero-logo" width={400} height={140} style={{ height: '140px', width: 'auto', objectFit: 'contain' }} />
+              <img src="/logo-longdyes-altura.png" alt="Longdyes x Alturas Global Solutions" className="longdyes-hero-logo" style={{ height: '140px', objectFit: 'contain' }} />
             </div>
             <h1 style={{ fontFamily: 'var(--font-heading)', fontSize: 'clamp(2.5rem, 6vw, 4rem)', color: '#fff', fontWeight: 900, marginBottom: '1rem', letterSpacing: '-1px' }}>
               Galería de Trabajos
@@ -175,7 +174,7 @@ export default function LongdyesPage() {
                 whileHover={{ y: -8, borderColor: 'rgba(13,105,120,0.3)' }}
               >
                 <div style={{ position: 'relative', height: '220px', overflow: 'hidden' }}>
-                  <Image src={prod.img} alt={prod.title} fill sizes="(max-width: 768px) 100vw, 400px" style={{ objectFit: 'cover' }} />
+                  <img src={prod.img} alt={prod.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                   <span style={{
                     position: 'absolute', bottom: '12px', right: '12px',
                     background: 'linear-gradient(135deg, var(--primary-orange), #ff8c42)',

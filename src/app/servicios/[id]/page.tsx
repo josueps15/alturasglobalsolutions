@@ -2,7 +2,6 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { use } from 'react';
 
@@ -302,7 +301,7 @@ export default function ServicioDetail({ params }: { params: Promise<{ id: strin
             </motion.div>
             <motion.div className="service-full-img" initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.7 }}>
               <div className="service-full-img-inner">
-                <Image src={service.bg} alt={service.title} fill sizes="(max-width: 768px) 100vw, 800px" style={{ objectFit: 'cover' }} />
+                <img src={service.bg} alt={service.title} />
               </div>
             </motion.div>
           </div>
@@ -321,9 +320,7 @@ export default function ServicioDetail({ params }: { params: Promise<{ id: strin
                       {cat.sub.map((sub: any, si: number) => (
                         <motion.div key={si} className="service-type-card" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: ci * 0.15 + si * 0.1 }}>
                           {sub.img && (
-                            <div style={{ position: 'relative', width: '100%', height: sub.name === "Flexibles" && cat.category === "Verticales" ? 'auto' : '140px', minHeight: '140px', maxHeight: sub.name === "Flexibles" && cat.category === "Verticales" ? '350px' : 'none', marginBottom: '1rem' }}>
-                              <Image src={sub.img} alt={sub.name} fill sizes="(max-width: 768px) 100vw, 300px" style={{ objectFit: sub.name === "Flexibles" && cat.category === "Verticales" ? 'contain' : 'cover', borderRadius: '8px', border: '1px solid rgba(0,0,0,0.05)' }} />
-                            </div>
+                            <img src={sub.img} alt={sub.name} style={{ width: '100%', height: sub.name === "Flexibles" && cat.category === "Verticales" ? 'auto' : '140px', maxHeight: sub.name === "Flexibles" && cat.category === "Verticales" ? '350px' : 'none', objectFit: sub.name === "Flexibles" && cat.category === "Verticales" ? 'contain' : 'cover', borderRadius: '8px', marginBottom: '1rem', border: '1px solid rgba(0,0,0,0.05)' }} />
                           )}
                           <span className="service-type-card-name">{sub.name}</span>
                           <span className="service-type-card-norm">{sub.norm}</span>
@@ -470,7 +467,6 @@ export default function ServicioDetail({ params }: { params: Promise<{ id: strin
                   loop
                   muted
                   playsInline
-                  preload="none"
                   style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', minHeight: '350px' }}
                 />
                 <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, #0f172a 0%, transparent 30%)', pointerEvents: 'none' }} />
@@ -485,9 +481,7 @@ export default function ServicioDetail({ params }: { params: Promise<{ id: strin
               <div className="responsive-two-col" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem' }}>
                 {service.gallery.map((img: string, i: number) => (
                   <motion.div key={i} initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} style={{ overflow: 'hidden', borderRadius: '16px', boxShadow: theme.isDark ? '0 8px 30px rgba(0,0,0,0.3)' : '0 8px 25px rgba(0,0,0,0.08)', border: theme.isDark ? '1px solid rgba(255,255,255,0.06)' : '1px solid rgba(0,0,0,0.04)' }}>
-                  <div style={{ position: 'relative', width: '100%', height: '280px', overflow: 'hidden', borderRadius: '12px' }}>
-                    <Image src={img} alt={`${service.title} - Imagen ${i + 1}`} fill sizes="(max-width: 768px) 100vw, 400px" style={{ objectFit: 'cover', transition: 'transform 0.5s ease' }} onMouseOver={e => e.currentTarget.style.transform = 'scale(1.08)'} onMouseOut={e => e.currentTarget.style.transform = 'scale(1)'} />
-                  </div>
+                    <img src={img} alt={`${service.title} - Imagen ${i + 1}`} style={{ width: '100%', height: '280px', objectFit: 'cover', display: 'block', transition: 'transform 0.5s ease' }} onMouseOver={e => e.currentTarget.style.transform = 'scale(1.08)'} onMouseOut={e => e.currentTarget.style.transform = 'scale(1)'} />
                   </motion.div>
                 ))}
               </div>

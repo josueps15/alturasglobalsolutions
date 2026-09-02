@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -29,16 +28,11 @@ export default function Header() {
         <nav className="navbar">
           <div className="logo-container">
             <Link href="/">
-              <div style={{ position: 'relative', width: '220px', height: '60px' }}>
-                <Image
-                  src="/logo_secundario.png"
-                  alt="Alturas Global Solutions"
-                  fill
-                  sizes="(max-width: 768px) 150px, 220px"
-                  style={{ objectFit: 'contain' }}
-                  className="logo-img"
-                />
-              </div>
+              <img
+                src="/logo_secundario.png"
+                alt="Alturas Global Solutions"
+                className="logo-img"
+              />
             </Link>
           </div>
 
@@ -137,9 +131,7 @@ export default function Header() {
       {/* Mobile Drawer */}
       <div className={`mobile-drawer ${mobileMenuOpen ? 'active' : ''}`}>
         <div className="mobile-drawer-header" style={{ justifyContent: 'center' }}>
-          <div style={{ position: 'relative', width: '200px', height: '50px', marginBottom: '2rem' }}>
-            <Image src="/logo_secundario.png" alt="Alturas Global Solutions" fill sizes="200px" style={{ objectFit: 'contain' }} className="mobile-drawer-logo" />
-          </div>
+          <img src="/logo_secundario.png" alt="Alturas Global Solutions" className="mobile-drawer-logo" />
         </div>
 
         <nav className="mobile-drawer-nav">
