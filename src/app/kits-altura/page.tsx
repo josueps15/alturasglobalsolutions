@@ -359,7 +359,7 @@ const ProductGrid = ({ title, desc, bgImage, products, showCatalogBtn = false, c
                   <p style={{ color: '#555', fontSize: '0.95rem', marginBottom: '1.2rem', lineHeight: '1.5', flexGrow: 1 }}>{prod.desc}</p>
 
                   {prod.specs && (
-                    <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 1.5rem 0', background: '#f8fafc', padding: '1rem', borderRadius: '12px', border: '1px solid #edf2f7' }}>
+                    <ul style={{ listStyle: 'none', margin: '0 0 1.5rem 0', background: '#f8fafc', padding: '1rem', borderRadius: '12px', border: '1px solid #edf2f7' }}>
                       {prod.specs.map((spec: string, sIdx: number) => (
                         <li key={sIdx} style={{ fontSize: '0.85rem', color: '#444', marginBottom: '8px', display: 'flex', alignItems: 'flex-start', gap: '8px', fontWeight: 500 }}>
                           <span style={{ color: theme.text, marginTop: '2px' }}>
