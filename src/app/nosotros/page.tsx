@@ -196,7 +196,7 @@ export default function Nosotros() {
 
             {/* Center Logo */}
             <div className="valores-center-logo" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-              <img src="/logo_alturas_global.png" alt="Alturas Global Solutions" style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain', transform: 'scale(0.75)' }} />
+              <img src="/logo_principal.png" alt="Alturas Global Solutions" style={{ width: '25%', maxWidth: '300px', objectFit: 'contain' }} />
             </div>
 
             {/* Circles */}

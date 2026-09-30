@@ -1,9 +1,10 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { use } from 'react';
+import { use, useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 
 const SERVICES_DATA: Record<string, any> = {
   "instalacion-lineas-vida": {
@@ -26,7 +27,7 @@ const SERVICES_DATA: Record<string, any> = {
         {
           category: "Horizontales",
           sub: [
-            { name: "Flexibles", norm: "CE EN 795 C", materials: ["Cable"], img: "/lineas-vida-horizontales.jpeg" },
+            { name: "Flexibles", norm: "CE EN 795 C", materials: ["Cable"], imgs: ["/lineas-de-vida/linea-vida-flexible-provisoria-1.png", "/lineas-de-vida/linea-vida-flexible-provisoria-2.png"] },
             { name: "Temporales", norm: "CE EN 795 B", materials: ["Cable", "Textiles"], img: "/lineas-vida-temporales.jpeg" },
             { name: "Rígidas", norm: "CE EN 795 D", materials: ["Cable", "Rail"], img: "/lineas-vida-rigidas.jpeg" }
           ]
@@ -251,6 +252,103 @@ const THEME_COLORS: Record<string, { bg: string; accent: string; accentDark: str
   "drone": { bg: "linear-gradient(135deg, #ffffff 0%, #f8f9fa 50%, #e9ecef 100%)", accent: "#000000", accentDark: "#333333", textDark: "#111111", textMuted: "#555555", isDark: false },
 };
 
+const CardImageGallery = ({ imgs, img, alt, isFlexibleVertical }: any) => {
+  const images = imgs || (img ? [img] : []);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => setMounted(true), []);
+
+  if (images.length === 0) return null;
+
+  const nextImg = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setCurrentIndex((prev) => (prev + 1) % images.length);
+  };
+
+  const prevImg = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
+  };
+
+  const modalContent = (
+    <AnimatePresence>
+      {lightboxOpen && (
+        <motion.div 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          style={{ position: 'fixed', inset: 0, zIndex: 9999, background: 'rgba(0,0,0,0.92)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '2rem' }} 
+          onClick={() => setLightboxOpen(false)}
+        >
+          <button className="lightbox-close-btn" onClick={() => setLightboxOpen(false)}>
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#fff" strokeWidth="2"><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></svg>
+          </button>
+          
+          {images.length > 1 && (
+            <button onClick={prevImg} className="lightbox-nav-btn lightbox-nav-left">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#fff" strokeWidth="2"><polyline points="15 18 9 12 15 6" /></svg>
+            </button>
+          )}
+
+          <motion.div 
+            initial={{ scale: 0.9 }}
+            animate={{ scale: 1 }}
+            exit={{ scale: 0.9 }}
+            className="lightbox-content-wrapper"
+            onClick={e => e.stopPropagation()}
+          >
+             <img src={images[currentIndex]} alt={alt} />
+          </motion.div>
+
+          {images.length > 1 && (
+            <button onClick={nextImg} className="lightbox-nav-btn lightbox-nav-right">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#fff" strokeWidth="2"><polyline points="9 18 15 12 9 6" /></svg>
+            </button>
+          )}
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+
+  return (
+    <>
+      <div 
+        style={{ 
+          position: 'relative', width: '100%', 
+          height: isFlexibleVertical ? 'auto' : '220px', 
+          maxHeight: isFlexibleVertical ? '350px' : 'none', 
+          marginBottom: '1rem', borderRadius: '8px', overflow: 'hidden', 
+          border: '1px solid rgba(0,0,0,0.05)', background: '#fff', cursor: 'pointer',
+          display: 'flex', alignItems: 'center', justifyContent: 'center'
+        }} 
+        onClick={() => setLightboxOpen(true)}
+      >
+        <img src={images[currentIndex]} alt={alt} style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain', transition: 'transform 0.5s ease' }} onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.05)'} onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'} />
+        
+        {images.length > 1 && (
+          <>
+            <button onClick={prevImg} style={{ position: 'absolute', left: '8px', top: '50%', transform: 'translateY(-50%)', background: 'rgba(0,0,0,0.6)', color: '#fff', border: 'none', borderRadius: '50%', width: '32px', height: '32px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', zIndex: 2 }}>
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="15 18 9 12 15 6" /></svg>
+            </button>
+            <button onClick={nextImg} style={{ position: 'absolute', right: '8px', top: '50%', transform: 'translateY(-50%)', background: 'rgba(0,0,0,0.6)', color: '#fff', border: 'none', borderRadius: '50%', width: '32px', height: '32px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', zIndex: 2 }}>
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="9 18 15 12 9 6" /></svg>
+            </button>
+            <div style={{ position: 'absolute', bottom: '10px', left: '50%', transform: 'translateX(-50%)', display: 'flex', gap: '6px', zIndex: 2 }}>
+              {images.map((_: any, i: number) => (
+                <div key={i} style={{ width: '8px', height: '8px', borderRadius: '50%', background: i === currentIndex ? '#fff' : 'rgba(255,255,255,0.4)', boxShadow: '0 1px 3px rgba(0,0,0,0.3)' }} />
+              ))}
+            </div>
+          </>
+        )}
+      </div>
+
+      {mounted && createPortal(modalContent, document.body)}
+    </>
+  );
+};
+
 export default function ServicioDetail({ params }: { params: Promise<{ id: string }> }) {
   const resolvedParams = use(params);
   const service = SERVICES_DATA[resolvedParams.id];
@@ -319,8 +417,8 @@ export default function ServicioDetail({ params }: { params: Promise<{ id: strin
                     <div className="service-type-cards">
                       {cat.sub.map((sub: any, si: number) => (
                         <motion.div key={si} className="service-type-card" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: ci * 0.15 + si * 0.1 }}>
-                          {sub.img && (
-                            <img src={sub.img} alt={sub.name} style={{ width: '100%', height: sub.name === "Flexibles" && cat.category === "Verticales" ? 'auto' : '140px', maxHeight: sub.name === "Flexibles" && cat.category === "Verticales" ? '350px' : 'none', objectFit: sub.name === "Flexibles" && cat.category === "Verticales" ? 'contain' : 'cover', borderRadius: '8px', marginBottom: '1rem', border: '1px solid rgba(0,0,0,0.05)' }} />
+                          {(sub.img || sub.imgs) && (
+                            <CardImageGallery imgs={sub.imgs} img={sub.img} alt={sub.name} isFlexibleVertical={sub.name === "Flexibles" && cat.category === "Verticales"} />
                           )}
                           <span className="service-type-card-name">{sub.name}</span>
                           <span className="service-type-card-norm">{sub.norm}</span>
@@ -337,6 +435,58 @@ export default function ServicioDetail({ params }: { params: Promise<{ id: strin
               </div>
             </motion.div>
           )}
+
+          {/* Principal Call To Action (Related Products) */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95, y: 40 }}
+            whileInView={{ opacity: 1, scale: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            style={{
+              marginTop: '4rem',
+              marginBottom: '2rem',
+              padding: 'clamp(3rem, 5vw, 5rem)',
+              borderRadius: '30px',
+              background: `linear-gradient(135deg, #0b1320 0%, ${theme.accentDark} 100%)`,
+              position: 'relative',
+              overflow: 'hidden',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              flexWrap: 'wrap',
+              gap: '3rem',
+              boxShadow: `0 30px 60px rgba(0,0,0,0.4)`
+            }}
+          >
+            <div style={{ position: 'absolute', top: '-50%', right: '-20%', width: '600px', height: '600px', borderRadius: '50%', background: `radial-gradient(circle, ${theme.accent} 0%, transparent 70%)`, opacity: 0.3, pointerEvents: 'none' }} />
+            <div style={{ position: 'absolute', bottom: '-20%', left: '-10%', width: '400px', height: '400px', borderRadius: '50%', background: `radial-gradient(circle, #ffffff 0%, transparent 70%)`, opacity: 0.05, pointerEvents: 'none' }} />
+
+            <div style={{ flex: '1 1 550px', position: 'relative', zIndex: 2 }}>
+              <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.2)', padding: '8px 20px', borderRadius: '50px', marginBottom: '1.5rem', color: '#fff', fontSize: '0.85rem', fontWeight: 700, letterSpacing: '1px', textTransform: 'uppercase' }}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                Catálogo de Productos
+              </div>
+              <h3 style={{ fontSize: 'clamp(2.2rem, 4vw, 3rem)', fontFamily: 'var(--font-heading)', color: '#ffffff', marginBottom: '1.2rem', fontWeight: 900, lineHeight: 1.1, textShadow: '0 4px 20px rgba(0,0,0,0.3)' }}>
+                Equipos y Materiales <span style={{ color: '#fff', textDecoration: 'underline', textDecorationColor: theme.accent, textUnderlineOffset: '8px' }}>Especializados</span>
+              </h3>
+              <p style={{ color: 'rgba(255,255,255,0.85)', fontSize: '1.15rem', lineHeight: '1.8', maxWidth: '600px', marginBottom: 0 }}>
+                No solo instalamos, también somos proveedores directos. Contamos con venta de equipos certificados, líneas de vida, puntos de anclaje y accesorios complementarios para trabajo en alturas.
+              </p>
+            </div>
+
+            <div style={{ position: 'relative', zIndex: 2 }}>
+              <Link href="/kits-altura" className="btn" style={{ 
+                display: 'inline-flex', alignItems: 'center', gap: '12px', padding: '1.2rem 3rem', fontSize: '1.15rem', 
+                backgroundColor: '#ffffff', color: theme.accentDark, borderRadius: '50px', textTransform: 'uppercase', fontWeight: 900, 
+                boxShadow: `0 15px 35px rgba(0,0,0,0.3)`, transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)' 
+              }} 
+              onMouseOver={e => { e.currentTarget.style.transform = 'scale(1.08) translateY(-5px)'; e.currentTarget.style.boxShadow = `0 20px 40px rgba(0,0,0,0.4)` }} 
+              onMouseOut={e => { e.currentTarget.style.transform = 'scale(1) translateY(0)'; e.currentTarget.style.boxShadow = `0 15px 35px rgba(0,0,0,0.3)` }}>
+                Explorar Catálogo
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </Link>
+            </div>
+          </motion.div>
 
           {/* Process Steps */}
           {service.process && (
@@ -467,6 +617,7 @@ export default function ServicioDetail({ params }: { params: Promise<{ id: strin
                   loop
                   muted
                   playsInline
+                  crossOrigin="anonymous"
                   style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', minHeight: '350px' }}
                 />
                 <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, #0f172a 0%, transparent 30%)', pointerEvents: 'none' }} />

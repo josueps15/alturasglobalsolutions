@@ -3,7 +3,8 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 
 const LINEAS_DE_VIDA = [
   {
@@ -59,7 +60,10 @@ const LINEAS_DE_VIDA = [
     id: 'lv-autorretractil',
     name: 'Línea de Vida Autorretráctil',
     desc: 'Dispositivo anticaídas de reposición automática que permite libertad de movimiento y detiene instantáneamente cualquier caída.',
-    img: '/lineas-de-vida/ficha tecnica lineade vida auto retractil.png',
+    imgs: [
+      '/lineas-de-vida/linea-vida-autorretractil-1.png',
+      '/lineas-de-vida/linea-vida-autorretractil-2.png'
+    ],
     specs: ['Bloqueo instantáneo', 'Retracción automática']
   }
 ];
@@ -200,6 +204,19 @@ const EPP_GENERAL_ITEMS = [
 ];
 
 const SingleProductSection = ({ title, bgImage, product, colorTheme = 'teal', showCatalogBtn = false, reverse = false }: any) => {
+  const [isLightboxOpen, setIsLightboxOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+    if (isLightboxOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => { document.body.style.overflow = ''; };
+  }, [isLightboxOpen]);
+
   const getWhatsAppLink = (productName: string) => {
     const phone = "593980001234";
     const text = encodeURIComponent(`Hola, deseo cotizar el producto: ${productName}.`);
@@ -281,17 +298,194 @@ const SingleProductSection = ({ title, bgImage, product, colorTheme = 'teal', sh
 
           <motion.div initial={{ opacity: 0, scale: 0.9, x: reverse ? -30 : 30 }} whileInView={{ opacity: 1, scale: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.2 }} style={{ flex: '1 1 400px', display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'relative' }}>
             <div style={{ position: 'absolute', width: '100%', paddingBottom: '100%', background: 'radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 60%)', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', zIndex: 1 }} />
-            <img src={product.img} alt={product.name} loading="lazy" style={{ width: '100%', maxWidth: '600px', height: 'auto', objectFit: 'contain', zIndex: 2, filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.6))', transform: 'scale(1.1)' }} />
+            <img 
+              src={product.img} 
+              alt={product.name} 
+              loading="lazy" 
+              onClick={() => setIsLightboxOpen(true)}
+              style={{ width: '100%', maxWidth: '600px', height: 'auto', objectFit: 'contain', zIndex: 2, filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.6))', transform: 'scale(1.1)', cursor: 'pointer' }} 
+            />
+            
+            {/* Click Icon indicator */}
+            <div 
+              onClick={() => setIsLightboxOpen(true)}
+              style={{ position: 'absolute', top: '20px', right: '20px', background: 'rgba(0,0,0,0.5)', padding: '10px', borderRadius: '50%', color: '#fff', cursor: 'pointer', zIndex: 3, display: 'flex', alignItems: 'center', justifyContent: 'center', border: '2px solid rgba(255,255,255,0.3)', backdropFilter: 'blur(5px)' }}
+            >
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+            </div>
           </motion.div>
 
         </div>
       </div>
+      
+      {/* Lightbox Portal */}
+      {mounted && isLightboxOpen && createPortal(
+        <div style={{
+          position: 'fixed', inset: 0, zIndex: 99999, background: 'rgba(0,0,0,0.95)',
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          backdropFilter: 'blur(10px)'
+        }}>
+          {/* Close Area */}
+          <div style={{ position: 'absolute', inset: 0, zIndex: 1 }} onClick={() => setIsLightboxOpen(false)} />
+          
+          <button
+            onClick={() => setIsLightboxOpen(false)}
+            className="lightbox-close-btn"
+            style={{
+              position: 'absolute', top: 'clamp(10px, 3vh, 20px)', right: 'clamp(10px, 3vw, 20px)',
+              background: 'rgba(255,255,255,0.1)', border: 'none', color: '#fff',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              cursor: 'pointer', zIndex: 3, borderRadius: '50%',
+              transition: 'background 0.3s'
+            }}
+            onMouseOver={e => e.currentTarget.style.background = 'rgba(255,255,255,0.2)'}
+            onMouseOut={e => e.currentTarget.style.background = 'rgba(255,255,255,0.1)'}
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+          </button>
+          
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.95 }}
+            transition={{ duration: 0.2 }}
+            style={{ position: 'relative', zIndex: 2, display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '1rem', width: '100%', height: '100%' }}
+          >
+            <img 
+              src={product.img} 
+              alt={product.name} 
+              style={{
+                maxWidth: '90vw',
+                maxHeight: '85vh',
+                objectFit: 'contain',
+                filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.5))'
+              }}
+            />
+          </motion.div>
+        </div>,
+        document.body
+      )}
     </section>
+  );
+};
+
+const ProductGridCard = ({ prod, idx, initialCount, theme, getWhatsAppLink, setLightboxState }: any) => {
+  const images = prod.imgs || (prod.img ? [prod.img] : []);
+  const [imgIdx, setImgIdx] = useState(0);
+
+  const handleNext = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setImgIdx((prev) => (prev + 1) % images.length);
+  };
+  const handlePrev = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setImgIdx((prev) => (prev - 1 + images.length) % images.length);
+  };
+
+  return (
+    <motion.div
+      layout
+      initial={{ opacity: 0, scale: 0.95, y: 20 }}
+      animate={{ opacity: 1, scale: 1, y: 0 }}
+      exit={{ opacity: 0, scale: 0.95, y: -20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.4, delay: (idx % initialCount) * 0.1 }}
+      style={{ background: '#fff', borderRadius: '20px', overflow: 'hidden', boxShadow: '0 10px 30px rgba(0,0,0,0.08)', display: 'flex', flexDirection: 'column', border: `1px solid rgba(0,0,0,0.05)` }}
+    >
+      <div onClick={() => setLightboxState({ pIdx: idx, iIdx: imgIdx })} style={{ height: '220px', overflow: 'hidden', position: 'relative', background: 'radial-gradient(circle, #ffffff 0%, #f4f7f9 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center', borderBottom: '1px solid #eee', cursor: 'pointer' }}>
+        <div style={{ position: 'absolute', width: '180px', height: '180px', borderRadius: '50%', background: theme.text, opacity: 0.04, top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }} />
+        <img src={images[imgIdx]} alt={prod.name} loading="lazy" style={{ width: '85%', height: '85%', objectFit: 'contain', transition: 'transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)', zIndex: 2 }} onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.08) rotate(-1deg)'} onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1) rotate(0deg)'} />
+        
+        {images.length > 1 && (
+          <>
+            <button onClick={handlePrev} style={{ position: 'absolute', left: '10px', top: '50%', transform: 'translateY(-50%)', background: 'rgba(0,0,0,0.5)', color: '#fff', border: 'none', borderRadius: '50%', width: '32px', height: '32px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', zIndex: 5 }}>
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="15 18 9 12 15 6" /></svg>
+            </button>
+            <button onClick={handleNext} style={{ position: 'absolute', right: '10px', top: '50%', transform: 'translateY(-50%)', background: 'rgba(0,0,0,0.5)', color: '#fff', border: 'none', borderRadius: '50%', width: '32px', height: '32px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', zIndex: 5 }}>
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="9 18 15 12 9 6" /></svg>
+            </button>
+            <div style={{ position: 'absolute', bottom: '10px', left: '50%', transform: 'translateX(-50%)', display: 'flex', gap: '6px', zIndex: 5 }}>
+              {images.map((_: any, i: number) => (
+                <div key={i} style={{ width: '8px', height: '8px', borderRadius: '50%', background: i === imgIdx ? '#fff' : 'rgba(255,255,255,0.4)', boxShadow: '0 1px 3px rgba(0,0,0,0.3)' }} />
+              ))}
+            </div>
+          </>
+        )}
+      </div>
+      <div style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
+        <h3 style={{ fontSize: '1.15rem', fontFamily: 'var(--font-heading)', color: theme.text, marginBottom: '0.8rem', fontWeight: 800, lineHeight: 1.3 }}>{prod.name}</h3>
+        <p style={{ color: '#555', fontSize: '0.95rem', marginBottom: '1.2rem', lineHeight: '1.5', flexGrow: 1 }}>{prod.desc}</p>
+        
+        {prod.specs && (
+          <ul style={{ listStyle: 'none', margin: '0 0 1.5rem 0', background: '#f8fafc', padding: '1rem', borderRadius: '12px', border: '1px solid #edf2f7' }}>
+            {prod.specs.map((spec: string, sIdx: number) => (
+              <li key={sIdx} style={{ fontSize: '0.85rem', color: '#444', marginBottom: '8px', display: 'flex', alignItems: 'flex-start', gap: '8px', fontWeight: 500 }}>
+                <span style={{ color: theme.text, marginTop: '2px' }}>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </span>
+                {spec}
+              </li>
+            ))}
+          </ul>
+        )}
+        
+        <div style={{ display: 'flex', gap: '10px' }}>
+          <a
+            href={getWhatsAppLink(prod.name)}
+            target="_blank"
+            rel="noreferrer"
+            className="btn"
+            style={{ flex: 1, textAlign: 'center', display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '6px', padding: '0.8rem', fontSize: '0.9rem', borderRadius: '10px', background: theme.text, color: '#fff', fontWeight: 800, transition: 'all 0.3s ease', boxShadow: `0 4px 12px ${theme.text}40` }}
+          >
+            COTIZAR
+          </a>
+          {prod.catalogFile && (
+            <a
+              href={prod.catalogFile}
+              target="_blank"
+              rel="noreferrer"
+              className="btn"
+              style={{ flex: 1, textAlign: 'center', display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '6px', padding: '0.8rem', fontSize: '0.9rem', borderRadius: '10px', border: `2px solid ${theme.text}`, color: theme.text, background: 'transparent', fontWeight: 800, transition: 'all 0.3s ease' }}
+            >
+              Ficha
+            </a>
+          )}
+        </div>
+      </div>
+    </motion.div>
   );
 };
 
 const ProductGrid = ({ title, desc, bgImage, products, showCatalogBtn = false, colorTheme = 'teal' }: any) => {
   const [expanded, setExpanded] = useState(false);
+  const [lightboxState, setLightboxState] = useState<{ pIdx: number, iIdx: number } | null>(null);
+
+  const closeLightbox = () => setLightboxState(null);
+  
+  const prevImage = () => {
+    if (!lightboxState) return;
+    const { pIdx, iIdx } = lightboxState;
+    if (iIdx > 0) {
+      setLightboxState({ pIdx, iIdx: iIdx - 1 });
+    } else {
+      const prevPIdx = (pIdx - 1 + products.length) % products.length;
+      const prevImages = products[prevPIdx].imgs || (products[prevPIdx].img ? [products[prevPIdx].img] : []);
+      setLightboxState({ pIdx: prevPIdx, iIdx: prevImages.length - 1 });
+    }
+  };
+
+  const nextImage = () => {
+    if (!lightboxState) return;
+    const { pIdx, iIdx } = lightboxState;
+    const currentImages = products[pIdx].imgs || (products[pIdx].img ? [products[pIdx].img] : []);
+    if (iIdx < currentImages.length - 1) {
+      setLightboxState({ pIdx, iIdx: iIdx + 1 });
+    } else {
+      const nextPIdx = (pIdx + 1) % products.length;
+      setLightboxState({ pIdx: nextPIdx, iIdx: 0 });
+    }
+  };
 
   const getWhatsAppLink = (productName: string) => {
     const phone = "593980001234";
@@ -309,7 +503,7 @@ const ProductGrid = ({ title, desc, bgImage, products, showCatalogBtn = false, c
   };
 
   const theme = themeColors[colorTheme] || themeColors.teal;
-  const initialCount = 6;
+  const initialCount = 4;
   const visibleProducts = expanded ? products : products.slice(0, initialCount);
   const hasMore = products.length > initialCount;
 
@@ -340,62 +534,7 @@ const ProductGrid = ({ title, desc, bgImage, products, showCatalogBtn = false, c
         <motion.div layout className="kits-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2rem' }}>
           <AnimatePresence>
             {visibleProducts.map((prod: any, idx: number) => (
-              <motion.div
-                layout
-                key={prod.id}
-                initial={{ opacity: 0, scale: 0.95, y: 20 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.95, y: -20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: (idx % initialCount) * 0.1 }}
-                style={{ background: '#fff', borderRadius: '20px', overflow: 'hidden', boxShadow: '0 10px 30px rgba(0,0,0,0.08)', display: 'flex', flexDirection: 'column', border: `1px solid rgba(0,0,0,0.05)` }}
-              >
-                <div style={{ height: '220px', overflow: 'hidden', position: 'relative', background: 'radial-gradient(circle, #ffffff 0%, #f4f7f9 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center', borderBottom: '1px solid #eee' }}>
-                  <div style={{ position: 'absolute', width: '180px', height: '180px', borderRadius: '50%', background: theme.text, opacity: 0.04, top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }} />
-                  <img src={prod.img} alt={prod.name} loading="lazy" style={{ width: '85%', height: '85%', objectFit: 'contain', transition: 'transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)', zIndex: 2 }} onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.08) rotate(-1deg)'} onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1) rotate(0deg)'} />
-                </div>
-                <div style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
-                  <h3 style={{ fontSize: '1.15rem', fontFamily: 'var(--font-heading)', color: theme.text, marginBottom: '0.8rem', fontWeight: 800, lineHeight: 1.3 }}>{prod.name}</h3>
-                  <p style={{ color: '#555', fontSize: '0.95rem', marginBottom: '1.2rem', lineHeight: '1.5', flexGrow: 1 }}>{prod.desc}</p>
-
-                  {prod.specs && (
-                    <ul style={{ listStyle: 'none', margin: '0 0 1.5rem 0', background: '#f8fafc', padding: '1rem', borderRadius: '12px', border: '1px solid #edf2f7' }}>
-                      {prod.specs.map((spec: string, sIdx: number) => (
-                        <li key={sIdx} style={{ fontSize: '0.85rem', color: '#444', marginBottom: '8px', display: 'flex', alignItems: 'flex-start', gap: '8px', fontWeight: 500 }}>
-                          <span style={{ color: theme.text, marginTop: '2px' }}>
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                          </span>
-                          {spec}
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-
-                  <div style={{ display: 'flex', gap: '10px' }}>
-                    <a
-                      href={getWhatsAppLink(prod.name)}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="btn"
-                      style={{ flex: 1, textAlign: 'center', display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '6px', padding: '0.8rem', fontSize: '0.9rem', borderRadius: '10px', background: theme.text, color: '#fff', fontWeight: 800, transition: 'all 0.3s ease', boxShadow: `0 4px 12px ${theme.text}40` }}
-                    >
-                      COTIZAR
-                    </a>
-                    {prod.catalogFile && (
-                      <a
-                        href={prod.catalogFile}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="btn"
-                        style={{ flex: 1, textAlign: 'center', display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '6px', padding: '0.8rem', fontSize: '0.9rem', borderRadius: '10px', border: `2px solid ${theme.text}`, color: theme.text, background: 'transparent', fontWeight: 800, transition: 'all 0.3s ease' }}
-                      >
-                        Ficha
-                      </a>
-                    )}
-                  </div>
-                </div>
-              </motion.div>
+              <ProductGridCard key={prod.id} prod={prod} idx={idx} initialCount={initialCount} theme={theme} getWhatsAppLink={getWhatsAppLink} setLightboxState={setLightboxState} />
             ))}
           </AnimatePresence>
         </motion.div>
@@ -408,7 +547,7 @@ const ProductGrid = ({ title, desc, bgImage, products, showCatalogBtn = false, c
               onMouseOver={(e) => { e.currentTarget.style.background = '#fff'; e.currentTarget.style.color = theme.text; }}
               onMouseOut={(e) => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#fff'; }}
             >
-              {expanded ? 'Mostrar menos' : `Ver ${products.length - initialCount} más`}
+              {expanded ? 'Mostrar menos' : `Mostrar ${products.length - initialCount} más`}
               <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2.5" style={{ transform: expanded ? 'rotate(180deg)' : 'none', transition: 'transform 0.3s ease' }}>
                 <polyline points="6 9 12 15 18 9"></polyline>
               </svg>
@@ -416,6 +555,82 @@ const ProductGrid = ({ title, desc, bgImage, products, showCatalogBtn = false, c
           </div>
         )}
       </div>
+
+      <AnimatePresence>
+        {lightboxState !== null && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={closeLightbox}
+            style={{
+              position: 'fixed', inset: 0, zIndex: 9999,
+              background: 'rgba(0,0,0,0.92)', backdropFilter: 'blur(20px)',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              padding: '2rem',
+            }}
+          >
+            {/* Close Button */}
+            <button
+              onClick={closeLightbox}
+              className="lightbox-close-btn"
+            >
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#fff" strokeWidth="2">
+                <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
+              </svg>
+            </button>
+
+            {/* Prev */}
+            <button
+              onClick={(e) => { e.stopPropagation(); prevImage(); }}
+              className="lightbox-nav-btn lightbox-nav-left"
+            >
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#fff" strokeWidth="2">
+                <polyline points="15 18 9 12 15 6" />
+              </svg>
+            </button>
+
+            {/* Image Only in Lightbox */}
+            <motion.div
+              key={`${lightboxState.pIdx}-${lightboxState.iIdx}`}
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.9 }}
+              transition={{ duration: 0.3 }}
+              onClick={(e) => e.stopPropagation()}
+              className="lightbox-content-wrapper"
+            >
+              <img
+                src={(() => {
+                  const p = products[lightboxState.pIdx];
+                  const imgs = p.imgs || (p.img ? [p.img] : []);
+                  return imgs[lightboxState.iIdx];
+                })()}
+                alt={products[lightboxState.pIdx].name}
+              />
+            </motion.div>
+
+            {/* Next */}
+            <button
+              onClick={(e) => { e.stopPropagation(); nextImage(); }}
+              className="lightbox-nav-btn lightbox-nav-right"
+            >
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#fff" strokeWidth="2">
+                <polyline points="9 18 15 12 9 6" />
+              </svg>
+            </button>
+
+            {/* Counter */}
+            <div style={{
+              position: 'absolute', bottom: '2rem', left: '50%', transform: 'translateX(-50%)',
+              color: 'rgba(255,255,255,0.5)', fontFamily: 'var(--font-heading)', fontWeight: 700,
+              fontSize: '0.9rem', letterSpacing: '2px',
+            }}>
+              {lightboxState.pIdx + 1} / {products.length}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 };

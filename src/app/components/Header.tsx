@@ -62,7 +62,7 @@ export default function Header() {
               {/* Eslogan — absoluto, centrado bajo la pastilla, sin afectar el layout */}
               <div style={{
                 position: 'absolute',
-                top: 'calc(100% + 1.1rem)',
+                top: 'calc(100% + 2.1rem)',
                 left: '50%',
                 transform: 'translateX(-50%)',
                 whiteSpace: 'nowrap',
