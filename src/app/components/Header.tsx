@@ -101,7 +101,7 @@ export default function Header() {
               <a href="https://www.instagram.com/alturasglobalsolutions?igsh=MTZ6enk2NGVxdmNvcQ%3D%3D&utm_source=qr" target="_blank" rel="noreferrer" className="social-round-btn" aria-label="Instagram">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
               </a>
-              <a href="https://www.tiktok.com/@alturasglobalsolutions?_r=1&_t=ZS-972xFgehEiD" target="_blank" rel="noreferrer" className="social-round-btn" aria-label="TikTok">
+              <a href="https://www.tiktok.com/@alturas.global.so?_r=1&_t=ZS-9AB4at2biQ1" target="_blank" rel="noreferrer" className="social-round-btn" aria-label="TikTok">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.34-6.34V9.48a8.18 8.18 0 004.76 1.52V7.56a4.83 4.83 0 01-1-.87z"></path></svg>
               </a>
             </div>
@@ -182,7 +182,7 @@ export default function Header() {
             <a href="https://www.instagram.com/alturasglobalsolutions?igsh=MTZ6enk2NGVxdmNvcQ%3D%3D&utm_source=qr" target="_blank" rel="noreferrer" aria-label="Instagram">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
             </a>
-            <a href="https://www.tiktok.com/@alturasglobalsolutions?_r=1&_t=ZS-972xFgehEiD" target="_blank" rel="noreferrer" aria-label="TikTok">
+            <a href="https://www.tiktok.com/@alturas.global.so?_r=1&_t=ZS-9AB4at2biQ1" target="_blank" rel="noreferrer" aria-label="TikTok">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.34-6.34V9.48a8.18 8.18 0 004.76 1.52V7.56a4.83 4.83 0 01-1-.87z"></path></svg>
             </a>
           </div>

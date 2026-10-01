@@ -82,7 +82,7 @@ export default function RootLayout({
                 <a href="https://www.instagram.com/alturasglobalsolutions?igsh=MTZ6enk2NGVxdmNvcQ%3D%3D&utm_source=qr" target="_blank" rel="noreferrer" aria-label="Instagram" style={{ color: '#fff', background: 'rgba(255,255,255,0.1)', padding: '10px', borderRadius: '50%', display: 'flex', transition: 'background 0.3s' }}>
                   <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
                 </a>
-                <a href="https://www.tiktok.com/@alturasglobalsolutions?_r=1&_t=ZS-972xFgehEiD" target="_blank" rel="noreferrer" aria-label="TikTok" style={{ color: '#fff', background: 'rgba(255,255,255,0.1)', padding: '10px', borderRadius: '50%', display: 'flex', transition: 'background 0.3s' }}>
+                <a href="https://www.tiktok.com/@alturas.global.so?_r=1&_t=ZS-9AB4at2biQ1" target="_blank" rel="noreferrer" aria-label="TikTok" style={{ color: '#fff', background: 'rgba(255,255,255,0.1)', padding: '10px', borderRadius: '50%', display: 'flex', transition: 'background 0.3s' }}>
                   <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path></svg>
                 </a>
               </div>
