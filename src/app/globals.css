@@ -1,6 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:wght@400;600&display=swap');
 
 :root {
+  /* Fluid base font: scales from 12px (320px screen) to 16px (1400px screen).
+     All rem-based sizes scale proportionally — no abrupt breakpoints. */
+  font-size: clamp(12px, 0.875rem + 0.5vw, 16px);
+
   --primary-teal: #0d6978;
   --primary-orange: #ed6c23;
   --text-dark: #111111;
@@ -45,9 +49,9 @@ a {
 
 .container {
   width: 100%;
-  max-width: 1400px;
+  max-width: 1440px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 clamp(1rem, 4vw, 2rem);
 }
 
 /* Header / Navbar (Ianasa Style) */
@@ -57,7 +61,7 @@ a {
   left: 0;
   width: 100%;
   z-index: 1000;
-  background: rgba(0, 0, 0, 0.85);
+  background: #050505;
   backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   padding: 1rem 0 2.2rem 0;
@@ -282,24 +286,15 @@ a {
 /* Hero Slider Section */
 .hero {
   position: relative;
-  height: 100vh;
+  height: calc(100vh - var(--header-offset));
   min-height: 600px;
   display: flex;
   align-items: center;
   overflow: hidden;
+  background-color: #000000;
 }
 
-.hero-video-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 85%;
-  z-index: -2;
-  transition: opacity 1s ease-in-out;
-}
+.hero-video-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; z-index: -2; transition: opacity 1s ease-in-out; background-color: #000; }
 
 /* Black solid band on left that fades to transparent (Ianasa style) */
 .hero-overlay {
@@ -309,12 +304,10 @@ a {
   width: 100%;
   height: 100%;
   background: linear-gradient(90deg,
-      rgba(0, 0, 0, 0.98) 0%,
-      rgba(0, 0, 0, 0.95) 10%,
-      rgba(0, 0, 0, 0.80) 25%,
-      rgba(0, 0, 0, 0.45) 45%,
-      rgba(0, 0, 0, 0.15) 60%,
-      transparent 80%);
+      rgba(0, 0, 0, 0.95) 0%,
+      rgba(0, 0, 0, 0.85) 15%,
+      rgba(0, 0, 0, 0.50) 30%,
+      transparent 50%);
   z-index: -1;
 }
 
@@ -977,15 +970,8 @@ section {
   z-index: 2;
 }
 
-.page-hero-subtitle {
-  color: var(--primary-orange);
-  font-family: var(--font-heading);
-  font-weight: 700;
-  font-size: 0.9rem;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  display: block;
-  margin-bottom: 1rem;
+.page.hero-subtitle {
+  font-size: clamp(0.85rem, 0.5vw + 0.6rem, 1rem) !important;
 }
 
 .page-hero-title {
@@ -1590,13 +1576,18 @@ section {
 }
 
 .gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 1.5rem;
   margin-bottom: 4rem;
 }
 
 .gallery-item {
+  width: calc(33.333% - 1rem);
+  min-width: 320px;
+  max-width: 450px;
+  flex-grow: 1;
   border-radius: 12px;
   overflow: hidden;
   position: relative;
@@ -2050,7 +2041,7 @@ section {
   }
 }
 
-/* Legal Pages Styles — Premium Redesign */
+/* Legal Pages Styles ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â Premium Redesign */
 .legal-page-wrapper {
   background: linear-gradient(170deg, #0b1320 0%, #0f1e30 50%, #0d2535 100%);
   min-height: 100vh;
@@ -2633,7 +2624,7 @@ section {
   background: var(--primary-teal);
 }
 
-/* FAQ Items — Accordion Style */
+/* FAQ Items ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â Accordion Style */
 .faq-item {
   background: rgba(255, 255, 255, 0.025);
   backdrop-filter: blur(8px);
@@ -3050,7 +3041,7 @@ section {
 }
 
 .service-zigzag-content ul li::before {
-  content: "✓";
+  content: "✔";
   position: absolute;
   left: 0;
   color: var(--primary-orange);
@@ -3198,7 +3189,7 @@ section {
 }
 
 .service-full-content ul li::before {
-  content: "✓";
+  content: "✔";
   position: absolute;
   left: 0;
   font-weight: 900;
@@ -3208,9 +3199,15 @@ section {
 /* Actions */
 .service-full-actions {
   display: flex;
-  gap: 1rem;
+  gap: 0.6rem;
   flex-wrap: wrap;
+  align-items: center;
 }
+.service-full-actions .btn {
+  padding: 0.75rem 1.2rem !important;
+  font-size: 0.9rem !important;
+}
+
 
 .service-full-btn {
   padding: 0.9rem 2.2rem !important;
@@ -3239,20 +3236,14 @@ section {
   position: relative;
 }
 
-.service-full-img-inner {
-  position: relative;
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-}
+.service-full-img-inner { position: relative; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.4), 0 0 30px rgba(255,255,255,0.05); border: 1px solid rgba(255, 255, 255, 0.1); background: #0b1320; transition: transform 0.4s ease, box-shadow 0.4s ease; }
 
 .service-full-img-inner:hover {
   transform: translateY(-8px);
   box-shadow: 0 35px 70px rgba(0, 0, 0, 0.2);
 }
 
-.service-full-img-inner img {
+.service-full-img-inner img, .service-full-img-inner video {
   width: 100%;
   height: 420px;
   object-fit: cover;
@@ -3280,7 +3271,7 @@ section {
 }
 
 
-/* ===== THEME 1: Líneas de Vida — White with teal accents ===== */
+/* ===== THEME 1: LÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â­neas de Vida ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â White with teal accents ===== */
 .service-theme-lineas-vida {
   background: linear-gradient(135deg, #ffffff 0%, #f0f9fa 40%, #e8f4f6 100%);
 }
@@ -3338,7 +3329,7 @@ section {
 }
 
 
-/* ===== THEME 2: Puntos de Anclaje — Dark navy with orange sparks ===== */
+/* ===== THEME 2: Puntos de Anclaje ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â Dark navy with orange sparks ===== */
 .service-theme-anclaje {
   background: linear-gradient(160deg, #0b1320 0%, #0f1d30 50%, #142440 100%);
   color: #ffffff;
@@ -3399,7 +3390,7 @@ section {
 }
 
 
-/* ===== THEME 3: Pintura en Altura — Warm light with orange gradient ===== */
+/* ===== THEME 3: Pintura en Altura ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â Warm light with orange gradient ===== */
 .service-theme-pintura {
   background: linear-gradient(135deg, #fff8f0 0%, #fff2e5 40%, #ffe8d3 100%);
 }
@@ -3457,7 +3448,7 @@ section {
 }
 
 
-/* ===== THEME 4: Hidrolavado — Cool blue aqua with wave patterns ===== */
+/* ===== THEME 4: Hidrolavado ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â Cool blue aqua with wave patterns ===== */
 .service-theme-hidrolavado {
   background: linear-gradient(160deg, #e8f6fc 0%, #d4eef8 40%, #bfe5f4 100%);
 }
@@ -3515,7 +3506,7 @@ section {
 }
 
 
-/* ===== THEME 5: Mantenimiento Industrial — Dark charcoal with steel accents ===== */
+/* ===== THEME 5: Mantenimiento Industrial ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â Dark charcoal with steel accents ===== */
 .service-theme-mantenimiento {
   background: linear-gradient(160deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
   color: #ffffff;
@@ -3576,7 +3567,7 @@ section {
 }
 
 
-/* ===== THEME 6: Capacitación — Deep teal with knowledge feel ===== */
+/* ===== THEME 6: CapacitaciÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â³n ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â Deep teal with knowledge feel ===== */
 .service-theme-capacitacion {
   background: linear-gradient(135deg, #f0faf5 0%, #e4f5ed 40%, #d4efe3 100%);
 }
@@ -3634,7 +3625,7 @@ section {
 }
 
 
-/* ===== THEME 7: Inspección con Drone — White/Black minimalist ===== */
+/* ===== THEME 7: InspecciÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â³n con Drone ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â White/Black minimalist ===== */
 .service-theme-drone {
   background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 50%, #e9ecef 100%);
   color: #333333;
@@ -3745,7 +3736,7 @@ section {
     gap: 3rem;
   }
 
-  .service-full-img-inner img {
+  .service-full-img-inner img, .service-full-img-inner video {
     height: 320px;
   }
 
@@ -3765,7 +3756,7 @@ section {
     font-size: 1.6rem !important;
   }
 
-  .service-full-img-inner img {
+  .service-full-img-inner img, .service-full-img-inner video {
     height: 250px;
   }
 
@@ -3883,7 +3874,7 @@ section {
 }
 
 
-/* ── Theme-specific type styling ── */
+/* ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã‚ÂÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã‚ÂÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ Theme-specific type styling ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã‚ÂÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã‚ÂÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ */
 
 /* Light themes (lineas-vida, pintura, hidrolavado, capacitacion) */
 .service-theme-lineas-vida .service-types-title,
@@ -4499,7 +4490,7 @@ section {
 
 /* Main Content spacing */
 .main-content {
-  padding-top: 100px;
+  padding-top: var(--header-offset);
 }
 
 /* ===== MOBILE MENU BUTTON ===== */
@@ -4732,23 +4723,27 @@ section {
   border-color: var(--primary-teal);
 }
 
-/* ===== BREAKPOINT: 1366px — Medium Laptops ===== */
+/* ===== BREAKPOINT: 1366px ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â Medium Laptops ===== */
 @media (max-width: 1366px) {
   .logo-img {
-    height: 95px !important;
+    height: 85px !important;
   }
   .nav-menu {
-    padding: 0.6rem 1.2rem;
+    padding: 0.5rem 1rem;
   }
   .nav-links {
-    gap: 0.9rem !important;
+    gap: 0.7rem !important;
+  }
+  .nav-links a {
+    font-size: 0.8rem !important;
   }
   .header-cta-btn {
-    padding: 0.6rem 1.5rem !important;
+    padding: 0.5rem 1.2rem !important;
+    font-size: 0.8rem !important;
   }
 }
 
-/* ===== BREAKPOINT: 1200px — Laptops pequeñas ===== */
+/* ===== BREAKPOINT: 1200px ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â Laptops pequeÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â±as ===== */
 @media (max-width: 1200px) {
   .logo-img {
     height: 80px !important;
@@ -4776,10 +4771,10 @@ section {
   }
 }
 
-/* ===== BREAKPOINT: 992px — Tablets & Hamburger ===== */
+/* ===== BREAKPOINT: 992px ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â Tablets & Hamburger ===== */
 @media (max-width: 992px) {
   .main-content {
-    padding-top: 80px;
+    padding-top: var(--header-offset);
   }
 
   /* Show hamburger, hide desktop nav */
@@ -4839,13 +4834,13 @@ section {
 
   /* ===== INLINE-STYLE GRID OVERRIDES ===== */
 
-  /* Home: Stats row (4 cols → 2) */
+  /* Home: Stats row (4 cols ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ 2) */
   .responsive-stats-grid {
     grid-template-columns: repeat(2, 1fr) !important;
     gap: 1.5rem !important;
   }
 
-  /* Home: Catalog/services grid (3 cols → 2) */
+  /* Home: Catalog/services grid (3 cols ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ 2) */
   .catalog-grid {
     grid-template-columns: repeat(2, 1fr) !important;
   }
@@ -4938,10 +4933,10 @@ section {
   }
 }
 
-/* ===== BREAKPOINT: 768px — Tablets small / Phones large ===== */
+/* ===== BREAKPOINT: 768px ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â Tablets small / Phones large ===== */
 @media (max-width: 768px) {
   .main-content {
-    padding-top: 70px;
+    padding-top: var(--header-offset);
   }
 
   .logo-img {
@@ -4984,7 +4979,7 @@ section {
     right: 8px !important;
   }
 
-  /* Home: Stats → 2 columns still OK */
+  /* Home: Stats ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ 2 columns still OK */
 
   /* Services catalog cards */
   .catalog-grid {
@@ -4992,7 +4987,7 @@ section {
     gap: 2rem !important;
   }
 
-  /* Longdyes: products → 1 col */
+  /* Longdyes: products ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ 1 col */
   .longdyes-products-grid {
     grid-template-columns: 1fr !important;
   }
@@ -5041,10 +5036,10 @@ section {
   }
 }
 
-/* ===== BREAKPOINT: 576px — Phones ===== */
+/* ===== BREAKPOINT: 576px ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â Phones ===== */
 @media (max-width: 576px) {
   .main-content {
-    padding-top: 65px;
+    padding-top: var(--header-offset);
   }
 
   .container {
@@ -5371,3 +5366,422 @@ section {
 .lightbox-content-wrapper { display: flex; align-items: center; justify-content: center; background: radial-gradient(circle, #ffffff 0%, #f4f7f9 100%); border-radius: 16px; padding: clamp(0.5rem, 2vw, 2rem); max-width: 95vw; max-height: 90vh; box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5); }
 .lightbox-content-wrapper img { max-width: 100%; max-height: 85vh; object-fit: contain; }
 
+/* HEADER OFFSETS */
+:root { --header-offset: 192px; }
+@media (max-width: 1366px) { :root { --header-offset: 135px; } }
+@media (max-width: 1200px) { :root { --header-offset: 132px; } }
+@media (max-width: 992px) { :root { --header-offset: 94px; } }
+@media (max-width: 768px) { :root { --header-offset: 84px; } }
+@media (max-width: 576px) { :root { --header-offset: 65px; } }
+
+/* SUB-DROPDOWN MENU STYLES */
+.nav-subdropdown-parent { position: relative; }
+.nav-subdropdown { position: absolute; top: -1rem; left: 100%; background: white; min-width: 250px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); padding: 1rem 0; opacity: 0; visibility: hidden; transform: translateX(-10px); transition: all 0.3s ease; z-index: 200; }
+.nav-subdropdown-parent:hover .nav-subdropdown { opacity: 1; visibility: visible; transform: translateX(0); }
+.nav-subdropdown a { display: block; padding: 0.7rem 1.5rem; color: #444; text-decoration: none; font-weight: 600; font-size: 0.85rem; transition: all 0.2s ease; }
+.nav-subdropdown a:hover, .nav-subdropdown a.active { color: var(--primary-orange); background: rgba(237, 108, 35, 0.05); padding-left: 1.8rem; }
+.subdropdown-trigger:hover { color: var(--primary-orange) !important; background: rgba(237, 108, 35, 0.05); }
+@media (max-width: 992px) {
+  .nav-subdropdown { position: static; box-shadow: none; opacity: 1; visibility: visible; transform: none; padding: 0; margin-left: 1.5rem; display: none; }
+  .nav-subdropdown-parent:hover .nav-subdropdown { display: block; }
+}
+
+
+
+
+
+
+/* ====================================
+   RESPONSIVE - SERVICE DETAIL PAGE 
+   ==================================== */
+@media (max-width: 992px) {
+  .service-full-layout,
+  .service-full-layout.reverse {
+    flex-direction: column !important;
+    gap: 2.5rem;
+  }
+
+  .service-full-content,
+  .service-full-img {
+    flex: unset !important;
+    width: 100% !important;
+  }
+
+  .service-full-img-inner img,
+  .service-full-img-inner video {
+    height: 280px;
+  }
+
+  .service-detail-intro {
+    flex-direction: column !important;
+    gap: 2rem;
+  }
+
+  .service-types-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .service-full-actions {
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+
+  .service-full-actions .btn,
+  .service-full-actions a {
+    width: 100% !important;
+    text-align: center !important;
+    justify-content: center !important;
+  }
+
+  .longdyes-products-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  .longdyes-stats-bar {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .service-full-content h2 {
+    font-size: 1.6rem !important;
+  }
+
+  .service-full-img-inner img,
+  .service-full-img-inner video {
+    height: 220px;
+  }
+
+  .longdyes-products-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .longdyes-stats-bar {
+    grid-template-columns: 1fr 1fr !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .service-full-content h2 {
+    font-size: 1.4rem !important;
+  }
+
+  .hero-title-orange,
+  .hero-title-white {
+    font-size: 1.8rem !important;
+  }
+
+  .hero-subtitle {
+    font-size: 0.95rem !important;
+  }
+
+  .hero-cta-buttons {
+    flex-direction: column !important;
+    gap: 0.8rem;
+  }
+
+  .hero-cta-buttons .btn {
+    width: 100% !important;
+    text-align: center !important;
+  }
+
+  .section {
+    padding: 3rem 0 !important;
+  }
+
+  .longdyes-brand-logo-img {
+    height: 70px !important;
+  }
+
+  .longdyes-stats-bar {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 1.2rem;
+  }
+
+  .service-full-layout {
+    gap: 1.5rem !important;
+  }
+
+  .service-process-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .service-norms-list {
+    flex-direction: column !important;
+  }
+
+  .container {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+}
+
+
+/* ================================================
+   FLUID PROGRESSIVE SCALING (NO HARD BREAKPOINTS)
+   The root font-size scales with viewport, so all
+   rem-based values shrink/grow proportionally.
+   These rules add extra fluid adjustments for 
+   elements that use fixed px sizes.
+   ================================================ */
+
+/* Hero titles - fluid scaling */
+.hero-title-orange,
+.hero-title-white {
+  font-size: clamp(1.4rem, 2vw + 1rem, 3.2rem) !important;
+  line-height: 1.15 !important;
+}
+
+.hero-subtitle {
+  font-size: clamp(0.85rem, 0.5vw + 0.7rem, 1.2rem) !important;
+}
+
+/* Section titles */
+.section-title {
+  font-size: clamp(1.4rem, 2vw + 0.8rem, 3rem) !important;
+}
+
+/* Service detail page - image height scales with viewport */
+.service-full-img-inner img,
+.service-full-img-inner video {
+  height: clamp(200px, 30vw, 420px) !important;
+}
+
+/* Service full layout — switches to column before wrapping */
+@media (max-width: 900px) {
+  .service-full-layout,
+  .service-full-layout.reverse {
+    flex-direction: column !important;
+    gap: clamp(1.5rem, 4vw, 3rem);
+  }
+
+  .service-full-content,
+  .service-full-img {
+    width: 100% !important;
+  }
+}
+
+/* Container fluid padding */
+.container {
+  padding-left: clamp(1rem, 4vw, 2rem);
+  padding-right: clamp(1rem, 4vw, 2rem);
+}
+
+/* Logo scales fluidly */
+.logo-img {
+  height: clamp(60px, 9vw, 130px) !important;
+}
+
+/* Section spacing scales fluidly */
+.section {
+  padding: clamp(2rem, 6vw, 6rem) 0 !important;
+}
+
+/* Buttons scale down smoothly */
+.btn {
+  font-size: clamp(0.78rem, 0.5vw + 0.65rem, 1rem) !important;
+  padding: clamp(0.5rem, 1vw, 0.9rem) clamp(1rem, 2vw, 2rem) !important;
+}
+
+/* Nav links scale */
+.nav-links li a {
+  font-size: clamp(0.65rem, 0.4vw + 0.55rem, 0.9rem) !important;
+}
+
+/* Service card h2 */
+.service-full-content h2 {
+  font-size: clamp(1.2rem, 2.5vw + 0.5rem, 2.5rem) !important;
+}
+
+/* Service card text */
+.service-full-content p {
+  font-size: clamp(0.9rem, 0.5vw + 0.75rem, 1.15rem) !important;
+}
+
+/* Grid columns shrink gracefully */
+.longdyes-products-grid {
+  grid-template-columns: repeat(auto-fit, minmax(clamp(200px, 28vw, 350px), 1fr)) !important;
+}
+
+.longdyes-stats-bar {
+  grid-template-columns: repeat(auto-fit, minmax(clamp(120px, 18vw, 250px), 1fr)) !important;
+}
+
+.hero-desc {
+  font-size: clamp(0.9rem, 1vw + 0.5rem, 1.1rem) !important;
+  max-width: 550px !important;
+  line-height: 1.5 !important;
+  margin-bottom: 1.5rem !important;
+}
+
+.hero-actions .btn {
+  padding: 0.8rem 1.8rem !important;
+  font-size: 0.9rem !important;
+}
+
+.hero {
+  
+}
+
+
+
+
+
+.hero {
+  margin-top: calc(-1 * var(--header-offset)) !important;
+  height: 100vh !important;
+}
+
+
+/* GLOBAL RESPONSIVE MEDIA */
+img, video {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ====================================
+   SENIOR UI/UX DESKTOP REFACTOR
+   Optimized for 1024px, 1366px, 1920px
+   ==================================== */
+
+/* Fluid Grids - Transform stacked elements to multi-column to use horizontal space */
+.catalog-grid,
+.service-process-grid,
+.longdyes-products-grid {
+  display: grid !important;
+  /* Uses auto-fit to perfectly adapt to any desktop size without media queries */
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, clamp(280px, 22vw, 380px)), 1fr)) !important;
+  gap: clamp(1.5rem, 3vw, 3rem) !important;
+  width: 100%;
+}
+
+/* Service Detail Layout - Ensure side-by-side on desktop */
+@media (min-width: 1024px) {
+  .service-full-layout {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center;
+    gap: clamp(2rem, 5vw, 6rem);
+  }
+  .service-full-layout.reverse {
+    flex-direction: row-reverse !important;
+  }
+  .service-full-content {
+    flex: 1 1 50% !important;
+    max-width: 50% !important;
+  }
+  .service-full-img {
+    flex: 1 1 50% !important;
+    max-width: 50% !important;
+  }
+  .service-full-img-inner {
+    border-radius: 20px;
+    overflow: hidden;
+  }
+}
+
+/* Section Spacing - Use viewport units for fluid spacing */
+.section, .fullscreen-section {
+  padding: clamp(3rem, 6vw, 8rem) 0 !important;
+}
+
+/* Typography Line Length for Readability (60-80 chars) */
+p, .hero-desc, .service-detail-text {
+  max-width: 75ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.service-full-content p {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+/* Prevent any horizontal scrolling */
+body, html {
+  overflow-x: hidden !important;
+  width: 100%;
+}
+
+/* 1920px (Ultra Wide) Optimization */
+@media (min-width: 1600px) {
+  .container {
+    max-width: 1536px !important;
+  }
+  .hero-content {
+    transform: scale(1.1) translateY(-50%) !important;
+    transform-origin: left center;
+  }
+}
+
+
+/* Ensure service images and catalog images keep cover fit */
+.service-full-img-inner img, .service-full-img-inner video, .catalog-card img {
+  object-fit: cover !important;
+}
+
+
+/* FIX LOGO SQUISHING */
+.logo-img {
+  width: auto !important;
+  max-width: none !important;
+  object-fit: contain !important;
+  flex-shrink: 0 !important;
+}
+.logo-container {
+  flex-shrink: 0 !important;
+}
+
+
+/* RESTORE 5-COLUMN SERVICES SHOWCASE FOR DESKTOP ONLY */
+
+
+/* RESTORE 5-COLUMN SERVICES SHOWCASE FOR DESKTOP ONLY */
+@media (min-width: 1024px) {
+  .services-showcase-section .catalog-grid {
+    grid-template-columns: repeat(5, 1fr) !important;
+  }
+}
+
+
+/* RESPONSIVE HEADER FOR LAPTOPS (1024-1440px) */
+.navbar {
+  gap: clamp(1rem, 3vw, 5rem) !important;
+  justify-content: center !important;
+}
+.nav-menu {
+  padding: 0.6rem clamp(1rem, 2vw, 1.7rem) !important;
+}
+.nav-links {
+  gap: clamp(1rem, 2vw, 2.5rem) !important;
+}
+
+
+/* UNIFORM HEADER SCALING FOR LAPTOPS */
+
+
+
+/* EXPLICIT VALID HEADER SCALING FOR LAPTOPS */
+
+
+
+
+
+
+
+
+
+/* OPTIMIZED ZOOM MEDIA QUERIES */
+@media (max-width: 2200px) { .header-wrapper { zoom: 0.95 !important; } }
+@media (max-width: 1950px) { .header-wrapper { zoom: 0.90 !important; } }
+@media (max-width: 1750px) { .header-wrapper { zoom: 0.82 !important; } }
+@media (max-width: 1550px) { .header-wrapper { zoom: 0.75 !important; } }
+@media (max-width: 1400px) { .header-wrapper { zoom: 0.68 !important; } }
+@media (max-width: 1250px) { .header-wrapper { zoom: 0.60 !important; } }
+@media (max-width: 1100px) { .header-wrapper { zoom: 0.52 !important; } }
+
+
+/* FIX PAGE HERO WHITE SPACE */
+.page-hero {
+  margin-top: calc(-1 * var(--header-offset)) !important;
+}

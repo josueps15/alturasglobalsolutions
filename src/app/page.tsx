@@ -96,14 +96,14 @@ export default function Home() {
   return (
     <>
       {/* Hero Slider Section */}
-      <section id="inicio" className="hero">
-        <AnimatePresence mode="wait">
+      <section id="inicio" className="hero" style={{ backgroundColor: '#000', zIndex: 0 }}>
+        <AnimatePresence>
           <motion.video
             key={slide.id}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.4 }}
+            transition={{ duration: 1.2, ease: "easeInOut" }}
             autoPlay
             loop
             muted
@@ -124,19 +124,19 @@ export default function Home() {
 
         <div className="container" style={{ position: 'relative', height: '100%' }}>
           <AnimatePresence mode="wait">
-            <motion.div
-              key={slide.id}
-              className="hero-content"
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: 50 }}
-              transition={{ duration: 0.6 }}
-              style={{ position: 'absolute', top: '33%', transform: 'translateY(-50%)' }}
-            >
+              <motion.div
+                key={slide.id}
+                className="hero-content"
+                initial={{ opacity: 0, x: -50 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: 50 }}
+                transition={{ duration: 0.6 }}
+                style={{ position: 'absolute', top: 'calc(50% + (var(--header-offset) / 2))', transform: 'translateY(-50%)', textAlign: 'left', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}
+              >
               <span className="hero-title-orange">{slide.titleOrange}</span>
               <span className="hero-title-white">{slide.titleWhite}</span>
-              <p className="hero-desc">{slide.desc}</p>
-              <div className="hero-actions">
+              <p className="hero-desc" style={{ marginLeft: 0, marginRight: 0 }}>{slide.desc}</p>
+              <div className="hero-actions" style={{ justifyContent: 'flex-start' }}>
                 <Link href={slide.primaryBtn.link} className="btn btn-primary">{slide.primaryBtn.text}</Link>
                 <Link href={slide.secondaryBtn.link} className="btn btn-white">{slide.secondaryBtn.text}</Link>
               </div>

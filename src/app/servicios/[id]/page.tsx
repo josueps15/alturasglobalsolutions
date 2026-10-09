@@ -9,7 +9,8 @@ import { createPortal } from 'react-dom';
 const SERVICES_DATA: Record<string, any> = {
   "instalacion-lineas-vida": {
     title: "Instalación de Líneas de Vida Certificadas",
-    bg: "/foto-en-portada-de-lineas-de-vida.jpeg",
+    bg: "/gallery/linea_vida_new_1.jpeg",
+    video: "/videos/video_buble_puntos_de_lineas_de_vida.mp4",
     theme: "lineas-vida",
     desc: <>Diseño e instalación de sistemas de protección anti caídas, líneas de vida certificadas bajo las normas UNE -EN 795 y <a href="https://epishop.es/lineas-de-vida-que-son/" target="_blank" rel="noopener noreferrer" style={{textDecoration: 'underline'}}>UNE-EN 353</a> horizontales y verticales, tanto temporales como permanentes, dispositivos de anticaídas retractiles bajo la normativa EN 360.<br/><br/>Como representantes oficiales de Longdyes en Ecuador, garantizamos productos de la más alta calidad y resistencia estructural.</>,
     longDesc: "Una línea de vida es un sistema de protección contra caídas que permite a los trabajadores desplazarse de forma segura por zonas elevadas mientras permanecen conectados a un punto de anclaje continuo. Nuestros sistemas cumplen con las normativas más exigentes a nivel internacional y son diseñados a medida para cada proyecto, considerando factores como la geometría de la cubierta, el número de usuarios simultáneos y las condiciones climáticas.",
@@ -20,16 +21,16 @@ const SERVICES_DATA: Record<string, any> = {
         {
           category: "Verticales",
           sub: [
-            { name: "Flexibles", norm: "CE EN 353-2", materials: ["Cable", "Cuerda"], img: "/lineas-vida-verticales-rot.jpeg" },
-            { name: "Rígidas", norm: "CE EN 353-1", materials: ["Cable", "Rail"], img: "/lineas-vida-rigidas.jpeg" }
+            { name: "Línea de vida vertical de cable de acero", norm: "CE EN 353-2", materials: ["Cable", "Cuerda"], img: "/lineas-vida-verticales-rot.jpeg" },
+            { name: "Línea de vida vertical para escalera gatera retráctil", norm: "CE EN 353-1", materials: ["Cable", "Rail"], img: "/lineas-de-vida/vertical-escalera.png" }
           ]
         },
         {
           category: "Horizontales",
           sub: [
-            { name: "Flexibles", norm: "CE EN 795 C", materials: ["Cable"], imgs: ["/lineas-de-vida/linea-vida-flexible-provisoria-1.png", "/lineas-de-vida/linea-vida-flexible-provisoria-2.png"] },
-            { name: "Temporales", norm: "CE EN 795 B", materials: ["Cable", "Textiles"], img: "/lineas-vida-temporales.jpeg" },
-            { name: "Rígidas", norm: "CE EN 795 D", materials: ["Cable", "Rail"], img: "/lineas-vida-rigidas.jpeg" }
+            { name: "Línea de vida horizontal para techos y cubiertas", norm: "CE EN 795 C", materials: ["Cable"], img: "/lineas-de-vida/horizontal-techos.png" },
+            { name: "Línea de vida horizontal textil provisora", norm: "CE EN 795 B", materials: ["Cable", "Textiles"], imgs: ["/lineas-de-vida/linea-vida-flexible-provisoria-1.png", "/lineas-de-vida/linea-vida-flexible-provisoria-2.png"] },
+            { name: "Línea de vida horizontal rígida", norm: "CE EN 795 D", materials: ["Cable", "Rail"], img: "/lineas-vida-rigidas.jpeg" }
           ]
         }
       ]
@@ -45,7 +46,8 @@ const SERVICES_DATA: Record<string, any> = {
   },
   "instalacion-puntos-anclaje": {
     title: "Instalación de Puntos de Anclaje",
-    bg: "/puntos-de-anclaje-1.jpeg",
+    bg: "/gallery/puntos-de-anclaje-galeria-1.jpeg",
+    video: "/videos/video_buble_puntos_de_anclaje.mp4",
     theme: "anclaje",
     desc: "Instalación certificada de puntos de anclaje estructurales para trabajos en alturas. Utilizamos anclajes químicos y mecánicos de alta resistencia, garantizando puntos de conexión seguros y certificados según normativas internacionales.",
     longDesc: "Los puntos de anclaje son elementos estructurales diseñados para soportar las fuerzas generadas durante una caída. Son la base fundamental de cualquier sistema de protección contra caídas. Cada punto debe ser instalado considerando el tipo de sustrato, la carga máxima esperada y el número de trabajadores que lo utilizarán simultáneamente. Realizamos pruebas de tracción con equipos dinamométricos para garantizar la resistencia mínima requerida.",
@@ -297,9 +299,9 @@ const CardImageGallery = ({ imgs, img, alt, isFlexibleVertical }: any) => {
             animate={{ scale: 1 }}
             exit={{ scale: 0.9 }}
             className="lightbox-content-wrapper"
-            onClick={e => e.stopPropagation()}
+            style={{ position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'transparent' }}
           >
-             <img src={images[currentIndex]} alt={alt} />
+             <img onClick={e => e.stopPropagation()} src={images[currentIndex]} alt={alt} style={{ maxWidth: '90vw', maxHeight: '90vh', objectFit: 'contain', background: 'transparent' }} />
           </motion.div>
 
           {images.length > 1 && (
@@ -317,8 +319,8 @@ const CardImageGallery = ({ imgs, img, alt, isFlexibleVertical }: any) => {
       <div 
         style={{ 
           position: 'relative', width: '100%', 
-          height: isFlexibleVertical ? 'auto' : '220px', 
-          maxHeight: isFlexibleVertical ? '350px' : 'none', 
+          height: isFlexibleVertical ? '400px' : '220px', 
+          maxHeight: 'none', 
           marginBottom: '1rem', borderRadius: '8px', overflow: 'hidden', 
           border: '1px solid rgba(0,0,0,0.05)', background: '#fff', cursor: 'pointer',
           display: 'flex', alignItems: 'center', justifyContent: 'center'
@@ -362,8 +364,19 @@ export default function ServicioDetail({ params }: { params: Promise<{ id: strin
   return (
     <>
       {/* Hero */}
-      <section className="page-hero" style={{ backgroundImage: `linear-gradient(rgba(11, 19, 32, 0.85), rgba(11, 19, 32, 0.95)), url(${service.bg})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed' }}>
-        <div className="container">
+      <section className="page-hero" style={service.bg && !service.bg.endsWith('.mp4') ? { backgroundImage: `linear-gradient(rgba(11, 19, 32, 0.85), rgba(11, 19, 32, 0.95)), url(${service.bg})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed' } : { background: 'linear-gradient(135deg, rgba(11, 19, 32, 0.95), rgba(11, 19, 32, 0.95))' }}>
+        {service.bg && service.bg.endsWith('.mp4') && (
+          <video 
+            autoPlay 
+            muted 
+            loop 
+            playsInline 
+            style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: 0, opacity: 0.3 }}
+          >
+            <source src={service.bg} type="video/mp4" />
+          </video>
+        )}
+        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <span className="page-hero-subtitle">Especialidad</span>
             <h1 className="page-hero-title">{service.title}</h1>
@@ -397,44 +410,119 @@ export default function ServicioDetail({ params }: { params: Promise<{ id: strin
                 ))}
               </ul>
             </motion.div>
-            <motion.div className="service-full-img" initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.7 }}>
+            <motion.div 
+              className="service-full-img" 
+              initial={{ opacity: 0, scale: 0.9 }} 
+              whileInView={{ opacity: 1, scale: 1 }} 
+              viewport={{ once: true }} 
+              transition={{ duration: 0.7 }}
+            >
               <div className="service-full-img-inner">
-                <img src={service.bg} alt={service.title} />
+                {service.video || service.bg.endsWith('.mp4') ? (
+                  <video 
+                    src={service.video || service.bg} 
+                    autoPlay 
+                    muted 
+                    playsInline 
+                    onTimeUpdate={(e) => {
+                      const vid = e.currentTarget;
+                      if (vid.duration && vid.currentTime >= vid.duration - 1) {
+                        vid.currentTime = 0;
+                        vid.play();
+                      }
+                    }}
+                    style={{ backgroundColor: '#0b1320' }} 
+                  />
+                ) : (
+                  <img src={service.bg} alt={service.title} />
+                )}
               </div>
-            </motion.div>
-          </div>
 
-          {/* Types Diagram */}
-          {service.types && (
-            <motion.div className="service-types-section" initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}>
-              <h3 className="service-types-title">{service.types.title}</h3>
-              <div className="service-types-grid">
-                {service.types.items.map((cat: any, ci: number) => (
-                  <div key={ci} className="service-type-category">
-                    <div className="service-type-category-header">
-                      <span className="service-type-category-name">{cat.category}</span>
+              {/* Premium Product CTA below image */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.3, duration: 0.6 }}
+                style={{ marginTop: '1.5rem' }}
+              >
+                <Link
+                  href={
+                    resolvedParams.id === 'instalacion-lineas-vida' ? '/kits-altura#linea-de-vida' : 
+                    resolvedParams.id === 'instalacion-puntos-anclaje' ? '/kits-altura#puntos-de-anclaje' : 
+                    ['pintura-en-altura', 'hidrolavado-fachadas', 'mantenimiento-industrial', 'capacitacion'].includes(resolvedParams.id) ? '/kits-altura#epp' : 
+                    '/kits-altura'
+                  }
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    gap: '16px',
+                    width: '100%',
+                    padding: '1.2rem 1.8rem',
+                    background: 'linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)',
+                    color: '#ffffff',
+                    borderRadius: '20px',
+                    textDecoration: 'none',
+                    fontWeight: 700,
+                    fontSize: '1rem',
+                    letterSpacing: '0.5px',
+                    boxShadow: '0 8px 30px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.08)',
+                    transition: 'all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
+                    border: '1px solid rgba(255,255,255,0.08)',
+                    position: 'relative',
+                    overflow: 'hidden',
+                  }}
+                  onMouseOver={e => {
+                    (e.currentTarget as HTMLAnchorElement).style.transform = 'translateY(-4px)';
+                    (e.currentTarget as HTMLAnchorElement).style.boxShadow = `0 16px 40px rgba(237,108,35,0.35), inset 0 1px 0 rgba(255,255,255,0.1)`;
+                    (e.currentTarget as HTMLAnchorElement).style.borderColor = 'rgba(237,108,35,0.5)';
+                  }}
+                  onMouseOut={e => {
+                    (e.currentTarget as HTMLAnchorElement).style.transform = 'translateY(0)';
+                    (e.currentTarget as HTMLAnchorElement).style.boxShadow = '0 8px 30px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.08)';
+                    (e.currentTarget as HTMLAnchorElement).style.borderColor = 'rgba(255,255,255,0.08)';
+                  }}
+                >
+                  {/* Left: icon + text */}
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '14px', zIndex: 1 }}>
+                    <div style={{
+                      width: '48px', height: '48px', borderRadius: '14px', flexShrink: 0,
+                      background: 'linear-gradient(135deg, #ed6c23, #ff9d00)',
+                      display: 'flex', alignItems: 'center', justifyContent: 'center',
+                      boxShadow: '0 6px 16px rgba(237,108,35,0.4)'
+                    }}>
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                        <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                        <line x1="12" y1="22.08" x2="12" y2="12"/>
+                      </svg>
                     </div>
-                    <div className="service-type-cards">
-                      {cat.sub.map((sub: any, si: number) => (
-                        <motion.div key={si} className="service-type-card" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: ci * 0.15 + si * 0.1 }}>
-                          {(sub.img || sub.imgs) && (
-                            <CardImageGallery imgs={sub.imgs} img={sub.img} alt={sub.name} isFlexibleVertical={sub.name === "Flexibles" && cat.category === "Verticales"} />
-                          )}
-                          <span className="service-type-card-name">{sub.name}</span>
-                          <span className="service-type-card-norm">{sub.norm}</span>
-                          <div className="service-type-card-materials">
-                            {sub.materials.map((m: string, mi: number) => (
-                              <span key={mi} className="service-type-material-tag">{m}</span>
-                            ))}
-                          </div>
-                        </motion.div>
-                      ))}
+                    <div>
+                      <div style={{ fontSize: '0.72rem', color: 'rgba(255,255,255,0.5)', textTransform: 'uppercase', letterSpacing: '1.5px', marginBottom: '3px' }}>Productos certificados</div>
+                      <div style={{ fontSize: '1rem', fontWeight: 800, color: '#fff' }}>Ver equipos para este servicio</div>
                     </div>
                   </div>
-                ))}
-              </div>
+
+                  {/* Right: arrow badge */}
+                  <div style={{
+                    width: '40px', height: '40px', borderRadius: '12px', flexShrink: 0,
+                    background: 'rgba(237,108,35,0.15)',
+                    border: '1px solid rgba(237,108,35,0.3)',
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    color: '#ed6c23',
+                    zIndex: 1,
+                    transition: 'all 0.3s ease'
+                  }}>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                      <line x1="5" y1="12" x2="19" y2="12"/>
+                      <polyline points="12 5 19 12 12 19"/>
+                    </svg>
+                  </div>
+                </Link>
+              </motion.div>
             </motion.div>
-          )}
+          </div>
 
           {/* Principal Call To Action (Related Products) */}
           <motion.div
@@ -475,7 +563,15 @@ export default function ServicioDetail({ params }: { params: Promise<{ id: strin
             </div>
 
             <div style={{ position: 'relative', zIndex: 2 }}>
-              <Link href="/kits-altura" className="btn" style={{ 
+              <Link 
+                href={
+                  resolvedParams.id === 'instalacion-lineas-vida' ? '/kits-altura#linea-de-vida' : 
+                  resolvedParams.id === 'instalacion-puntos-anclaje' ? '/kits-altura#puntos-de-anclaje' : 
+                  ['pintura-en-altura', 'hidrolavado-fachadas', 'mantenimiento-industrial', 'capacitacion'].includes(resolvedParams.id) ? '/kits-altura#epp' : 
+                  '/kits-altura'
+                } 
+                className="btn" 
+                style={{ 
                 display: 'inline-flex', alignItems: 'center', gap: '12px', padding: '1.2rem 3rem', fontSize: '1.15rem', 
                 backgroundColor: '#ffffff', color: theme.accentDark, borderRadius: '50px', textTransform: 'uppercase', fontWeight: 900, 
                 boxShadow: `0 15px 35px rgba(0,0,0,0.3)`, transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)' 
@@ -487,6 +583,38 @@ export default function ServicioDetail({ params }: { params: Promise<{ id: strin
               </Link>
             </div>
           </motion.div>
+
+          {/* Types Diagram */}
+          {service.types && (
+            <motion.div className="service-types-section" initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}>
+              <h3 className="service-types-title">{service.types.title}</h3>
+              <div className="service-types-grid">
+                {service.types.items.map((cat: any, ci: number) => (
+                  <div key={ci} className="service-type-category">
+                    <div className="service-type-category-header">
+                      <span className="service-type-category-name">{cat.category}</span>
+                    </div>
+                    <div className="service-type-cards">
+                      {cat.sub.map((sub: any, si: number) => (
+                        <motion.div key={si} className="service-type-card" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: ci * 0.15 + si * 0.1 }}>
+                          {(sub.img || sub.imgs) && (
+                            <CardImageGallery imgs={sub.imgs} img={sub.img} alt={sub.name} isFlexibleVertical={cat.category === "Verticales"} />
+                          )}
+                          <span className="service-type-card-name">{sub.name}</span>
+                          <span className="service-type-card-norm">{sub.norm}</span>
+                          <div className="service-type-card-materials">
+                            {sub.materials.map((m: string, mi: number) => (
+                              <span key={mi} className="service-type-material-tag">{m}</span>
+                            ))}
+                          </div>
+                        </motion.div>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          )}
 
           {/* Process Steps */}
           {service.process && (

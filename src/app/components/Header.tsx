@@ -2,10 +2,27 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
+  const [productosOpen, setProductosOpen] = useState(false);
+  const [eppOpen, setEppOpen] = useState(false);
+  const pathname = usePathname();
+
+  const isActive = (path: string) => {
+    if (path === '/') return pathname === '/';
+    return pathname.startsWith(path);
+  };
+
+  const handleInternalLink = (e: React.MouseEvent<HTMLAnchorElement>, hash: string) => {
+    if (typeof window !== 'undefined' && window.location.pathname === '/kits-altura') {
+      e.preventDefault();
+      window.history.pushState(null, '', hash);
+      window.dispatchEvent(new Event('hashchange'));
+    }
+  };
 
   // Prevent body scroll when mobile menu is open
   useEffect(() => {
@@ -20,6 +37,8 @@ export default function Header() {
   const closeMenu = () => {
     setMobileMenuOpen(false);
     setServicesOpen(false);
+    setProductosOpen(false);
+    setEppOpen(false);
   };
 
   return (
@@ -38,45 +57,70 @@ export default function Header() {
 
           {/* Desktop Navigation */}
           <div className="header-actions desktop-only" style={{ display: 'flex', alignItems: 'center', gap: 'clamp(0.5rem, 1vw, 1rem)' }}>
-            <div style={{ position: 'relative', display: 'flex', justifyContent: 'center' }}>
+            <div style={{ position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
               <div className="nav-menu">
-              <ul className="nav-links">
-                <li><Link href="/">INICIO</Link></li>
-                <li className="nav-dropdown-parent">
-                  <Link href="/soluciones">SERVICIOS <span className="dropdown-arrow">▾</span></Link>
-                  <div className="nav-dropdown">
-                    <Link href="/servicios/instalacion-lineas-vida" style={{ fontWeight: 700, fontSize: '103%' }}>Instalación Líneas de Vida Certificadas</Link>
-                    <Link href="/servicios/instalacion-puntos-anclaje" style={{ fontWeight: 700, fontSize: '103%' }}>Instalación Puntos de Anclaje</Link>
-                    <Link href="/servicios/pintura-en-altura">Servicio de Pintura en Alturas</Link>
-                    <Link href="/servicios/hidrolavado-fachadas">Hidrolavado de Fachadas</Link>
-                    <Link href="/servicios/mantenimiento-industrial">Mantenimiento Industrial</Link>
-                    <Link href="/servicios/capacitacion">Capacitación</Link>
-                  </div>
-                </li>
-                <li><Link href="/kits-altura">PRODUCTOS</Link></li>
-                <li><Link href="/trabajos">NUESTROS TRABAJOS</Link></li>
-                <li><Link href="/nosotros">NOSOTROS</Link></li>
-                <li><Link href="/contacto">CONTÁCTANOS</Link></li>
-              </ul>
-            </div>
-              {/* Eslogan — absoluto, centrado bajo la pastilla, sin afectar el layout */}
+                <ul className="nav-links">
+                  <li><Link href="/" className={isActive('/') ? 'active' : ''}>INICIO</Link></li>
+                  <li className="nav-dropdown-parent">
+                    <Link href="/soluciones" className={isActive('/soluciones') || isActive('/servicios') ? 'active' : ''}>SERVICIOS <span className="dropdown-arrow">▾</span></Link>
+                    <div className="nav-dropdown">
+                      <Link href="/servicios/instalacion-lineas-vida" style={{ fontWeight: 700, fontSize: '103%' }} className={isActive('/servicios/instalacion-lineas-vida') ? 'active' : ''}>Instalación Líneas de Vida Certificadas</Link>
+                      <Link href="/servicios/instalacion-puntos-anclaje" style={{ fontWeight: 700, fontSize: '103%' }} className={isActive('/servicios/instalacion-puntos-anclaje') ? 'active' : ''}>Instalación Puntos de Anclaje</Link>
+                      <Link href="/servicios/pintura-en-altura" className={isActive('/servicios/pintura-en-altura') ? 'active' : ''}>Servicio de Pintura en Alturas</Link>
+                      <Link href="/servicios/hidrolavado-fachadas" className={isActive('/servicios/hidrolavado-fachadas') ? 'active' : ''}>Hidrolavado de Fachadas</Link>
+                      <Link href="/servicios/mantenimiento-industrial" className={isActive('/servicios/mantenimiento-industrial') ? 'active' : ''}>Mantenimiento Industrial</Link>
+                      <Link href="/servicios/capacitacion" className={isActive('/servicios/capacitacion') ? 'active' : ''}>Capacitación</Link>
+                    </div>
+                  </li>
+                  <li className="nav-dropdown-parent">
+                    <Link href="/kits-altura" className={isActive('/kits-altura') || isActive('/productos') ? 'active' : ''}>PRODUCTOS <span className="dropdown-arrow">▾</span></Link>
+                    <div className="nav-dropdown" style={{ minWidth: '320px' }}>
+                      <Link href="/kits-altura#linea-de-vida" className={isActive('/kits-altura#linea-de-vida') ? 'active' : ''}>Línea de vida</Link>
+                      <Link href="/kits-altura#puntos-de-anclaje" className={isActive('/kits-altura#puntos-de-anclaje') ? 'active' : ''}>Puntos de anclaje</Link>
+                      <Link href="/kits-altura#cascos-de-proteccion" className={isActive('/kits-altura#cascos-de-proteccion') ? 'active' : ''}>Cascos de protección</Link>
+                      <Link href="/kits-altura#guantes-especializados" className={isActive('/kits-altura#guantes-especializados') ? 'active' : ''}>Guantes especializados</Link>
+                      <Link href="/kits-altura#gafas-de-proteccion" className={isActive('/kits-altura#gafas-de-proteccion') ? 'active' : ''}>Gafas de protección</Link>
+                      <Link href="/kits-altura#proteccion-auditiva" className={isActive('/kits-altura#proteccion-auditiva') ? 'active' : ''}>Protección auditiva</Link>
+                      <div className="nav-subdropdown-parent">
+                        <div className="subdropdown-trigger" style={{ padding: '0.7rem 1.5rem', fontWeight: 600, fontSize: '0.85rem', color: '#444', textTransform: 'none', cursor: 'pointer', display: 'flex', justifyContent: 'space-between', alignItems: 'center', transition: 'all 0.2s ease' }} onClick={() => window.location.href = '/kits-altura#epp'}>
+                          Equipo de protección personal
+                          <span style={{ fontSize: '0.65rem', color: '#888' }}>▶</span>
+                        </div>
+                        <div className="nav-subdropdown">
+                          <Link href="/kits-altura#epp" className={isActive('/kits-altura#epp') ? 'active' : ''}>Arnés</Link>
+                          <Link href="/kits-altura#epp" className={isActive('/kits-altura#epp') ? 'active' : ''}>Eslinga</Link>
+                          <Link href="/kits-altura#epp" className={isActive('/kits-altura#epp') ? 'active' : ''}>Cascos</Link>
+                          <Link href="/kits-altura#epp" className={isActive('/kits-altura#epp') ? 'active' : ''}>Kits para trabajos en alturas</Link>
+                          <Link href="/kits-altura#mosqueton-acero" onClick={(e) => handleInternalLink(e, '#mosqueton-acero')} className={isActive('/kits-altura#mosqueton-acero') ? 'active' : ''}>Mosquetones</Link>
+                          <Link href="/kits-altura#freno-cuerda" onClick={(e) => handleInternalLink(e, '#freno-cuerda')} className={isActive('/kits-altura#freno-cuerda') ? 'active' : ''}>Frenos y accesorios anticaída</Link>
+                          <Link href="/kits-altura#epp-gen" onClick={(e) => handleInternalLink(e, '#epp-gen')} className={isActive('/kits-altura#epp-gen') ? 'active' : ''}>Kit de EPP general</Link>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li><Link href="/trabajos" className={isActive('/trabajos') ? 'active' : ''}>NUESTROS TRABAJOS</Link></li>
+                  <li><Link href="/nosotros" className={isActive('/nosotros') ? 'active' : ''}>NOSOTROS</Link></li>
+                  <li><Link href="/contacto" className={isActive('/contacto') ? 'active' : ''}>CONTÁCTANOS</Link></li>
+                </ul>
+              </div>
+              {/* Eslogan — centrado bajo la pastilla, con position absolute para no romper la alineación de la barra */}
               <div style={{
                 position: 'absolute',
-                top: 'calc(100% + 2.1rem)',
-                left: '50%',
-                transform: 'translateX(-50%)',
-                whiteSpace: 'nowrap',
+                top: '100%',
+                marginTop: '10px',
+                width: '100%',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
+                whiteSpace: 'nowrap',
               }}>
                 <span style={{
                   fontFamily: 'var(--font-heading), Montserrat, sans-serif',
-                  fontSize: 'clamp(0.694rem, 0.918vw, 0.816rem)',
+                  fontSize: 'clamp(0.65rem, 0.8vw, 0.75rem)',
                   fontWeight: 600,
                   letterSpacing: '0.14em',
                   textTransform: 'uppercase',
-                  color: 'rgba(255,255,255,0.5)',
+                  color: 'rgba(255,255,255,0.6)',
                 }}>
                   Soluciones Inteligentes en{' '}
                   <span style={{ color: 'var(--primary-orange)', fontWeight: 800 }}>Protección contra Caídas</span>
@@ -161,7 +205,55 @@ export default function Header() {
           </div>
 
           <Link href="/nosotros" className="mobile-nav-link" onClick={closeMenu}>Nosotros</Link>
-          <Link href="/kits-altura" className="mobile-nav-link" onClick={closeMenu}>Productos</Link>
+
+          <div className="mobile-nav-accordion">
+            <button
+              className="mobile-nav-link mobile-nav-accordion-btn"
+              onClick={() => setProductosOpen(!productosOpen)}
+            >
+              Productos
+              <svg
+                width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"
+                style={{ transform: productosOpen ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 0.3s ease' }}
+              >
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </button>
+            <div className={`mobile-nav-sub ${productosOpen ? 'active' : ''}`}>
+              <Link href="/kits-altura#linea-de-vida" className="mobile-nav-sublink" onClick={closeMenu}>Línea de vida</Link>
+              <Link href="/kits-altura#puntos-de-anclaje" className="mobile-nav-sublink" onClick={closeMenu}>Puntos de anclaje</Link>
+              <Link href="/kits-altura#cascos-de-proteccion" className="mobile-nav-sublink" onClick={closeMenu}>Cascos de protección</Link>
+              <Link href="/kits-altura#guantes-especializados" className="mobile-nav-sublink" onClick={closeMenu}>Guantes especializados</Link>
+              <Link href="/kits-altura#gafas-de-proteccion" className="mobile-nav-sublink" onClick={closeMenu}>Gafas de protección</Link>
+              <Link href="/kits-altura#proteccion-auditiva" className="mobile-nav-sublink" onClick={closeMenu}>Protección auditiva</Link>
+
+              <div className="mobile-nav-accordion" style={{ paddingLeft: '2rem' }}>
+                <button
+                  className="mobile-nav-link mobile-nav-accordion-btn"
+                  onClick={() => setEppOpen(!eppOpen)}
+                  style={{ paddingLeft: 0, paddingRight: '1.5rem', fontSize: '1rem', color: 'rgba(255, 255, 255, 0.7)', textTransform: 'none', fontWeight: 500, borderLeft: 'none' }}
+                >
+                  Equipo de protección personal
+                  <svg
+                    width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"
+                    style={{ transform: eppOpen ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 0.3s ease' }}
+                  >
+                    <polyline points="6 9 12 15 18 9" />
+                  </svg>
+                </button>
+                <div className={`mobile-nav-sub ${eppOpen ? 'active' : ''}`}>
+                  <Link href="/kits-altura#epp" className="mobile-nav-sublink" onClick={closeMenu} style={{ paddingLeft: '1rem', paddingTop: '0.3rem', paddingBottom: '0.3rem' }}>Arnés</Link>
+                  <Link href="/kits-altura#epp" className="mobile-nav-sublink" onClick={closeMenu} style={{ paddingLeft: '1rem', paddingTop: '0.3rem', paddingBottom: '0.3rem' }}>Eslinga</Link>
+                  <Link href="/kits-altura#epp" className="mobile-nav-sublink" onClick={closeMenu} style={{ paddingLeft: '1rem', paddingTop: '0.3rem', paddingBottom: '0.3rem' }}>Cascos</Link>
+                  <Link href="/kits-altura#epp" className="mobile-nav-sublink" onClick={closeMenu} style={{ paddingLeft: '1rem', paddingTop: '0.3rem', paddingBottom: '0.3rem' }}>Kits para trabajos en alturas</Link>
+                  <Link href="/kits-altura#mosqueton-acero" className="mobile-nav-sublink" onClick={(e) => { closeMenu(); handleInternalLink(e, '#mosqueton-acero'); }} style={{ paddingLeft: '1rem', paddingTop: '0.3rem', paddingBottom: '0.3rem' }}>Mosquetones</Link>
+                  <Link href="/kits-altura#freno-cuerda" className="mobile-nav-sublink" onClick={(e) => { closeMenu(); handleInternalLink(e, '#freno-cuerda'); }} style={{ paddingLeft: '1rem', paddingTop: '0.3rem', paddingBottom: '0.3rem' }}>Frenos y accesorios anticaída</Link>
+                  <Link href="/kits-altura#epp-gen" className="mobile-nav-sublink" onClick={(e) => { closeMenu(); handleInternalLink(e, '#epp-gen'); }} style={{ paddingLeft: '1rem', paddingTop: '0.3rem', paddingBottom: '0.3rem' }}>Kit de EPP general</Link>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <Link href="/longdyes" className="mobile-nav-link" onClick={closeMenu}>Longdyes</Link>
           <Link href="/trabajos" className="mobile-nav-link" onClick={closeMenu}>Nuestros Trabajos</Link>
           <Link href="/contacto" className="mobile-nav-link" onClick={closeMenu}>Contáctanos</Link>

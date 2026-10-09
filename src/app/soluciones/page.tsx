@@ -9,6 +9,7 @@ const SERVICES = [
     title: "Instalación de Líneas de Vida Certificadas",
     id: "instalacion-lineas-vida",
     img: "/lineas-de-vida-soluciones.jpeg",
+    video: "/videos/video_buble_puntos_de_lineas_de_vida.mp4",
     desc: <>Diseño e instalación de sistemas de protección anti caídas, líneas de vida certificadas bajo las normas UNE -EN 795 y <a href="https://epishop.es/lineas-de-vida-que-son/" target="_blank" rel="noopener noreferrer" style={{textDecoration: 'underline'}}>UNE-EN 353</a> horizontales y verticales, tanto temporales como permanentes, dispositivos de anticaídas retractiles bajo la normativa EN 360.<br/><br/>Como representantes oficiales de Longdyes en Ecuador, garantizamos productos de la más alta calidad y resistencia estructural.</>,
     features: ["Líneas de vida certificadas horizontales y verticales", "Puntos de anclaje certificados", "Sistemas temporales y permanentes", "Ingeniería personalizada por proyecto"],
     theme: "lineas-vida"
@@ -17,6 +18,7 @@ const SERVICES = [
     title: "Instalación de Puntos de Anclaje",
     id: "instalacion-puntos-anclaje",
     img: "/puntos-de-anclaje-soluciones.jpeg",
+    video: "/videos/video_buble_puntos_de_anclaje.mp4",
     desc: "Instalación certificada de puntos de anclaje estructurales para trabajos en altura. Utilizamos anclajes químicos y mecánicos de alta resistencia, garantizando puntos de conexión seguros y certificados según normativas internacionales.",
     features: ["Anclajes químicos y mecánicos", "Pruebas de tracción certificadas", "Diseño según normativa EN 795", "Inspección y recertificación anual"],
     theme: "anclaje"
@@ -154,14 +156,62 @@ export default function Soluciones() {
                       <motion.li key={i} initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: 0.3 + i * 0.1 }}>{f}</motion.li>
                     ))}
                   </ul>
-                  <div className="service-full-actions">
+                  <div className="service-full-actions" style={{ alignItems: 'center' }}>
                     <Link href={`/servicios/${service.id}`} className="btn btn-primary service-full-btn">Más Información</Link>
                     <a href={`https://wa.me/593980001234?text=Hola,%20deseo%20cotizar%20el%20servicio:%20${encodeURIComponent(service.title)}`} target="_blank" rel="noreferrer" className="btn service-full-btn-outline">Cotizar</a>
+                    {/* Products CTA */}
+                    {(service.id === 'instalacion-lineas-vida' || service.id === 'instalacion-puntos-anclaje' || service.id === 'pintura-en-altura' || service.id === 'hidrolavado-fachadas') && (
+                      <Link
+                        href={
+                          service.id === 'instalacion-lineas-vida' ? '/kits-altura#linea-de-vida' :
+                          service.id === 'instalacion-puntos-anclaje' ? '/kits-altura#puntos-de-anclaje' :
+                          '/kits-altura#epp'
+                        }
+                        style={{
+                          display: 'inline-flex', alignItems: 'center', gap: '10px',
+                          padding: '0.75rem 1.8rem',
+                          borderRadius: '50px',
+                          border: '1.5px solid var(--primary-orange)',
+                          color: 'var(--primary-orange)',
+                          fontWeight: 700,
+                          fontSize: '0.9rem',
+                          letterSpacing: '0.5px',
+                          background: 'rgba(237,108,35,0.06)',
+                          transition: 'all 0.3s ease',
+                          textDecoration: 'none',
+                          backdropFilter: 'blur(4px)'
+                        }}
+                        onMouseOver={e => { (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(237,108,35,0.18)'; (e.currentTarget as HTMLAnchorElement).style.transform = 'translateX(4px)'; }}
+                        onMouseOut={e => { (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(237,108,35,0.06)'; (e.currentTarget as HTMLAnchorElement).style.transform = 'translateX(0)'; }}
+                      >
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                          <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/>
+                        </svg>
+                        Ver productos relacionados →
+                      </Link>
+                    )}
                   </div>
                 </motion.div>
                 <motion.div className="service-full-img" initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-80px" }} variants={scaleIn}>
                   <div className="service-full-img-inner">
-                    <img src={service.img} alt={service.title} />
+                    {service.video ? (
+                      <video 
+                        src={service.video} 
+                        autoPlay 
+                        muted 
+                        playsInline 
+                        onTimeUpdate={(e) => {
+                          const vid = e.currentTarget;
+                          if (vid.duration && vid.currentTime >= vid.duration - 1) {
+                            vid.currentTime = 0;
+                            vid.play();
+                          }
+                        }}
+                        style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
+                      />
+                    ) : (
+                      <img src={service.img} alt={service.title} />
+                    )}
                     <div className="service-full-img-overlay" />
                   </div>
                 </motion.div>

@@ -9,61 +9,44 @@ import { createPortal } from 'react-dom';
 const LINEAS_DE_VIDA = [
   {
     id: 'lv-vertical-recto',
-    name: 'Líneas de Vida Verticales (Sistema Recto)',
+    name: 'Línea de Vida Horizontal (Sistema Recto)',
     desc: 'Sistemas fijos anticaídas para escaleras y estructuras verticales. Diseñadas para proporcionar seguridad ininterrumpida durante el ascenso y descenso.',
     img: '/lineas-de-vida/verticales-recto.png',
     specs: ['Ascenso ininterrumpido', 'Estructuras fijas']
   },
   {
     id: 'lv-vertical-curvo',
-    name: 'Líneas de Vida Verticales (Sistema Curvo)',
+    name: 'Línea de Vida Horizontal (Sistema Curvo)',
     desc: 'Sistemas adaptables a perfiles arquitectónicos complejos, permitiendo el paso por ángulos sin necesidad de desconectarse.',
     img: '/lineas-de-vida/verticales-curvo.png',
     specs: ['Adaptable a contornos', 'Paso sin desconexión']
   },
   {
-    id: 'lv-estandar',
-    name: 'Líneas de Vida Estándar',
-    desc: 'Sistemas de anclaje de alta resistencia para prevención y detención de caídas en trabajos cotidianos o industriales.',
-    img: '/lineas-de-vida/linea-de-vida-5.png',
-    specs: ['Uso versátil', 'Alta resistencia']
-  },
-  {
-    id: 'lv-horizontales',
-    name: 'Líneas de Vida Horizontales',
-    desc: 'Sistemas de anclaje permanente sobre cubiertas y fachadas. Permiten el movimiento libre a lo largo de toda su extensión.',
-    img: '/lineas-de-vida/linea-de-vida-6.png',
-    specs: ['Cobertura extendida', 'Libertad de movimiento']
-  },
-  {
     id: 'lv-rigidas',
-    name: 'Líneas de Vida Rígidas',
+    name: 'Línea de Vida Horizontal Rígida',
     desc: 'Sistemas anticaídas basados en rieles metálicos. Ofrecen mínima deflexión y pueden asegurar a múltiples usuarios simultáneamente.',
-    img: '/lineas-de-vida/linea-de-vida-3.png',
+    img: '/lineas-de-vida/rigida-2.jpeg',
     specs: ['Mínima deflexión', 'Múltiples usuarios']
   },
   {
     id: 'lv-temporales',
-    name: 'Líneas de Vida Temporales',
+    name: 'Línea de Vida Horizontal Temporal',
     desc: 'Sistemas portátiles de rápida instalación, fabricados en cinta o cable, ideales para obras de construcción a corto plazo.',
-    img: '/lineas-de-vida/temporales.png',
+    img: '/lineas-de-vida/temporal.jpeg',
     specs: ['Rápida instalación', 'Portátiles']
   },
   {
     id: 'lv-cable-acero',
-    name: 'Cable de Acero para Líneas de Vida',
+    name: 'Línea de Vida de Cable de Acero',
     desc: 'Cable de acero galvanizado o inoxidable de alta resistencia, componente fundamental para sistemas y líneas de vida horizontales y verticales.',
     img: '/lineas-de-vida/cable de acero .png',
     specs: ['Alta resistencia', 'Anticorrosivo']
   },
   {
     id: 'lv-autorretractil',
-    name: 'Línea de Vida Autorretráctil',
+    name: 'Línea de Vida Vertical Autorretráctil para Escalera Gatera',
     desc: 'Dispositivo anticaídas de reposición automática que permite libertad de movimiento y detiene instantáneamente cualquier caída.',
-    imgs: [
-      '/lineas-de-vida/linea-vida-autorretractil-1.png',
-      '/lineas-de-vida/linea-vida-autorretractil-2.png'
-    ],
+    img: '/lineas-de-vida/autorretractil.jpeg',
     specs: ['Bloqueo instantáneo', 'Retracción automática']
   }
 ];
@@ -192,7 +175,7 @@ const GAFAS = [
 ];
 
 const CASCOS = [
-  { id: 'casco-prot', name: 'Cascos de Protección Industrial', desc: 'Cascos de seguridad dieléctricos para protección craneal en la industria y construcción.', img: '/epp/cascos de proteccion .png', specs: ['Dieléctricos Clase E', 'Ajuste tipo rachet', 'Alta visibilidad'] }
+  { id: 'casco-prot', name: 'Cascos de Protección Industrial', desc: 'Cascos de seguridad dieléctricos para protección craneal en la industria y construcción.', img: '/epp/cascos de proteccion .png', specs: ['Dieléctricos Clase E', 'Ajuste tipo rachet', 'Alta visibilidad'], catalogFile: '/catalogos/catalogo-cascos-rock-helmets.pdf' }
 ];
 
 const AUDITIVA = [
@@ -203,7 +186,7 @@ const EPP_GENERAL_ITEMS = [
   { id: 'epp-gen', name: 'Kit EPP General', desc: 'Equipos de protección personal complementarios para asegurar la integridad integral del trabajador en cualquier entorno.', img: '/epp/epp general .png', specs: ['Protección integral', 'Cumplimiento normativo', 'Confort térmico'] }
 ];
 
-const SingleProductSection = ({ title, bgImage, product, colorTheme = 'teal', showCatalogBtn = false, reverse = false }: any) => {
+const SingleProductSection = ({ id, title, bgImage, product, colorTheme = 'teal', showCatalogBtn = false, reverse = false }: any) => {
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
 
@@ -235,7 +218,7 @@ const SingleProductSection = ({ title, bgImage, product, colorTheme = 'teal', sh
   const theme = themeColors[colorTheme] || themeColors.teal;
 
   return (
-    <section style={{ position: 'relative', minHeight: '100vh', display: 'flex', alignItems: 'center', overflow: 'hidden', padding: '4rem 1rem' }}>
+    <section id={id} style={{ position: 'relative', minHeight: '100vh', display: 'flex', alignItems: 'center', overflow: 'hidden', padding: '4rem 1rem' }}>
       <div style={{ position: 'absolute', inset: 0, backgroundImage: `url('${bgImage}')`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed' }} />
       <div style={{ position: 'absolute', inset: 0, background: theme.overlay, backdropFilter: 'blur(8px)' }} />
 
@@ -320,13 +303,13 @@ const SingleProductSection = ({ title, bgImage, product, colorTheme = 'teal', sh
       
       {/* Lightbox Portal */}
       {mounted && isLightboxOpen && createPortal(
-        <div style={{
+        <div 
+          onClick={() => setIsLightboxOpen(false)}
+          style={{
           position: 'fixed', inset: 0, zIndex: 99999, background: 'rgba(0,0,0,0.95)',
           display: 'flex', alignItems: 'center', justifyContent: 'center',
           backdropFilter: 'blur(10px)'
         }}>
-          {/* Close Area */}
-          <div style={{ position: 'absolute', inset: 0, zIndex: 1 }} onClick={() => setIsLightboxOpen(false)} />
           
           <button
             onClick={() => setIsLightboxOpen(false)}
@@ -352,6 +335,7 @@ const SingleProductSection = ({ title, bgImage, product, colorTheme = 'teal', sh
             style={{ position: 'relative', zIndex: 2, display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '1rem', width: '100%', height: '100%' }}
           >
             <img 
+              onClick={(e) => e.stopPropagation()}
               src={product.img} 
               alt={product.name} 
               style={{
@@ -384,6 +368,7 @@ const ProductGridCard = ({ prod, idx, initialCount, theme, getWhatsAppLink, setL
 
   return (
     <motion.div
+      id={prod.id}
       layout
       initial={{ opacity: 0, scale: 0.95, y: 20 }}
       animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -440,7 +425,7 @@ const ProductGridCard = ({ prod, idx, initialCount, theme, getWhatsAppLink, setL
           >
             COTIZAR
           </a>
-          {prod.catalogFile && (
+          {prod.catalogFile ? (
             <a
               href={prod.catalogFile}
               target="_blank"
@@ -448,8 +433,16 @@ const ProductGridCard = ({ prod, idx, initialCount, theme, getWhatsAppLink, setL
               className="btn"
               style={{ flex: 1, textAlign: 'center', display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '6px', padding: '0.8rem', fontSize: '0.9rem', borderRadius: '10px', border: `2px solid ${theme.text}`, color: theme.text, background: 'transparent', fontWeight: 800, transition: 'all 0.3s ease' }}
             >
-              Ficha
+              Ver catálogo
             </a>
+          ) : (
+            <button
+              className="btn"
+              style={{ flex: 1, textAlign: 'center', display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '6px', padding: '0.8rem', fontSize: '0.9rem', borderRadius: '10px', border: `2px solid ${theme.text}`, color: theme.text, background: 'transparent', fontWeight: 800, transition: 'all 0.3s ease' }}
+              onClick={() => alert("El catálogo estará disponible pronto.")}
+            >
+              Ver catálogo
+            </button>
           )}
         </div>
       </div>
@@ -457,7 +450,7 @@ const ProductGridCard = ({ prod, idx, initialCount, theme, getWhatsAppLink, setL
   );
 };
 
-const ProductGrid = ({ title, desc, bgImage, products, showCatalogBtn = false, colorTheme = 'teal' }: any) => {
+const ProductGrid = ({ id, title, desc, bgImage, products, showCatalogBtn = false, colorTheme = 'teal' }: any) => {
   const [expanded, setExpanded] = useState(false);
   const [lightboxState, setLightboxState] = useState<{ pIdx: number, iIdx: number } | null>(null);
 
@@ -507,8 +500,42 @@ const ProductGrid = ({ title, desc, bgImage, products, showCatalogBtn = false, c
   const visibleProducts = expanded ? products : products.slice(0, initialCount);
   const hasMore = products.length > initialCount;
 
+  useEffect(() => {
+    const handleHash = () => {
+      if (typeof window !== 'undefined') {
+        const hash = window.location.hash.replace('#', '');
+        if (hash) {
+          const pIdx = products.findIndex((p: any) => p.id === hash);
+          if (pIdx !== -1) {
+            if (pIdx >= initialCount) {
+              const scrollToTarget = () => {
+                const cardEl = document.getElementById(hash);
+                if (cardEl) {
+                  const headerOffset = 240;
+                  const elementPosition = cardEl.getBoundingClientRect().top;
+                  const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                  window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                }
+              };
+
+              if (!expanded) {
+                setExpanded(true);
+                setTimeout(scrollToTarget, 400);
+              } else {
+                setTimeout(scrollToTarget, 50);
+              }
+            }
+          }
+        }
+      }
+    };
+    setTimeout(handleHash, 100);
+    window.addEventListener('hashchange', handleHash);
+    return () => window.removeEventListener('hashchange', handleHash);
+  }, [products, initialCount, id]);
+
   return (
-    <section style={{ position: 'relative', overflow: 'hidden' }}>
+    <section id={id} style={{ position: 'relative', overflow: 'hidden' }}>
       <div style={{ position: 'absolute', inset: 0, backgroundImage: `url('${bgImage}')`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed' }} />
       <div style={{ position: 'absolute', inset: 0, background: theme.overlay, backdropFilter: 'blur(6px)' }} />
 
@@ -538,6 +565,11 @@ const ProductGrid = ({ title, desc, bgImage, products, showCatalogBtn = false, c
             ))}
           </AnimatePresence>
         </motion.div>
+
+        {/* Anchors for hidden products so Next.js natively scrolls down near them instead of top of page */}
+        {!expanded && products && products.slice(initialCount).map((p: any) => (
+           <div key={`anchor-${p.id}`} id={p.id} style={{ visibility: 'hidden', pointerEvents: 'none', height: 0 }} />
+        ))}
 
         {hasMore && (
           <div style={{ textAlign: 'center', marginTop: '3rem' }}>
@@ -597,16 +629,22 @@ const ProductGrid = ({ title, desc, bgImage, products, showCatalogBtn = false, c
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.9 }}
               transition={{ duration: 0.3 }}
-              onClick={(e) => e.stopPropagation()}
-              className="lightbox-content-wrapper"
+              style={{ position: 'relative', zIndex: 2, display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '1rem', width: '100%', height: '100%' }}
             >
               <img
+                onClick={(e) => e.stopPropagation()}
                 src={(() => {
                   const p = products[lightboxState.pIdx];
                   const imgs = p.imgs || (p.img ? [p.img] : []);
                   return imgs[lightboxState.iIdx];
                 })()}
                 alt={products[lightboxState.pIdx].name}
+                style={{
+                  maxWidth: '90vw',
+                  maxHeight: '85vh',
+                  objectFit: 'contain',
+                  filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.5))'
+                }}
               />
             </motion.div>
 
@@ -746,6 +784,7 @@ export default function KitsAlturaPage() {
 
       {/* --- Secciones de Productos --- */}
       <ProductGrid
+        id="linea-de-vida"
         title="Líneas de Vida"
         desc="Sistemas de anclaje de alta ingeniería diseñados para garantizar la máxima seguridad en trabajos de altura y cumplir con las normativas internacionales vigentes."
         bgImage="/lineas-de-vida-soluciones.jpeg"
@@ -755,6 +794,7 @@ export default function KitsAlturaPage() {
       />
 
       <ProductGrid
+        id="puntos-de-anclaje"
         title="Puntos de Anclaje"
         desc="Sistemas de anclaje fijos y estructurales para garantizar puntos de conexión seguros en cualquier superficie o estructura, certificados según normativas internacionales."
         bgImage="/puntos-de-anclaje-soluciones.jpeg"
@@ -764,6 +804,7 @@ export default function KitsAlturaPage() {
       />
 
       <SingleProductSection
+        id="cascos-de-proteccion"
         title="Cascos de Protección"
         bgImage="/epp/cascos de proteccion .png"
         product={CASCOS[0]}
@@ -773,6 +814,7 @@ export default function KitsAlturaPage() {
       />
 
       <ProductGrid
+        id="guantes-especializados"
         title="Guantes Especializados"
         desc="Guantes de alta resistencia, nitrilo y protección química para resguardar las manos en los entornos más exigentes."
         bgImage="/epp/guantes guantes especiales de nitrilo 3.png"
@@ -782,6 +824,7 @@ export default function KitsAlturaPage() {
       />
 
       <SingleProductSection
+        id="gafas-de-proteccion"
         title="Gafas de Protección"
         bgImage="/epp/gafas de proteccion .png"
         product={GAFAS[0]}
@@ -790,6 +833,7 @@ export default function KitsAlturaPage() {
       />
 
       <SingleProductSection
+        id="proteccion-auditiva"
         title="Protección Auditiva"
         bgImage="/epp/equipos de proteccion auditiva .png"
         product={AUDITIVA[0]}
@@ -798,6 +842,7 @@ export default function KitsAlturaPage() {
       />
 
       <ProductGrid
+        id="epp"
         title="Equipos de Protección Personal"
         desc="Complementos esenciales para la seguridad integral del trabajador."
         bgImage="/epp/epp general .png"

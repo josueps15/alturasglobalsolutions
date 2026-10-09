@@ -4,11 +4,11 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 
-const CATEGORIES = ['Todos', 'Líneas de Vida Certificadas', 'Pintura', 'Hidrolavado', 'Capacitaciones', 'Puntos de Anclaje'];
+const CATEGORIES = ['Todos', 'Líneas de Vida', 'Puntos de Anclaje', 'Pintura', 'Hidrolavado', 'Capacitaciones'];
 
 // Map categories to specific colors for visual differentiation
 const CATEGORY_COLORS: Record<string, string> = {
-  'Líneas de Vida Certificadas': '#ed6c23', // Naranja corporativo
+  'Líneas de Vida': '#ed6c23', // Naranja corporativo
   'Pintura': '#0d6978', // Teal corporativo
   'Hidrolavado': '#0b1320', // Azul marino oscuro
   'Capacitaciones': '#ed6c23', // Naranja corporativo
@@ -17,12 +17,25 @@ const CATEGORY_COLORS: Record<string, string> = {
 
 // Use Unsplash images that perfectly represent each category for clear identification
 const rawProjects = [
-  { img: '/foto-en-portada-de-lineas-de-vida.jpeg', category: 'Líneas de Vida Certificadas', title: 'Línea de Vida Horizontal' },
-  { img: '/gallery/linea_vida_2.jpeg', category: 'Líneas de Vida Certificadas', title: 'Sistemas Anticaídas' },
-  { img: '/gallery/linea_vida_3.jpeg', category: 'Líneas de Vida Certificadas', title: 'Instalación en Techos' },
-  { img: '/gallery/linea_vida_4.jpeg', category: 'Líneas de Vida Certificadas', title: 'Certificación de Puntos' },
-  { img: '/gallery/linea_vida_5.jpeg', category: 'Líneas de Vida Certificadas', title: 'Mantenimiento de Línea' },
-  { img: '/gallery/linea_vida_6.jpeg', category: 'Líneas de Vida Certificadas', title: 'Inspección de Equipos' },
+  { img: '/foto-en-portada-de-lineas-de-vida.jpeg', category: 'Líneas de Vida Horizontales', title: 'Instalación de líneas de vida horizontales en cubiertas metálicas' },
+  { img: '/gallery/linea_vida_2.jpeg', category: 'Líneas de Vida Verticales', title: 'Instalación de líneas de vida verticales en escaleras gatera' },
+  { img: '/gallery/linea_vida_3.jpeg', category: 'Líneas de Vida Verticales', title: 'Instalación de líneas de vida verticales en escaleras gatera de silos' },
+  { img: '/gallery/linea_vida_4.jpeg', category: 'Líneas de Vida Horizontales', title: 'Instalación de líneas de vida horizontal en escaleras pasarelas de alturas' },
+  
+  // Nuevas fotos horizontales
+  ...Array.from({ length: 18 }, (_, i) => i + 1).map(i => ({
+    img: `/gallery/linea de vida horizontal ${i === 4 ? '4 ' : i}.png`,
+    category: 'Líneas de Vida Horizontales',
+    title: 'Línea de Vida Horizontal'
+  })),
+
+  // Nuevas fotos verticales
+  ...Array.from({ length: 10 }, (_, i) => i + 1).map(i => ({
+    img: `/gallery/linea de vida vertical ${i}.png`,
+    category: 'Líneas de Vida Verticales',
+    title: 'Línea de Vida Vertical'
+  })),
+
   { img: '/gallery/pintura_1.png', category: 'Pintura', title: 'Pintura de Fachadas' },
   { img: '/gallery/pintura_2.png', category: 'Pintura', title: 'Pintura Industrial' },
   { img: '/gallery/pintura_3.png', category: 'Pintura', title: 'Pintura de Estructuras' },
@@ -37,18 +50,30 @@ const rawProjects = [
   { img: '/gallery/capacitacion_chile_2.jpeg', category: 'Capacitaciones', title: 'Maniobras en Altura (Chile)' },
   { img: '/gallery/anclaje_1.jpeg', category: 'Puntos de Anclaje', title: 'Instalación de Anclaje' },
   { img: '/gallery/anclaje_2.jpeg', category: 'Puntos de Anclaje', title: 'Anclaje Estructural' },
-  { img: '/gallery/anclaje_3.jpeg', category: 'Puntos de Anclaje', title: 'Certificación de Anclajes' }
+  { img: '/gallery/anclaje_3.jpeg', category: 'Puntos de Anclaje', title: 'Certificación de Anclajes' },
+
+  // Nuevas fotos puntos de anclaje
+  ...Array.from({ length: 14 }, (_, i) => i + 1).map(i => ({
+    img: `/gallery/puntos de anclaje ${i}.png`,
+    category: 'Puntos de Anclaje',
+    title: 'Punto de Anclaje'
+  }))
 ];
 
 const PROJECTS = rawProjects;
 
 export default function Trabajos() {
   const [activeFilter, setActiveFilter] = useState('Todos');
+  const [activeSubFilter, setActiveSubFilter] = useState('Todas');
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   const filteredProjects = activeFilter === 'Todos' 
     ? PROJECTS 
-    : PROJECTS.filter(p => p.category === activeFilter);
+    : activeFilter === 'Líneas de Vida'
+      ? activeSubFilter === 'Todas'
+        ? PROJECTS.filter(p => p.category.includes('Líneas de Vida'))
+        : PROJECTS.filter(p => p.category === `Líneas de Vida ${activeSubFilter}`)
+      : PROJECTS.filter(p => p.category === activeFilter);
 
   // Close lightbox on Escape key
   useEffect(() => {
@@ -100,11 +125,14 @@ export default function Trabajos() {
 
       <section className="bg-white" style={{ padding: '5rem 0', position: 'relative' }}>
         <div className="container">
-          <div className="gallery-filters" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '15px', marginBottom: '4rem' }}>
+          <div className="gallery-filters" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '15px', marginBottom: activeFilter === 'Líneas de Vida' ? '1rem' : '4rem' }}>
             {CATEGORIES.map((filter) => (
               <button 
                 key={filter} 
-                onClick={() => setActiveFilter(filter)}
+                onClick={() => {
+                  setActiveFilter(filter);
+                  if (filter === 'Líneas de Vida') setActiveSubFilter('Todas');
+                }}
                 className={`gallery-filter-btn ${activeFilter === filter ? 'active' : ''}`}
                 style={{
                   padding: '10px 28px',
@@ -126,18 +154,52 @@ export default function Trabajos() {
             ))}
           </div>
 
+          <AnimatePresence>
+            {activeFilter === 'Líneas de Vida' && (
+              <motion.div 
+                initial={{ opacity: 0, height: 0, y: -10 }}
+                animate={{ opacity: 1, height: 'auto', y: 0 }}
+                exit={{ opacity: 0, height: 0, y: -10 }}
+                style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: '10px', marginBottom: '4rem', overflow: 'hidden' }}
+              >
+                {['Todas', 'Horizontales', 'Verticales'].map(sub => (
+                  <button
+                    key={sub}
+                    onClick={() => setActiveSubFilter(sub)}
+                    className="gallery-filter-btn"
+                    style={{
+                      padding: '6px 20px',
+                      borderRadius: '20px',
+                      border: `2px solid ${activeSubFilter === sub ? '#ed6c23' : '#eaeaea'}`,
+                      background: activeSubFilter === sub ? '#ed6c23' : '#fff',
+                      color: activeSubFilter === sub ? '#fff' : '#666',
+                      fontSize: '0.8rem',
+                      fontWeight: 600,
+                      cursor: 'pointer',
+                      transition: 'all 0.2s ease'
+                    }}
+                  >
+                    {sub}
+                  </button>
+                ))}
+              </motion.div>
+            )}
+          </AnimatePresence>
+
           <motion.div 
-            layout 
             variants={containerVariants}
             initial="hidden"
             animate="show"
             className="gallery-grid responsive-gallery-grid" 
-            style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '25px', marginBottom: '6rem' }}
+            style={
+              ['Capacitaciones', 'Pintura', 'Hidrolavado'].includes(activeFilter)
+                ? { display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '25px', marginBottom: '6rem' }
+                : { display: 'block', columnCount: 'auto', columnWidth: '280px', columnGap: '25px', marginBottom: '6rem' }
+            }
           >
             <AnimatePresence mode='popLayout'>
               {filteredProjects.map((project) => (
                 <motion.div
-                  layout
                   variants={itemVariants}
                   initial="hidden"
                   animate="show"
@@ -145,9 +207,22 @@ export default function Trabajos() {
                   key={project.img}
                   className="gallery-item"
                   onClick={() => setSelectedImage(project.img)}
-                  style={{ position: 'relative', overflow: 'hidden', borderRadius: '16px', height: '280px', cursor: 'zoom-in', boxShadow: '0 10px 30px rgba(0,0,0,0.08)' }}
+                  style={{ 
+                    position: 'relative', 
+                    overflow: 'hidden', 
+                    borderRadius: '16px', 
+                    marginBottom: ['Capacitaciones', 'Pintura', 'Hidrolavado'].includes(activeFilter) ? '0' : '25px', 
+                    breakInside: 'avoid', 
+                    display: ['Capacitaciones', 'Pintura', 'Hidrolavado'].includes(activeFilter) ? 'block' : 'inline-block', 
+                    width: ['Capacitaciones', 'Pintura', 'Hidrolavado'].includes(activeFilter) ? 'calc(33.333% - 17px)' : '100%', 
+                    minWidth: ['Capacitaciones', 'Pintura', 'Hidrolavado'].includes(activeFilter) ? '280px' : 'auto',
+                    maxWidth: ['Capacitaciones', 'Pintura', 'Hidrolavado'].includes(activeFilter) ? '420px' : 'none',
+                    flexGrow: ['Capacitaciones', 'Pintura', 'Hidrolavado'].includes(activeFilter) ? 1 : 0,
+                    cursor: 'zoom-in', 
+                    boxShadow: '0 10px 30px rgba(0,0,0,0.08)' 
+                  }}
                 >
-                  <img src={project.img} alt={project.title} style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.6s ease' }} onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.1)'} onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'} />
+                  <img src={project.img} alt={project.title} style={{ width: '100%', height: 'auto', display: 'block', transition: 'transform 0.6s ease' }} onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.1)'} onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'} />
                   
                   {/* Category Badge - Always visible for differentiation */}
                   <div style={{ position: 'absolute', top: '15px', left: '15px', background: CATEGORY_COLORS[project.category] || 'var(--primary-orange)', color: '#fff', padding: '6px 14px', borderRadius: '20px', fontSize: '0.75rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '1px', boxShadow: '0 4px 10px rgba(0,0,0,0.2)' }}>
