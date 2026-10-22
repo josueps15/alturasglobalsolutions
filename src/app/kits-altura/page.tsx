@@ -353,7 +353,7 @@ const SingleProductSection = ({ id, title, bgImage, product, colorTheme = 'teal'
   );
 };
 
-const ProductGridCard = ({ prod, idx, initialCount, theme, getWhatsAppLink, setLightboxState }: any) => {
+const ProductGridCard = ({ prod, idx, initialCount, theme, getWhatsAppLink, setLightboxState, hideCatalogBtn }: any) => {
   const images = prod.imgs || (prod.img ? [prod.img] : []);
   const [imgIdx, setImgIdx] = useState(0);
 
@@ -425,7 +425,7 @@ const ProductGridCard = ({ prod, idx, initialCount, theme, getWhatsAppLink, setL
           >
             COTIZAR
           </a>
-          {prod.catalogFile ? (
+          {prod.catalogFile && !hideCatalogBtn ? (
             <a
               href={prod.catalogFile}
               target="_blank"
@@ -435,7 +435,7 @@ const ProductGridCard = ({ prod, idx, initialCount, theme, getWhatsAppLink, setL
             >
               Ver catálogo
             </a>
-          ) : (
+          ) : (!hideCatalogBtn && (
             <button
               className="btn"
               style={{ flex: 1, textAlign: 'center', display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '6px', padding: '0.8rem', fontSize: '0.9rem', borderRadius: '10px', border: `2px solid ${theme.text}`, color: theme.text, background: 'transparent', fontWeight: 800, transition: 'all 0.3s ease' }}
@@ -443,14 +443,14 @@ const ProductGridCard = ({ prod, idx, initialCount, theme, getWhatsAppLink, setL
             >
               Ver catálogo
             </button>
-          )}
+          ))}
         </div>
       </div>
     </motion.div>
   );
 };
 
-const ProductGrid = ({ id, title, desc, bgImage, products, showCatalogBtn = false, colorTheme = 'teal' }: any) => {
+const ProductGrid = ({ id, title, desc, bgImage, products, showCatalogBtn = false, colorTheme = 'teal', hideCatalogBtn = false }: any) => {
   const [expanded, setExpanded] = useState(false);
   const [lightboxState, setLightboxState] = useState<{ pIdx: number, iIdx: number } | null>(null);
 
@@ -561,7 +561,7 @@ const ProductGrid = ({ id, title, desc, bgImage, products, showCatalogBtn = fals
         <motion.div layout className="kits-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2rem' }}>
           <AnimatePresence>
             {visibleProducts.map((prod: any, idx: number) => (
-              <ProductGridCard key={prod.id} prod={prod} idx={idx} initialCount={initialCount} theme={theme} getWhatsAppLink={getWhatsAppLink} setLightboxState={setLightboxState} />
+              <ProductGridCard key={prod.id} prod={prod} idx={idx} initialCount={initialCount} theme={theme} getWhatsAppLink={getWhatsAppLink} setLightboxState={setLightboxState} hideCatalogBtn={hideCatalogBtn} />
             ))}
           </AnimatePresence>
         </motion.div>
@@ -790,6 +790,7 @@ export default function KitsAlturaPage() {
         bgImage="/lineas-de-vida-soluciones.jpeg"
         products={LINEAS_DE_VIDA}
         colorTheme="teal"
+        hideCatalogBtn={true}
         icon={<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 19a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" /><path d="M16 5a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" /><path d="M6 17c0 -5 5 -7 12 -12" /></svg>}
       />
 
@@ -800,6 +801,7 @@ export default function KitsAlturaPage() {
         bgImage="/puntos-de-anclaje-soluciones.jpeg"
         products={PUNTOS_ANCLAJE}
         colorTheme="orange"
+        hideCatalogBtn={true}
         icon={<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 9v12m-8 -8a8 8 0 0 0 16 0m-8 4a4 4 0 0 0 4 -4" /><circle cx="12" cy="6" r="3" /></svg>}
       />
 

@@ -989,6 +989,9 @@ section {
   font-size: 1.15rem;
   line-height: 1.8;
   max-width: 650px;
+  margin-left: 0 !important;
+  margin-right: auto !important;
+  text-align: left !important;
 }
 
 .page-hero-breadcrumb {
@@ -5692,7 +5695,9 @@ p, .hero-desc, .service-detail-text {
   margin-right: auto;
 }
 
-.service-full-content p {
+.service-full-content p,
+.page-hero-desc,
+.page-hero p {
   margin-left: 0;
   margin-right: 0;
 }

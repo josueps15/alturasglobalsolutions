@@ -103,16 +103,15 @@ export default function Header() {
                   <li><Link href="/contacto" className={isActive('/contacto') ? 'active' : ''}>CONTÁCTANOS</Link></li>
                 </ul>
               </div>
-              {/* Eslogan — centrado bajo la pastilla, con position absolute para no romper la alineación de la barra */}
+
+              {/* Eslogan — centrado exactamente en el espacio vertical bajo la pastilla blanca */}
               <div style={{
                 position: 'absolute',
-                top: '100%',
-                marginTop: '10px',
-                width: '100%',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
+                top: 'calc(100% + 41px)',
+                left: '50%',
+                transform: 'translate(-50%, -50%)',
                 whiteSpace: 'nowrap',
+                pointerEvents: 'none',
               }}>
                 <span style={{
                   fontFamily: 'var(--font-heading), Montserrat, sans-serif',
