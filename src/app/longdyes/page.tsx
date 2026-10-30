@@ -129,12 +129,11 @@ export default function LongdyesPage() {
       </section>
 
       {/* Products Section */}
-      <section style={{ 
+      <section className="bg-fixed-desktop" style={{ 
         position: 'relative',
         backgroundImage: 'url(/bg-longdyes-products.png)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
-        backgroundAttachment: 'fixed',
         padding: '6rem 1rem',
         overflow: 'hidden'
       }}>
@@ -196,12 +195,11 @@ export default function LongdyesPage() {
       </section>
 
       {/* Gallery Section */}
-      <section style={{ 
+      <section className="bg-fixed-desktop" style={{ 
         position: 'relative',
         backgroundImage: 'url(/bg-longdyes-gallery-orange.png)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
-        backgroundAttachment: 'fixed',
         padding: '6rem 1rem', 
         overflow: 'hidden'
       }}>
@@ -286,12 +284,11 @@ export default function LongdyesPage() {
         </div>
       </section>
       {/* Video Demonstrations Section */}
-      <section style={{ 
+      <section className="bg-fixed-desktop" style={{ 
         position: 'relative',
         backgroundImage: 'url(/bg-kits.png)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
-        backgroundAttachment: 'fixed',
         padding: '6rem 1rem',
         borderTop: '1px solid rgba(255,255,255,0.05)',
         overflow: 'hidden'
@@ -347,6 +344,7 @@ export default function LongdyesPage() {
               >
                 <iframe 
                   src={src} 
+                  loading="lazy"
                   style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', border: 0 }}
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                   allowFullScreen
@@ -358,12 +356,11 @@ export default function LongdyesPage() {
       </section>
 
       {/* CTA Section */}
-      <section style={{
+      <section className="bg-fixed-desktop" style={{
         position: 'relative',
         backgroundImage: 'url(/bg-longdyes-cta.png)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
-        backgroundAttachment: 'fixed',
         padding: '4rem 1rem',
         textAlign: 'center',
         overflow: 'hidden',

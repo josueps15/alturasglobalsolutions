@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:wght@400;600&display=swap');
-
+/* Fonts loaded via next/font/google */
 :root {
   /* Fluid base font: scales from 12px (320px screen) to 16px (1400px screen).
      All rem-based sizes scale proportionally — no abrupt breakpoints. */
@@ -227,7 +226,7 @@ a {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transition: opacity 0.25s ease 0.3s, transform 0.25s ease 0.3s, visibility 0s linear 0.55s;
+  transition: opacity 0.18s ease 0s, transform 0.18s ease 0s, visibility 0s linear 0.18s;
   transform: translateX(-50%) translateY(8px);
   z-index: 2000;
 }
@@ -5789,4 +5788,15 @@ body, html {
 /* FIX PAGE HERO WHITE SPACE */
 .page-hero {
   margin-top: calc(-1 * var(--header-offset)) !important;
+}
+
+/* PERFORMANCE OPTIMIZATIONS FOR MOBILE */
+.bg-fixed-desktop {
+  background-attachment: scroll;
+}
+
+@media (min-width: 1024px) {
+  .bg-fixed-desktop {
+    background-attachment: fixed !important;
+  }
 }

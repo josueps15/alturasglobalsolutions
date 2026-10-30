@@ -125,7 +125,7 @@ export default function Soluciones() {
 
   return (
     <>
-      <section className="page-hero" style={{ backgroundImage: 'linear-gradient(rgba(11, 19, 32, 0.8), rgba(11, 19, 32, 0.95)), url(/lineas-de-vida.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed' }}>
+      <section className="page-hero bg-fixed-desktop" style={{ backgroundImage: 'linear-gradient(rgba(11, 19, 32, 0.8), rgba(11, 19, 32, 0.95)), url(/lineas-de-vida.png)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
         <div className="container">
           <motion.span className="page-hero-subtitle" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>Soluciones Integrales</motion.span>
           <motion.h1 className="page-hero-title" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1 }}>Nuestros Servicios Especializados</motion.h1>
@@ -221,7 +221,7 @@ export default function Soluciones() {
         );
       })}
 
-      <section className="service-final-cta" style={{ backgroundImage: 'linear-gradient(rgba(13, 105, 120, 0.85), rgba(13, 105, 120, 0.95)), url(/cta_background.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed' }}>
+      <section className="service-final-cta bg-fixed-desktop" style={{ backgroundImage: 'linear-gradient(rgba(13, 105, 120, 0.85), rgba(13, 105, 120, 0.95)), url(/cta_background.png)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
         <div className="service-final-cta-deco" />
         <div className="container" style={{ position: 'relative', zIndex: 2 }}>
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} style={{ textAlign: 'center' }}>

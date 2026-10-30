@@ -31,7 +31,7 @@ export default function Nosotros() {
   return (
     <>
       {/* Hero Section */}
-      <section className="page-hero" style={{ backgroundImage: 'linear-gradient(rgba(11, 19, 32, 0.8), rgba(11, 19, 32, 0.95)), url(/coto.jpeg)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed' }}>
+      <section className="page-hero bg-fixed-desktop" style={{ backgroundImage: 'linear-gradient(rgba(11, 19, 32, 0.8), rgba(11, 19, 32, 0.95)), url(/coto.jpeg)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
         <div className="container">
           <motion.span className="page-hero-subtitle" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}>
             Presentación Corporativa
@@ -70,7 +70,7 @@ export default function Nosotros() {
               </ul>
             </div>
             <div className="about-img-wrapper">
-              <video suppressHydrationWarning src="/about_video.mp4" autoPlay loop muted playsInline style={{ width: '100%', maxHeight: '400px', aspectRatio: '4/3', borderRadius: '16px', boxShadow: '0 20px 40px rgba(0,0,0,0.1)', objectFit: 'cover' }} />
+              <video suppressHydrationWarning src="/about_video.mp4" autoPlay loop muted playsInline preload="none" style={{ width: '100%', maxHeight: '400px', aspectRatio: '4/3', borderRadius: '16px', boxShadow: '0 20px 40px rgba(0,0,0,0.1)', objectFit: 'cover' }} />
             </div>
           </motion.div>
         </div>
@@ -114,8 +114,8 @@ export default function Nosotros() {
       </section>
 
       {/* Valores Corporativos */}
-      {/* Valores Corporativos */}
       <section
+        className="bg-fixed-desktop"
         style={{
           padding: '4rem 0',
           minHeight: '100vh',
@@ -128,7 +128,6 @@ export default function Nosotros() {
           backgroundImage: 'radial-gradient(circle at 15% 30%, rgba(13,105,120,0.5) 0%, transparent 60%), radial-gradient(circle at 85% 70%, rgba(237,108,35,0.3) 0%, transparent 60%), url("/valores-bg.png")',
           backgroundSize: '100% 100%, 100% 100%, cover',
           backgroundPosition: 'center, center, center',
-          backgroundAttachment: 'scroll, scroll, fixed',
           color: '#1e293b',
         }}
       >
@@ -196,7 +195,7 @@ export default function Nosotros() {
 
             {/* Center Logo */}
             <div className="valores-center-logo" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-              <img src="/logo_principal.png" alt="Alturas Global Solutions" style={{ width: '25%', maxWidth: '300px', objectFit: 'contain' }} />
+              <img src="/logo_principal.webp" alt="Alturas Global Solutions" style={{ width: '25%', maxWidth: '300px', objectFit: 'contain' }} />
             </div>
 
             {/* Circles */}

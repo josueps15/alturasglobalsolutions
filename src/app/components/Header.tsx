@@ -48,7 +48,7 @@ export default function Header() {
           <div className="logo-container">
             <Link href="/">
               <img
-                src="/logo_secundario.png"
+                src="/logo_secundario.webp"
                 alt="Alturas Global Solutions"
                 className="logo-img"
               />
@@ -174,7 +174,7 @@ export default function Header() {
       {/* Mobile Drawer */}
       <div className={`mobile-drawer ${mobileMenuOpen ? 'active' : ''}`}>
         <div className="mobile-drawer-header" style={{ justifyContent: 'center' }}>
-          <img src="/logo_secundario.png" alt="Alturas Global Solutions" className="mobile-drawer-logo" />
+          <img src="/logo_secundario.webp" alt="Alturas Global Solutions" className="mobile-drawer-logo" />
         </div>
 
         <nav className="mobile-drawer-nav">

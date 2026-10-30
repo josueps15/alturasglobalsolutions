@@ -66,6 +66,7 @@ export default function Trabajos() {
   const [activeFilter, setActiveFilter] = useState('Todos');
   const [activeSubFilter, setActiveSubFilter] = useState('Todas');
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [visibleCount, setVisibleCount] = useState(18);
 
   const filteredProjects = activeFilter === 'Todos' 
     ? PROJECTS 
@@ -74,6 +75,8 @@ export default function Trabajos() {
         ? PROJECTS.filter(p => p.category.includes('Líneas de Vida'))
         : PROJECTS.filter(p => p.category === `Líneas de Vida ${activeSubFilter}`)
       : PROJECTS.filter(p => p.category === activeFilter);
+
+  const displayedProjects = filteredProjects.slice(0, visibleCount);
 
   // Close lightbox on Escape key
   useEffect(() => {
@@ -106,7 +109,7 @@ export default function Trabajos() {
 
   return (
     <>
-      <section className="page-hero" style={{ backgroundImage: 'linear-gradient(rgba(11, 19, 32, 0.8), rgba(11, 19, 32, 0.95)), url(/pintura-altura.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed' }}>
+      <section className="page-hero bg-fixed-desktop" style={{ backgroundImage: 'linear-gradient(rgba(11, 19, 32, 0.8), rgba(11, 19, 32, 0.95)), url(/pintura-altura.png)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
         <div className="container">
           <motion.span className="page-hero-subtitle" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
             Portafolio de Proyectos
@@ -131,6 +134,7 @@ export default function Trabajos() {
                 key={filter} 
                 onClick={() => {
                   setActiveFilter(filter);
+                  setVisibleCount(18);
                   if (filter === 'Líneas de Vida') setActiveSubFilter('Todas');
                 }}
                 className={`gallery-filter-btn ${activeFilter === filter ? 'active' : ''}`}
@@ -198,7 +202,7 @@ export default function Trabajos() {
             }
           >
             <AnimatePresence mode='popLayout'>
-              {filteredProjects.map((project) => (
+              {displayedProjects.map((project) => (
                 <motion.div
                   variants={itemVariants}
                   initial="hidden"
@@ -222,7 +226,7 @@ export default function Trabajos() {
                     boxShadow: '0 10px 30px rgba(0,0,0,0.08)' 
                   }}
                 >
-                  <img src={project.img} alt={project.title} style={{ width: '100%', height: 'auto', display: 'block', transition: 'transform 0.6s ease' }} onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.1)'} onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'} />
+                  <img src={project.img} alt={project.title} loading="lazy" decoding="async" style={{ width: '100%', height: 'auto', display: 'block', transition: 'transform 0.6s ease' }} onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.1)'} onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'} />
                   
                   {/* Category Badge - Always visible for differentiation */}
                   <div style={{ position: 'absolute', top: '15px', left: '15px', background: CATEGORY_COLORS[project.category] || 'var(--primary-orange)', color: '#fff', padding: '6px 14px', borderRadius: '20px', fontSize: '0.75rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '1px', boxShadow: '0 4px 10px rgba(0,0,0,0.2)' }}>
@@ -244,6 +248,29 @@ export default function Trabajos() {
               ))}
             </AnimatePresence>
           </motion.div>
+
+          {visibleCount < filteredProjects.length && (
+            <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
+              <button
+                onClick={() => setVisibleCount(prev => prev + 18)}
+                className="btn"
+                style={{
+                  background: 'var(--primary-teal)',
+                  color: '#fff',
+                  padding: '0.9rem 2.4rem',
+                  borderRadius: '50px',
+                  fontWeight: 700,
+                  fontSize: '1rem',
+                  border: 'none',
+                  boxShadow: '0 4px 15px rgba(13,105,120,0.3)',
+                  cursor: 'pointer',
+                  transition: 'transform 0.2s ease, box-shadow 0.2s ease'
+                }}
+              >
+                Cargar más proyectos ({filteredProjects.length - visibleCount} restantes)
+              </button>
+            </div>
+          )}
 
           <div style={{ textAlign: 'center' }}>
             <a href="https://wa.me/593980001234?text=Hola,%20deseo%20cotizar%20un%20proyecto" target="_blank" rel="noreferrer" className="btn btn-primary" style={{ padding: '1.2rem 3rem', borderRadius: '50px', fontWeight: 800, fontSize: '1.1rem', letterSpacing: '1px' }}>COTIZA TU PROYECTO HOY</a>
