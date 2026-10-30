@@ -92,7 +92,7 @@ export default function LongdyesPage() {
             style={{ textAlign: 'center' }}
           >
             <div style={{ marginBottom: '2rem', display: 'flex', justifyContent: 'center' }}>
-              <img src="/logo-longdyes-altura.png" alt="Longdyes x Alturas Global Solutions" className="longdyes-hero-logo" style={{ height: '140px', objectFit: 'contain' }} />
+              <img src="/logo-longdyes-altura.webp" alt="Longdyes x Alturas Global Solutions" className="longdyes-hero-logo" style={{ height: '140px', objectFit: 'contain' }} />
             </div>
             <h1 style={{ fontFamily: 'var(--font-heading)', fontSize: 'clamp(2.5rem, 6vw, 4rem)', color: '#fff', fontWeight: 900, marginBottom: '1rem', letterSpacing: '-1px' }}>
               Galería de Trabajos
@@ -131,7 +131,7 @@ export default function LongdyesPage() {
       {/* Products Section */}
       <section className="bg-fixed-desktop" style={{ 
         position: 'relative',
-        backgroundImage: 'url(/bg-longdyes-products.png)',
+        backgroundImage: 'url(/bg-longdyes-products.webp)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         padding: '6rem 1rem',
@@ -197,7 +197,7 @@ export default function LongdyesPage() {
       {/* Gallery Section */}
       <section className="bg-fixed-desktop" style={{ 
         position: 'relative',
-        backgroundImage: 'url(/bg-longdyes-gallery-orange.png)',
+        backgroundImage: 'url(/bg-longdyes-gallery-orange.webp)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         padding: '6rem 1rem', 
@@ -358,7 +358,7 @@ export default function LongdyesPage() {
       {/* CTA Section */}
       <section className="bg-fixed-desktop" style={{
         position: 'relative',
-        backgroundImage: 'url(/bg-longdyes-cta.png)',
+        backgroundImage: 'url(/bg-longdyes-cta.webp)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         padding: '4rem 1rem',

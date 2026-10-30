@@ -61,7 +61,7 @@ export default function MissionVisionAnchor() {
             </div>
             {/* Custom Decoration Image (Left Side of Card) */}
             <div style={{ position: 'absolute', top: '50%', left: '-300px', transform: 'translateY(-40%)', width: '400px', zIndex: -1, pointerEvents: 'none' }}>
-              <img src="/mission-vision-img.png" alt="Decoración Altura" style={{ width: '100%', height: 'auto', objectFit: 'contain', filter: 'drop-shadow(0 20px 30px rgba(0,0,0,0.5))' }} />
+              <img src="/mission-vision-img.webp" alt="Decoración Altura" style={{ width: '100%', height: 'auto', objectFit: 'contain', filter: 'drop-shadow(0 20px 30px rgba(0,0,0,0.5))' }} />
             </div>
 
             {/* Content Card */}
@@ -70,7 +70,7 @@ export default function MissionVisionAnchor() {
               style={{ 
                 marginTop: '45px',
                 background: '#ffffff',
-                backgroundImage: 'url("/bg_mision.png")',
+                backgroundImage: 'url("/bg_mision.webp")',
                 backgroundSize: '130%',
                 backgroundPosition: 'center',
                 padding: '2.5rem', 
@@ -123,7 +123,7 @@ export default function MissionVisionAnchor() {
             </div>
             {/* Custom Decoration Image (Right Side of Card) */}
             <div style={{ position: 'absolute', top: '50%', right: '-180px', transform: 'translateY(-35%)', width: '220px', zIndex: -1, pointerEvents: 'none' }}>
-              <img src="/mission-vision-img-right.png" alt="Decoración Altura Derecha" style={{ width: '100%', height: 'auto', objectFit: 'contain', filter: 'drop-shadow(0 20px 30px rgba(0,0,0,0.5))' }} />
+              <img src="/mission-vision-img-right.webp" alt="Decoración Altura Derecha" style={{ width: '100%', height: 'auto', objectFit: 'contain', filter: 'drop-shadow(0 20px 30px rgba(0,0,0,0.5))' }} />
             </div>
 
             {/* Content Card */}
@@ -132,7 +132,7 @@ export default function MissionVisionAnchor() {
               style={{ 
                 marginTop: '45px',
                 background: '#ffffff',
-                backgroundImage: 'url("/bg_vision.png")',
+                backgroundImage: 'url("/bg_vision.webp")',
                 backgroundSize: '130%',
                 backgroundPosition: 'center',
                 padding: '2.5rem', 

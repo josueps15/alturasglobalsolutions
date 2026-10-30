@@ -42,7 +42,7 @@ export default function PrivacidadPage() {
   ];
 
   return (
-    <div className="legal-page-wrapper bg-fixed-desktop" style={{ backgroundImage: 'url(/bg-privacidad.png)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
+    <div className="legal-page-wrapper bg-fixed-desktop" style={{ backgroundImage: 'url(/bg-privacidad.webp)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
       <div className="legal-page-container">
         <div className="legal-header">
           <div className="legal-icon">

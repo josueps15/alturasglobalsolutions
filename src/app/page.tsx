@@ -36,6 +36,7 @@ const SLIDES = [
   {
     id: 1,
     video: '/video-expertos-instalacion.mp4',
+    mobileVideo: '/video-expertos-instalacion-movil.mp4',
     poster: '/poster-expertos-instalacion.webp',
     titleOrange: 'Expertos en',
     titleWhite: 'Instalación de Líneas de Vida Certificadas',
@@ -46,6 +47,7 @@ const SLIDES = [
   {
     id: 2,
     video: '/video-mantenimiento-alturas.mp4',
+    mobileVideo: '/video-mantenimiento-alturas-movil.mp4',
     poster: '/poster-mantenimiento-alturas.webp',
     titleOrange: 'Mantenimiento y',
     titleWhite: 'Servicios en Alturas',
@@ -56,6 +58,7 @@ const SLIDES = [
   {
     id: 3,
     video: '/video-maximo-seguridad.mp4',
+    mobileVideo: '/video-maximo-seguridad-movil.mp4',
     poster: '/poster-maximo-seguridad.webp',
     titleOrange: 'Máxima seguridad',
     titleWhite: 'para tus trabajos en altura',
@@ -89,6 +92,51 @@ export default function Home() {
     return () => clearInterval(interval);
   }, []);
 
+  // Pick the lighter video file on phones. `null` means "not decided yet":
+  // the poster is already visible, so the first paint is identical and the
+  // browser only starts fetching once the correct file is known.
+  const [isMobileScreen, setIsMobileScreen] = useState<boolean | null>(null);
+  useEffect(() => {
+    const query = window.matchMedia('(max-width: 768px)');
+    const update = () => setIsMobileScreen(query.matches);
+    update();
+    query.addEventListener('change', update);
+    return () => query.removeEventListener('change', update);
+  }, []);
+
+  // The drone video sits far below the fold: only load and play it when it
+  // approaches the viewport, pausing again when it leaves. The poster keeps
+  // the exact same first paint, so nothing changes visually.
+  const droneVideoRef = useRef<HTMLVideoElement>(null);
+  const droneSrc =
+    isMobileScreen === null
+      ? undefined
+      : isMobileScreen
+        ? '/video-inspeccion-drone-movil.mp4'
+        : '/video-inspeccion-drone-new.mp4';
+  useEffect(() => {
+    const video = droneVideoRef.current;
+    if (!video || !droneSrc) return;
+    if (typeof IntersectionObserver === 'undefined') {
+      video.play().catch(() => {});
+      return;
+    }
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            video.play().catch(() => {});
+          } else {
+            video.pause();
+          }
+        }
+      },
+      { rootMargin: '300px 0px' }
+    );
+    observer.observe(video);
+    return () => observer.disconnect();
+  }, [droneSrc]);
+
   const slide = SLIDES[currentSlide];
 
   const fadeUpVariant = {
@@ -116,8 +164,14 @@ export default function Home() {
             crossOrigin="anonymous"
             suppressHydrationWarning
             className="hero-video-bg"
+            src={
+              isMobileScreen === null
+                ? undefined
+                : isMobileScreen
+                  ? slide.mobileVideo
+                  : slide.video
+            }
           >
-            <source src={slide.video} type="video/mp4" />
           </motion.video>
         </AnimatePresence>
 
@@ -332,7 +386,7 @@ export default function Home() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <img src="/coto.webp" alt="Ingeniero Especialista en Seguridad Industrial" className="about-img" />
+            <img src="/coto.webp" alt="Ingeniero Especialista en Seguridad Industrial" className="about-img" loading="lazy" decoding="async" />
           </motion.div>
         </div>
       </motion.section>
@@ -395,7 +449,7 @@ export default function Home() {
                 border: '1px solid rgba(56,189,248,0.15)',
               }}>
                 <video
-                  autoPlay
+                  ref={droneVideoRef}
                   loop
                   muted
                   playsInline
@@ -403,9 +457,9 @@ export default function Home() {
                   poster="/poster-inspeccion-drone.webp"
                   crossOrigin="anonymous"
                   suppressHydrationWarning
+                  src={droneSrc}
                   style={{ width: '100%', height: '320px', objectFit: 'cover', display: 'block' }}
                 >
-                  <source src="/video-inspeccion-drone-new.mp4" type="video/mp4" />
                 </video>
                 {/* Gradient overlay on video */}
                 <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '100px', background: 'linear-gradient(to top, rgba(15,23,42,0.8), transparent)', pointerEvents: 'none' }} />
@@ -535,7 +589,7 @@ export default function Home() {
                 whileHover={{ y: -8, transition: { duration: 0.2 } }}
               >
                 <div className="longdyes-card-img-wrapper">
-                  <img src={prod.img} alt={prod.title} />
+                  <img src={prod.img} alt={prod.title} loading="lazy" decoding="async" />
                   <span className="longdyes-card-spec">{prod.spec}</span>
                 </div>
                 <div className="longdyes-card-body">
@@ -639,7 +693,7 @@ export default function Home() {
             transition={{ duration: 0.6, type: 'spring' }}
             style={{ flex: '1 1 300px', textAlign: 'center' }}
           >
-            <img src="/kit-longdyes.webp" alt="Kit de Trabajo en Alturas Longdyes" style={{ maxWidth: '100%', height: 'auto', borderRadius: '20px', boxShadow: '0 20px 50px rgba(0,0,0,0.4)', border: '1px solid rgba(255,255,255,0.1)' }} />
+            <img src="/kit-longdyes.webp" alt="Kit de Trabajo en Alturas Longdyes" width={1024} height={1024} loading="lazy" decoding="async" style={{ maxWidth: '100%', height: 'auto', borderRadius: '20px', boxShadow: '0 20px 50px rgba(0,0,0,0.4)', border: '1px solid rgba(255,255,255,0.1)' }} />
           </motion.div>
         </div>
       </section>
@@ -662,15 +716,15 @@ export default function Home() {
           </div>
           <div className="masonry-grid">
             {[
-              { src: '/gallery/linea_vida_1.jpeg', alt: 'Líneas de Vida Certificadas' },
-              { src: '/gallery/pintura_1.png', alt: 'Pintura en Alturas' },
-              { src: '/gallery/capacitacion_china_1.jpeg', alt: 'Capacitación (China)' },
-              { src: '/gallery/hidrolavado_1.png', alt: 'Hidrolavado' },
-              { src: '/gallery/anclaje_1.jpeg', alt: 'Puntos de Anclaje' },
-              { src: '/gallery/linea_vida_2.jpeg', alt: 'Líneas de Vida Certificadas' }
+              { src: '/gallery/linea_vida_1.webp', alt: 'Líneas de Vida Certificadas', w: 1200, h: 1600 },
+              { src: '/gallery/pintura_1.webp', alt: 'Pintura en Alturas', w: 1024, h: 1024 },
+              { src: '/gallery/capacitacion_china_1.webp', alt: 'Capacitación (China)', w: 1600, h: 1200 },
+              { src: '/gallery/hidrolavado_1.webp', alt: 'Hidrolavado', w: 1024, h: 1024 },
+              { src: '/gallery/anclaje_1.webp', alt: 'Puntos de Anclaje', w: 1600, h: 1200 },
+              { src: '/gallery/linea_vida_2.webp', alt: 'Líneas de Vida Certificadas', w: 1200, h: 1600 }
             ].map((img, idx) => (
               <div className="masonry-item" key={idx}>
-                <img src={img.src} alt={img.alt} loading="lazy" />
+                <img src={img.src} alt={img.alt} width={img.w} height={img.h} loading="lazy" decoding="async" />
                 <div className="masonry-overlay">
                   <span>{img.alt}</span>
                 </div>

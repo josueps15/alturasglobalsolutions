@@ -7,6 +7,7 @@ import ParticleNetwork from '@/components/ParticleNetwork';
 import EcuadorMapAnimation from '@/components/EcuadorMapAnimation';
 import BuildingObjectives from '@/components/BuildingObjectives';
 import MissionVisionAnchor from '@/components/MissionVisionAnchor';
+import LazyVideo from '../components/LazyVideo';
 
 const VALORES = [
   { icon: '🛡️', title: 'Seguridad', desc: 'La protección de la vida y la integridad de las personas es nuestra máxima prioridad.' },
@@ -70,7 +71,7 @@ export default function Nosotros() {
               </ul>
             </div>
             <div className="about-img-wrapper">
-              <video suppressHydrationWarning src="/about_video.mp4" autoPlay loop muted playsInline preload="none" style={{ width: '100%', maxHeight: '400px', aspectRatio: '4/3', borderRadius: '16px', boxShadow: '0 20px 40px rgba(0,0,0,0.1)', objectFit: 'cover' }} />
+              <LazyVideo src="/about_video.mp4" poster="/poster-about.webp" style={{ width: '100%', maxHeight: '400px', aspectRatio: '4/3', borderRadius: '16px', boxShadow: '0 20px 40px rgba(0,0,0,0.1)', objectFit: 'cover' }} />
             </div>
           </motion.div>
         </div>
@@ -125,7 +126,7 @@ export default function Nosotros() {
           position: 'relative',
           overflow: 'hidden',
           backgroundColor: '#f8fafc',
-          backgroundImage: 'radial-gradient(circle at 15% 30%, rgba(13,105,120,0.5) 0%, transparent 60%), radial-gradient(circle at 85% 70%, rgba(237,108,35,0.3) 0%, transparent 60%), url("/valores-bg.png")',
+          backgroundImage: 'radial-gradient(circle at 15% 30%, rgba(13,105,120,0.5) 0%, transparent 60%), radial-gradient(circle at 85% 70%, rgba(237,108,35,0.3) 0%, transparent 60%), url("/valores-bg.webp")',
           backgroundSize: '100% 100%, 100% 100%, cover',
           backgroundPosition: 'center, center, center',
           color: '#1e293b',

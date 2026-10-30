@@ -41,7 +41,7 @@ export default function TerminosPage() {
   ];
 
   return (
-    <div className="legal-page-wrapper bg-fixed-desktop" style={{ backgroundImage: 'url(/bg-terminos.png)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
+    <div className="legal-page-wrapper bg-fixed-desktop" style={{ backgroundImage: 'url(/bg-terminos.webp)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
       <div className="legal-page-container">
         <div className="legal-header">
           <div className="legal-icon">

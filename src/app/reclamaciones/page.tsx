@@ -66,7 +66,7 @@ export default function ReclamacionesPage() {
   };
 
   return (
-    <div className="legal-page-wrapper bg-fixed-desktop" style={{ backgroundImage: 'url(/bg-reclamaciones.png)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
+    <div className="legal-page-wrapper bg-fixed-desktop" style={{ backgroundImage: 'url(/bg-reclamaciones.webp)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
       <div className="legal-page-container">
         <div className="legal-header">
           <div className="legal-icon">

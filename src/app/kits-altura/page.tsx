@@ -56,7 +56,7 @@ const PRODUCTS = [
     id: 'arnes-cuerpo-completo',
     name: 'Arnés de Cuerpo Completo',
     desc: 'Arnés industrial multipropósito con 4 puntos de anclaje, diseñado para detención de caídas, posicionamiento y rescate. Fabricado con cintas de poliéster de alta resistencia y herrajes de acero forjado.',
-    img: '/arnes_longdyes.png',
+    img: '/arnes_longdyes.webp',
     specs: ['Certificación ANSI Z359.11', 'Capacidad 140kg', 'Acolchado ergonómico'],
     catalogFile: '/catalogos/catalogo-climbing-1.pdf'
   },
@@ -64,7 +64,7 @@ const PRODUCTS = [
     id: 'eslinga-doble-absorbedor',
     name: 'Eslinga Doble en Y con Absorbedor',
     desc: 'Eslinga o línea de vida certificada doble con absorbedor de impacto integrado. Ganchos estructureros de 2 1/4" para conexión segura a estructuras.',
-    img: '/eslinga_longdyes.png',
+    img: '/eslinga_longdyes.webp',
     specs: ['Certificación ANSI Z359.13', 'Longitud 1.8m', 'Ganchos de doble seguro'],
     catalogFile: '/catalogos/catalogo-climbing-1.pdf'
   },
@@ -72,7 +72,7 @@ const PRODUCTS = [
     id: 'casco-seguridad-industrial',
     name: 'Casco de Seguridad Industrial',
     desc: 'Casco dieléctrico de alto impacto con barbiquejo de 4 puntos. Diseño sin visera para facilitar la visión vertical durante trabajos en alturas.',
-    img: '/casco_longdyes.png',
+    img: '/casco_longdyes.webp',
     specs: ['Certificación ANSI Z89.1', 'Ajuste tipo rachet', 'Clase E (Dieléctrico)'],
     catalogFile: '/catalogos/catalogo-cascos-rock-helmets.pdf'
   },
@@ -80,7 +80,7 @@ const PRODUCTS = [
     id: 'kit-rescate-alturas',
     name: 'Kit de Rescate para Trabajos en Altura',
     desc: 'Sistema completo pre-ensamblado para evacuación y rescate de personal accidentado. Incluye polipastos, descendedores y cuerda semiestática.',
-    img: '/kit_rescate_longdyes.png',
+    img: '/kit_rescate_longdyes.webp',
     specs: ['Certificación EN 341', 'Descenso controlado', 'Bolso de transporte'],
     catalogFile: '/catalogos/catalogo-climbing-2.pdf'
   },
@@ -88,7 +88,7 @@ const PRODUCTS = [
     id: 'mosqueton-acero',
     name: 'Mosquetón de Acero Asimétrico',
     desc: 'Mosquetón direccional de alta resistencia con cierre automático (Triple lock). Ideal para conexiones críticas en sistemas anticaídas.',
-    img: '/mosqueton_longdyes.png',
+    img: '/mosqueton_longdyes.webp',
     specs: ['Certificación EN 362 / ANSI Z359.12', 'Resistencia 40kN', 'Seguro automático'],
     catalogFile: '/catalogos/catalogo-climbing-1.pdf'
   },
@@ -96,7 +96,7 @@ const PRODUCTS = [
     id: 'freno-cuerda',
     name: 'Freno Anticaídas para Cuerda',
     desc: 'Dispositivo deslizante sobre línea de anclaje flexible. Acompaña al usuario durante el ascenso y descenso, bloqueándose inmediatamente en caso de caída.',
-    img: '/freno_cuerda_longdyes.png',
+    img: '/freno_cuerda_longdyes.webp',
     specs: ['Certificación EN 353-2', 'Para cuerda 11-12mm', 'Mecanismo antipánico'],
     catalogFile: '/catalogos/catalogo-cuerdas-accesorios.pdf'
   }
@@ -685,7 +685,7 @@ export default function KitsAlturaPage() {
 
   return (
     <>
-      <section className="page-hero bg-fixed-desktop" style={{ backgroundImage: 'linear-gradient(rgba(11, 19, 32, 0.8), rgba(11, 19, 32, 0.9)), url(/hero-kits-altura.png)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
+      <section className="page-hero bg-fixed-desktop" style={{ backgroundImage: 'linear-gradient(rgba(11, 19, 32, 0.8), rgba(11, 19, 32, 0.9)), url(/hero-kits-altura.webp)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
         <div className="container">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <span className="page-hero-subtitle">Catálogo Especializado</span>

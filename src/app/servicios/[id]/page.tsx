@@ -5,12 +5,15 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { use, useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
+import LazyVideo from '../../components/LazyVideo';
 
 const SERVICES_DATA: Record<string, any> = {
   "instalacion-lineas-vida": {
     title: "Instalación de Líneas de Vida Certificadas",
-    bg: "/gallery/linea_vida_new_1.jpeg",
+    bg: "/gallery/linea_vida_new_1.webp",
     video: "/videos/video_buble_puntos_de_lineas_de_vida.mp4",
+    videoMobile: "/videos/video_buble_puntos_de_lineas_de_vida-movil.mp4",
+    videoPoster: "/poster-video_buble_puntos_de_lineas_de_vida.webp",
     theme: "lineas-vida",
     desc: <>Diseño e instalación de sistemas de protección anti caídas, líneas de vida certificadas bajo las normas UNE -EN 795 y <a href="https://epishop.es/lineas-de-vida-que-son/" target="_blank" rel="noopener noreferrer" style={{textDecoration: 'underline'}}>UNE-EN 353</a> horizontales y verticales, tanto temporales como permanentes, dispositivos de anticaídas retractiles bajo la normativa EN 360.<br/><br/>Como representantes oficiales de Longdyes en Ecuador, garantizamos productos de la más alta calidad y resistencia estructural.</>,
     longDesc: "Una línea de vida es un sistema de protección contra caídas que permite a los trabajadores desplazarse de forma segura por zonas elevadas mientras permanecen conectados a un punto de anclaje continuo. Nuestros sistemas cumplen con las normativas más exigentes a nivel internacional y son diseñados a medida para cada proyecto, considerando factores como la geometría de la cubierta, el número de usuarios simultáneos y las condiciones climáticas.",
@@ -42,12 +45,14 @@ const SERVICES_DATA: Record<string, any> = {
       { step: "04", title: "Certificación Final", desc: "Emisión de certificado de conformidad bajo normativas EN 795 y OSHA." }
     ],
     norms: ["EN 795:2012", "EN 353-1", "EN 353-2", "OSHA 1926.502", "ANSI Z359.1"],
-    gallery: ["/gallery/linea_vida_new_1.jpeg", "/gallery/linea_vida_new_2.jpeg", "/gallery/linea_vida_3.jpeg"]
+    gallery: ["/gallery/linea_vida_new_1.webp", "/gallery/linea_vida_new_2.webp", "/gallery/linea_vida_3.webp"]
   },
   "instalacion-puntos-anclaje": {
     title: "Instalación de Puntos de Anclaje",
-    bg: "/gallery/puntos-de-anclaje-galeria-1.jpeg",
+    bg: "/gallery/puntos-de-anclaje-galeria-1.webp",
     video: "/videos/video_buble_puntos_de_anclaje.mp4",
+    videoMobile: "/videos/video_buble_puntos_de_anclaje-movil.mp4",
+    videoPoster: "/poster-video_buble_puntos_de_anclaje.webp",
     theme: "anclaje",
     desc: "Instalación certificada de puntos de anclaje estructurales para trabajos en alturas. Utilizamos anclajes químicos y mecánicos de alta resistencia, garantizando puntos de conexión seguros y certificados según normativas internacionales.",
     longDesc: "Los puntos de anclaje son elementos estructurales diseñados para soportar las fuerzas generadas durante una caída. Son la base fundamental de cualquier sistema de protección contra caídas. Cada punto debe ser instalado considerando el tipo de sustrato, la carga máxima esperada y el número de trabajadores que lo utilizarán simultáneamente. Realizamos pruebas de tracción con equipos dinamométricos para garantizar la resistencia mínima requerida.",
@@ -79,7 +84,7 @@ const SERVICES_DATA: Record<string, any> = {
       { step: "04", title: "Prueba de Tracción", desc: "Test con equipo dinamométrico certificado. Resultado mínimo: 12 kN por punto." }
     ],
     norms: ["EN 795:2012 Tipo A", "EN 517", "ETA (European Technical Assessment)", "OSHA 1926.502(d)"],
-    gallery: ["/gallery/puntos-de-anclaje-galeria-1.jpeg", "/gallery/anclaje_1.jpeg", "/gallery/linea_vida_1.jpeg"]
+    gallery: ["/gallery/puntos-de-anclaje-galeria-1.webp", "/gallery/anclaje_1.webp", "/gallery/linea_vida_1.webp"]
   },
   "pintura-en-altura": {
     title: "Servicio de Pintura en Alturas",
@@ -115,7 +120,7 @@ const SERVICES_DATA: Record<string, any> = {
       { step: "04", title: "Inspección de Calidad", desc: "Medición de espesores (DFT), adherencia y verificación visual del acabado." }
     ],
     norms: ["ISO 12944", "ISO 8501-1", "SSPC-SP", "NACE International", "IRATA"],
-    gallery: ["/pintura-altura.webp", "/gallery/pintura_1.png", "/gallery/linea_vida_2.jpeg"]
+    gallery: ["/pintura-altura.webp", "/gallery/pintura_1.webp", "/gallery/linea_vida_2.webp"]
   },
   "hidrolavado-fachadas": {
     title: "Hidrolavado de Fachadas",
@@ -151,7 +156,7 @@ const SERVICES_DATA: Record<string, any> = {
       { step: "04", title: "Tratamiento Preventivo", desc: "Aplicación de sellador anti-hongos y protector hidrófugo según el caso." }
     ],
     norms: ["EN 12150 (Vidrio)", "ASTM C150", "EPA Clean Water Act", "Normativa Municipal"],
-    gallery: ["/hidrolavado-fachadas.webp", "/gallery/hidrolavado_1.png", "/gallery/linea_vida_1.jpeg"]
+    gallery: ["/hidrolavado-fachadas.webp", "/gallery/hidrolavado_1.webp", "/gallery/linea_vida_1.webp"]
   },
   "mantenimiento-industrial": {
     title: "Mantenimiento Industrial",
@@ -187,11 +192,11 @@ const SERVICES_DATA: Record<string, any> = {
       { step: "04", title: "Informe y Seguimiento", desc: "Documentación fotográfica, informe técnico y recomendaciones futuras." }
     ],
     norms: ["ISO 55000", "EN 13306", "OSHA 1926", "TIA-222-H", "ISO 17359"],
-    gallery: ["/coto.webp", "/gallery/linea_vida_2.jpeg", "/gallery/capacitacion_china_1.jpeg"]
+    gallery: ["/coto.webp", "/gallery/linea_vida_2.webp", "/gallery/capacitacion_china_1.webp"]
   },
   "capacitacion": {
     title: "Capacitación",
-    bg: "/capacitacion_altura.png",
+    bg: "/capacitacion_altura.webp",
     theme: "capacitacion",
     desc: "Programas integrales de capacitación técnica en trabajo seguro en alturas. Formamos a su personal con instructores certificados, combinando teoría normativa y prácticas intensivas en escenarios reales para prevenir accidentes laborales y mejorar el rendimiento.",
     longDesc: "La capacitación en trabajo en alturas es un requisito legal y una necesidad operativa para toda empresa que realice actividades por encima de 1.8 metros. Nuestros programas están diseñados por ingenieros y técnicos con experiencia real en campo, combinando fundamentos teóricos de normativa internacional con ejercicios prácticos en escenarios controlados. Los participantes aprenden a identificar riesgos, utilizar correctamente los EPP anticaídas y ejecutar procedimientos de rescate de emergencia.",
@@ -223,11 +228,11 @@ const SERVICES_DATA: Record<string, any> = {
       { step: "04", title: "Certificación", desc: "Emisión de certificados individuales con validez internacional." }
     ],
     norms: ["OSHA 1926.503", "ANSI Z359.2", "Resolución 1409 (Colombia)", "NOM-009-STPS (México)", "Decreto 2393 (Ecuador)"],
-    gallery: ["/capacitacion_altura.png", "/gallery/capacitacion_china_1.jpeg", "/gallery/linea_vida_1.jpeg"]
+    gallery: ["/capacitacion_altura.webp", "/gallery/capacitacion_china_1.webp", "/gallery/linea_vida_1.webp"]
   },
   "inspeccion-tecnica-drone": {
     title: "Inspección Técnica con Drone",
-    bg: "/foto-inspeccion-drone.png",
+    bg: "/foto-inspeccion-drone.webp",
     theme: "drone",
     desc: "Evaluación visual y técnica de estructuras en altura mediante drones industriales equipados con cámaras de alta tecnología.",
     longDesc: "La inspección técnica con drone es la solución más segura y eficiente para evaluar estructuras de difícil acceso como torres, puentes, silos y cubiertas industriales. Permite identificar anomalías, desgaste o daños estructurales sin exponer al personal a riesgos de trabajos en altura. Utilizamos cámaras de alta resolución para capturar cada detalle con precisión milimétrica.",
@@ -239,7 +244,7 @@ const SERVICES_DATA: Record<string, any> = {
       { step: "04", title: "Reporte de Inspección", desc: "Entrega de informe con hallazgos y recomendaciones." }
     ],
     norms: ["FAA Part 107", "DGAC Normativa Drone"],
-    gallery: ["/foto-inspeccion-drone.png", "/gallery/capacitacion_china_1.jpeg"]
+    gallery: ["/foto-inspeccion-drone.webp", "/gallery/capacitacion_china_1.webp"]
   }
 };
 
@@ -419,11 +424,10 @@ export default function ServicioDetail({ params }: { params: Promise<{ id: strin
             >
               <div className="service-full-img-inner">
                 {service.video || service.bg.endsWith('.mp4') ? (
-                  <video 
-                    src={service.video || service.bg} 
-                    autoPlay 
-                    muted 
-                    playsInline 
+                  <LazyVideo
+                    src={service.video || service.bg}
+                    mobileSrc={service.video ? service.videoMobile : undefined}
+                    poster={service.video ? service.videoPoster : undefined}
                     onTimeUpdate={(e) => {
                       const vid = e.currentTarget;
                       if (vid.duration && vid.currentTime >= vid.duration - 1) {
@@ -431,7 +435,7 @@ export default function ServicioDetail({ params }: { params: Promise<{ id: strin
                         vid.play();
                       }
                     }}
-                    style={{ backgroundColor: '#0b1320' }} 
+                    style={{ backgroundColor: '#0b1320' }}
                   />
                 ) : (
                   <img src={service.bg} alt={service.title} />
@@ -739,14 +743,10 @@ export default function ServicioDetail({ params }: { params: Promise<{ id: strin
 
               {/* Video */}
               <div style={{ flex: '1 1 420px', position: 'relative', minHeight: '350px' }}>
-                <video
+                <LazyVideo
                   src="/video-inspeccion-drone-new.mp4"
+                  mobileSrc="/video-inspeccion-drone-movil.mp4"
                   poster="/poster-inspeccion-drone.webp"
-                  preload="metadata"
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
                   crossOrigin="anonymous"
                   style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', minHeight: '350px' }}
                 />

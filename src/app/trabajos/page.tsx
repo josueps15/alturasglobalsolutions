@@ -3,6 +3,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
+import { IMAGE_SIZES } from './image-sizes';
 
 const CATEGORIES = ['Todos', 'Líneas de Vida', 'Puntos de Anclaje', 'Pintura', 'Hidrolavado', 'Capacitaciones'];
 
@@ -18,43 +19,43 @@ const CATEGORY_COLORS: Record<string, string> = {
 // Use Unsplash images that perfectly represent each category for clear identification
 const rawProjects = [
   { img: '/foto-en-portada-de-lineas-de-vida.jpeg', category: 'Líneas de Vida Horizontales', title: 'Instalación de líneas de vida horizontales en cubiertas metálicas' },
-  { img: '/gallery/linea_vida_2.jpeg', category: 'Líneas de Vida Verticales', title: 'Instalación de líneas de vida verticales en escaleras gatera' },
-  { img: '/gallery/linea_vida_3.jpeg', category: 'Líneas de Vida Verticales', title: 'Instalación de líneas de vida verticales en escaleras gatera de silos' },
-  { img: '/gallery/linea_vida_4.jpeg', category: 'Líneas de Vida Horizontales', title: 'Instalación de líneas de vida horizontal en escaleras pasarelas de alturas' },
+  { img: '/gallery/linea_vida_2.webp', category: 'Líneas de Vida Verticales', title: 'Instalación de líneas de vida verticales en escaleras gatera' },
+  { img: '/gallery/linea_vida_3.webp', category: 'Líneas de Vida Verticales', title: 'Instalación de líneas de vida verticales en escaleras gatera de silos' },
+  { img: '/gallery/linea_vida_4.webp', category: 'Líneas de Vida Horizontales', title: 'Instalación de líneas de vida horizontal en escaleras pasarelas de alturas' },
   
   // Nuevas fotos horizontales
   ...Array.from({ length: 18 }, (_, i) => i + 1).map(i => ({
-    img: `/gallery/linea de vida horizontal ${i === 4 ? '4 ' : i}.png`,
+    img: `/gallery/linea de vida horizontal ${i === 4 ? '4 ' : i}.webp`,
     category: 'Líneas de Vida Horizontales',
     title: 'Línea de Vida Horizontal'
   })),
 
   // Nuevas fotos verticales
   ...Array.from({ length: 10 }, (_, i) => i + 1).map(i => ({
-    img: `/gallery/linea de vida vertical ${i}.png`,
+    img: `/gallery/linea de vida vertical ${i}.webp`,
     category: 'Líneas de Vida Verticales',
     title: 'Línea de Vida Vertical'
   })),
 
-  { img: '/gallery/pintura_1.png', category: 'Pintura', title: 'Pintura de Fachadas' },
-  { img: '/gallery/pintura_2.png', category: 'Pintura', title: 'Pintura Industrial' },
-  { img: '/gallery/pintura_3.png', category: 'Pintura', title: 'Pintura de Estructuras' },
-  { img: '/gallery/hidrolavado_1.png', category: 'Hidrolavado', title: 'Hidrolavado a Presión' },
-  { img: '/gallery/hidrolavado_2.png', category: 'Hidrolavado', title: 'Limpieza de Ventanales' },
-  { img: '/gallery/hidrolavado_3.png', category: 'Hidrolavado', title: 'Mantenimiento de Silos' },
-  { img: '/gallery/capacitacion_china_1.jpeg', category: 'Capacitaciones', title: 'Entrenamiento Internacional (China)' },
-  { img: '/gallery/capacitacion_china_2.jpeg', category: 'Capacitaciones', title: 'Uso de Equipos (China)' },
-  { img: '/gallery/capacitacion_china_3.jpeg', category: 'Capacitaciones', title: 'Inspección de Equipos (China)' },
-  { img: '/gallery/capacitacion_peru_1.jpeg', category: 'Capacitaciones', title: 'Capacitación en Campo (Perú)' },
-  { img: '/gallery/capacitacion_chile_1.jpeg', category: 'Capacitaciones', title: 'Certificación Internacional (Chile)' },
-  { img: '/gallery/capacitacion_chile_2.jpeg', category: 'Capacitaciones', title: 'Maniobras en Altura (Chile)' },
-  { img: '/gallery/anclaje_1.jpeg', category: 'Puntos de Anclaje', title: 'Instalación de Anclaje' },
-  { img: '/gallery/anclaje_2.jpeg', category: 'Puntos de Anclaje', title: 'Anclaje Estructural' },
-  { img: '/gallery/anclaje_3.jpeg', category: 'Puntos de Anclaje', title: 'Certificación de Anclajes' },
+  { img: '/gallery/pintura_1.webp', category: 'Pintura', title: 'Pintura de Fachadas' },
+  { img: '/gallery/pintura_2.webp', category: 'Pintura', title: 'Pintura Industrial' },
+  { img: '/gallery/pintura_3.webp', category: 'Pintura', title: 'Pintura de Estructuras' },
+  { img: '/gallery/hidrolavado_1.webp', category: 'Hidrolavado', title: 'Hidrolavado a Presión' },
+  { img: '/gallery/hidrolavado_2.webp', category: 'Hidrolavado', title: 'Limpieza de Ventanales' },
+  { img: '/gallery/hidrolavado_3.webp', category: 'Hidrolavado', title: 'Mantenimiento de Silos' },
+  { img: '/gallery/capacitacion_china_1.webp', category: 'Capacitaciones', title: 'Entrenamiento Internacional (China)' },
+  { img: '/gallery/capacitacion_china_2.webp', category: 'Capacitaciones', title: 'Uso de Equipos (China)' },
+  { img: '/gallery/capacitacion_china_3.webp', category: 'Capacitaciones', title: 'Inspección de Equipos (China)' },
+  { img: '/gallery/capacitacion_peru_1.webp', category: 'Capacitaciones', title: 'Capacitación en Campo (Perú)' },
+  { img: '/gallery/capacitacion_chile_1.webp', category: 'Capacitaciones', title: 'Certificación Internacional (Chile)' },
+  { img: '/gallery/capacitacion_chile_2.webp', category: 'Capacitaciones', title: 'Maniobras en Altura (Chile)' },
+  { img: '/gallery/anclaje_1.webp', category: 'Puntos de Anclaje', title: 'Instalación de Anclaje' },
+  { img: '/gallery/anclaje_2.webp', category: 'Puntos de Anclaje', title: 'Anclaje Estructural' },
+  { img: '/gallery/anclaje_3.webp', category: 'Puntos de Anclaje', title: 'Certificación de Anclajes' },
 
   // Nuevas fotos puntos de anclaje
   ...Array.from({ length: 14 }, (_, i) => i + 1).map(i => ({
-    img: `/gallery/puntos de anclaje ${i}.png`,
+    img: `/gallery/puntos de anclaje ${i}.webp`,
     category: 'Puntos de Anclaje',
     title: 'Punto de Anclaje'
   }))
@@ -222,7 +223,7 @@ export default function Trabajos() {
                     boxShadow: '0 10px 30px rgba(0,0,0,0.08)' 
                   }}
                 >
-                  <img src={project.img} alt={project.title} decoding="async" style={{ width: '100%', height: 'auto', display: 'block', transition: 'transform 0.6s ease' }} onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.1)'} onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'} />
+                  <img src={project.img} alt={project.title} width={IMAGE_SIZES[project.img]?.w} height={IMAGE_SIZES[project.img]?.h} loading="lazy" decoding="async" style={{ width: '100%', height: 'auto', display: 'block', transition: 'transform 0.6s ease' }} onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.1)'} onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'} />
                   
                   {/* Category Badge - Always visible for differentiation */}
                   <div style={{ position: 'absolute', top: '15px', left: '15px', background: CATEGORY_COLORS[project.category] || 'var(--primary-orange)', color: '#fff', padding: '6px 14px', borderRadius: '20px', fontSize: '0.75rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '1px', boxShadow: '0 4px 10px rgba(0,0,0,0.2)' }}>

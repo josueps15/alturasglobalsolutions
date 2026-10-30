@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { useEffect } from 'react';
+import LazyVideo from '../components/LazyVideo';
 
 const SERVICES = [
   {
@@ -10,6 +11,8 @@ const SERVICES = [
     id: "instalacion-lineas-vida",
     img: "/lineas-de-vida-soluciones.jpeg",
     video: "/videos/video_buble_puntos_de_lineas_de_vida.mp4",
+    videoMobile: "/videos/video_buble_puntos_de_lineas_de_vida-movil.mp4",
+    videoPoster: "/poster-video_buble_puntos_de_lineas_de_vida.webp",
     desc: <>Diseño e instalación de sistemas de protección anti caídas, líneas de vida certificadas bajo las normas UNE -EN 795 y <a href="https://epishop.es/lineas-de-vida-que-son/" target="_blank" rel="noopener noreferrer" style={{textDecoration: 'underline'}}>UNE-EN 353</a> horizontales y verticales, tanto temporales como permanentes, dispositivos de anticaídas retractiles bajo la normativa EN 360.<br/><br/>Como representantes oficiales de Longdyes en Ecuador, garantizamos productos de la más alta calidad y resistencia estructural.</>,
     features: ["Líneas de vida certificadas horizontales y verticales", "Puntos de anclaje certificados", "Sistemas temporales y permanentes", "Ingeniería personalizada por proyecto"],
     theme: "lineas-vida"
@@ -19,6 +22,8 @@ const SERVICES = [
     id: "instalacion-puntos-anclaje",
     img: "/puntos-de-anclaje-soluciones.jpeg",
     video: "/videos/video_buble_puntos_de_anclaje.mp4",
+    videoMobile: "/videos/video_buble_puntos_de_anclaje-movil.mp4",
+    videoPoster: "/poster-video_buble_puntos_de_anclaje.webp",
     desc: "Instalación certificada de puntos de anclaje estructurales para trabajos en altura. Utilizamos anclajes químicos y mecánicos de alta resistencia, garantizando puntos de conexión seguros y certificados según normativas internacionales.",
     features: ["Anclajes químicos y mecánicos", "Pruebas de tracción certificadas", "Diseño según normativa EN 795", "Inspección y recertificación anual"],
     theme: "anclaje"
@@ -50,7 +55,7 @@ const SERVICES = [
   {
     title: "Capacitación",
     id: "capacitacion",
-    img: "/capacitacion_altura.png",
+    img: "/capacitacion_altura.webp",
     desc: "Programas integrales de capacitación técnica en trabajo seguro en alturas. Formamos a su personal con instructores certificados, combinando teoría normativa y prácticas intensivas en escenarios reales para prevenir accidentes laborales.",
     features: ["Certificación en trabajo seguro en alturas", "Manejo de equipos de protección contra caídas", "Normativa nacional e internacional OSHA/ANSI", "Formación de brigadas de emergencia"],
     theme: "capacitacion"
@@ -58,7 +63,7 @@ const SERVICES = [
   {
     title: "Inspección Técnica con Drone",
     id: "inspeccion-tecnica-drone",
-    img: "/foto-inspeccion-drone.png",
+    img: "/foto-inspeccion-drone.webp",
     desc: "Ofrecemos servicios de inspección técnica aérea mediante drones industriales equipados con cámaras de alta resolución. Ideal para estructuras de gran altura, cubiertas y espacios de difícil acceso, reduciendo riesgos y costos operativos.",
     features: ["Inspección visual de alta resolución", "Evaluación de estructuras en altura", "Reducción de riesgos laborales", "Reportes técnicos detallados"],
     theme: "drone"
@@ -125,7 +130,7 @@ export default function Soluciones() {
 
   return (
     <>
-      <section className="page-hero bg-fixed-desktop" style={{ backgroundImage: 'linear-gradient(rgba(11, 19, 32, 0.8), rgba(11, 19, 32, 0.95)), url(/lineas-de-vida.png)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
+      <section className="page-hero bg-fixed-desktop" style={{ backgroundImage: 'linear-gradient(rgba(11, 19, 32, 0.8), rgba(11, 19, 32, 0.95)), url(/lineas-de-vida.webp)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
         <div className="container">
           <motion.span className="page-hero-subtitle" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>Soluciones Integrales</motion.span>
           <motion.h1 className="page-hero-title" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1 }}>Nuestros Servicios Especializados</motion.h1>
@@ -195,11 +200,10 @@ export default function Soluciones() {
                 <motion.div className="service-full-img" initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-80px" }} variants={scaleIn}>
                   <div className="service-full-img-inner">
                     {service.video ? (
-                      <video 
-                        src={service.video} 
-                        autoPlay 
-                        muted 
-                        playsInline 
+                      <LazyVideo
+                        src={service.video}
+                        mobileSrc={service.videoMobile}
+                        poster={service.videoPoster}
                         onTimeUpdate={(e) => {
                           const vid = e.currentTarget;
                           if (vid.duration && vid.currentTime >= vid.duration - 1) {
@@ -207,7 +211,7 @@ export default function Soluciones() {
                             vid.play();
                           }
                         }}
-                        style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
+                        style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                       />
                     ) : (
                       <img src={service.img} alt={service.title} />
@@ -221,7 +225,7 @@ export default function Soluciones() {
         );
       })}
 
-      <section className="service-final-cta bg-fixed-desktop" style={{ backgroundImage: 'linear-gradient(rgba(13, 105, 120, 0.85), rgba(13, 105, 120, 0.95)), url(/cta_background.png)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
+      <section className="service-final-cta bg-fixed-desktop" style={{ backgroundImage: 'linear-gradient(rgba(13, 105, 120, 0.85), rgba(13, 105, 120, 0.95)), url(/cta_background.webp)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
         <div className="service-final-cta-deco" />
         <div className="container" style={{ position: 'relative', zIndex: 2 }}>
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} style={{ textAlign: 'center' }}>
