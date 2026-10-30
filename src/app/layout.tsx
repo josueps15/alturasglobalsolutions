@@ -1,7 +1,22 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { Montserrat, Open_Sans } from 'next/font/google';
 import Header from './components/Header';
 import './globals.css';
+
+const montserrat = Montserrat({
+  subsets: ['latin'],
+  weight: ['400', '600', '700', '800', '900'],
+  variable: '--font-heading',
+  display: 'swap',
+});
+
+const openSans = Open_Sans({
+  subsets: ['latin'],
+  weight: ['400', '600'],
+  variable: '--font-body',
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
   title: 'Alturas Global Solutions | Seguridad en Alturas',
@@ -21,7 +36,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="es">
+    <html lang="es" className={`${montserrat.variable} ${openSans.variable}`}>
       <body>
         <Header />
 

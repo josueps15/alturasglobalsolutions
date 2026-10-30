@@ -219,7 +219,7 @@ const SingleProductSection = ({ id, title, bgImage, product, colorTheme = 'teal'
 
   return (
     <section id={id} style={{ position: 'relative', minHeight: '100vh', display: 'flex', alignItems: 'center', overflow: 'hidden', padding: '4rem 1rem' }}>
-      <div style={{ position: 'absolute', inset: 0, backgroundImage: `url('${bgImage}')`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed' }} />
+      <div className="bg-fixed-desktop" style={{ position: 'absolute', inset: 0, backgroundImage: `url('${bgImage}')`, backgroundSize: 'cover', backgroundPosition: 'center' }} />
       <div style={{ position: 'absolute', inset: 0, background: theme.overlay, backdropFilter: 'blur(8px)' }} />
 
       <div className="container" style={{ position: 'relative', zIndex: 2, width: '100%', maxWidth: '1200px', margin: '0 auto' }}>
@@ -536,7 +536,7 @@ const ProductGrid = ({ id, title, desc, bgImage, products, showCatalogBtn = fals
 
   return (
     <section id={id} style={{ position: 'relative', overflow: 'hidden' }}>
-      <div style={{ position: 'absolute', inset: 0, backgroundImage: `url('${bgImage}')`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed' }} />
+      <div className="bg-fixed-desktop" style={{ position: 'absolute', inset: 0, backgroundImage: `url('${bgImage}')`, backgroundSize: 'cover', backgroundPosition: 'center' }} />
       <div style={{ position: 'absolute', inset: 0, background: theme.overlay, backdropFilter: 'blur(6px)' }} />
 
       <div style={{ position: 'relative', padding: 'clamp(4rem, 6vw, 6rem) 1rem 1rem 1rem', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 2 }}>
@@ -685,7 +685,7 @@ export default function KitsAlturaPage() {
 
   return (
     <>
-      <section className="page-hero" style={{ backgroundImage: 'linear-gradient(rgba(11, 19, 32, 0.8), rgba(11, 19, 32, 0.9)), url(/hero-kits-altura.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed' }}>
+      <section className="page-hero bg-fixed-desktop" style={{ backgroundImage: 'linear-gradient(rgba(11, 19, 32, 0.8), rgba(11, 19, 32, 0.9)), url(/hero-kits-altura.png)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
         <div className="container">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <span className="page-hero-subtitle">Catálogo Especializado</span>

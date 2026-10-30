@@ -106,7 +106,7 @@ export default function Trabajos() {
 
   return (
     <>
-      <section className="page-hero" style={{ backgroundImage: 'linear-gradient(rgba(11, 19, 32, 0.8), rgba(11, 19, 32, 0.95)), url(/pintura-altura.webp)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed' }}>
+      <section className="page-hero bg-fixed-desktop" style={{ backgroundImage: 'linear-gradient(rgba(11, 19, 32, 0.8), rgba(11, 19, 32, 0.95)), url(/pintura-altura.webp)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
         <div className="container">
           <motion.span className="page-hero-subtitle" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
             Portafolio de Proyectos
@@ -222,7 +222,7 @@ export default function Trabajos() {
                     boxShadow: '0 10px 30px rgba(0,0,0,0.08)' 
                   }}
                 >
-                  <img src={project.img} alt={project.title} style={{ width: '100%', height: 'auto', display: 'block', transition: 'transform 0.6s ease' }} onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.1)'} onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'} />
+                  <img src={project.img} alt={project.title} decoding="async" style={{ width: '100%', height: 'auto', display: 'block', transition: 'transform 0.6s ease' }} onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.1)'} onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'} />
                   
                   {/* Category Badge - Always visible for differentiation */}
                   <div style={{ position: 'absolute', top: '15px', left: '15px', background: CATEGORY_COLORS[project.category] || 'var(--primary-orange)', color: '#fff', padding: '6px 14px', borderRadius: '20px', fontSize: '0.75rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '1px', boxShadow: '0 4px 10px rgba(0,0,0,0.2)' }}>

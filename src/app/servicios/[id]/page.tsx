@@ -364,7 +364,7 @@ export default function ServicioDetail({ params }: { params: Promise<{ id: strin
   return (
     <>
       {/* Hero */}
-      <section className="page-hero" style={service.bg && !service.bg.endsWith('.mp4') ? { backgroundImage: `linear-gradient(rgba(11, 19, 32, 0.85), rgba(11, 19, 32, 0.95)), url(${service.bg})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed' } : { background: 'linear-gradient(135deg, rgba(11, 19, 32, 0.95), rgba(11, 19, 32, 0.95))' }}>
+      <section className="page-hero bg-fixed-desktop" style={service.bg && !service.bg.endsWith('.mp4') ? { backgroundImage: `linear-gradient(rgba(11, 19, 32, 0.85), rgba(11, 19, 32, 0.95)), url(${service.bg})`, backgroundSize: 'cover', backgroundPosition: 'center' } : { background: 'linear-gradient(135deg, rgba(11, 19, 32, 0.95), rgba(11, 19, 32, 0.95))' }}>
         {service.bg && service.bg.endsWith('.mp4') && (
           <video 
             autoPlay 
@@ -741,6 +741,8 @@ export default function ServicioDetail({ params }: { params: Promise<{ id: strin
               <div style={{ flex: '1 1 420px', position: 'relative', minHeight: '350px' }}>
                 <video
                   src="/video-inspeccion-drone-new.mp4"
+                  poster="/poster-inspeccion-drone.webp"
+                  preload="metadata"
                   autoPlay
                   loop
                   muted

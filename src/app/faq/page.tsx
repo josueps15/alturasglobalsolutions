@@ -35,7 +35,7 @@ export default function FAQPage() {
   const [openIdx, setOpenIdx] = useState<number | null>(0);
 
   return (
-    <div className="legal-page-wrapper" style={{ backgroundImage: 'url(/bg-faq.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed' }}>
+    <div className="legal-page-wrapper bg-fixed-desktop" style={{ backgroundImage: 'url(/bg-faq.png)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
       <div className="legal-page-container">
         <div className="legal-header">
           <div className="legal-icon">

@@ -8,7 +8,7 @@ import MeetingSection from './components/MeetingSection';
 
 function AnimatedCounter({ from, to, prefix = '', suffix = '' }: { from: number, to: number, prefix?: string, suffix?: string }) {
   const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { margin: "0px", once: false });
+  const inView = useInView(ref, { margin: "0px", once: true });
   const count = useMotionValue(from);
 
   useEffect(() => {
@@ -36,6 +36,7 @@ const SLIDES = [
   {
     id: 1,
     video: '/video-expertos-instalacion.mp4',
+    poster: '/poster-expertos-instalacion.webp',
     titleOrange: 'Expertos en',
     titleWhite: 'Instalación de Líneas de Vida Certificadas',
     desc: 'Representantes oficiales de Longdyes en Ecuador. Ingeniería, montaje y certificación de líneas de vida bajo normativas internacionales.',
@@ -45,6 +46,7 @@ const SLIDES = [
   {
     id: 2,
     video: '/video-mantenimiento-alturas.mp4',
+    poster: '/poster-mantenimiento-alturas.webp',
     titleOrange: 'Mantenimiento y',
     titleWhite: 'Servicios en Alturas',
     desc: 'Servicio de pintura en alturas. Servicio de hidrolavado y fachadas de forma segura y eficiente.',
@@ -54,6 +56,7 @@ const SLIDES = [
   {
     id: 3,
     video: '/video-maximo-seguridad.mp4',
+    poster: '/poster-maximo-seguridad.webp',
     titleOrange: 'Máxima seguridad',
     titleWhite: 'para tus trabajos en altura',
     desc: 'Soluciones inteligentes en el Diseño e implementación de sistemas de protección contra caídas y operaciones de alto riesgo.',
@@ -108,7 +111,8 @@ export default function Home() {
             loop
             muted
             playsInline
-            preload="auto"
+            preload="metadata"
+            poster={slide.poster}
             crossOrigin="anonymous"
             suppressHydrationWarning
             className="hero-video-bg"
@@ -259,7 +263,7 @@ export default function Home() {
 
       {/* Inspection CTA Section */}
       <motion.section
-        className="inspection-cta"
+        className="inspection-cta bg-fixed-desktop"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
@@ -268,7 +272,6 @@ export default function Home() {
           backgroundImage: 'linear-gradient(90deg, rgba(13,105,120,0.95) 0%, rgba(10,61,74,0.8) 100%), url("/inspection-bg.webp")',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
-          backgroundAttachment: 'fixed',
           padding: '5rem 0',
           position: 'relative',
           overflow: 'hidden'
@@ -335,13 +338,12 @@ export default function Home() {
       </motion.section>
 
       {/* Drone Inspection Promo Section */}
-      <section style={{
+      <section className="bg-fixed-desktop" style={{
         position: 'relative',
         overflow: 'hidden',
         backgroundImage: 'linear-gradient(rgba(15,23,42,0.8), rgba(15,23,42,0.95)), url("/drone-tech-bg.webp")',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
-        backgroundAttachment: 'fixed',
         padding: 'clamp(3rem, 5vw, 5rem) 0',
       }}>
         {/* Background decorative elements */}
@@ -398,6 +400,7 @@ export default function Home() {
                   muted
                   playsInline
                   preload="none"
+                  poster="/poster-inspeccion-drone.webp"
                   crossOrigin="anonymous"
                   suppressHydrationWarning
                   style={{ width: '100%', height: '320px', objectFit: 'cover', display: 'block' }}
