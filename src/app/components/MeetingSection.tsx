@@ -73,7 +73,7 @@ export default function MeetingSection() {
     <section id="agendar-reunion" style={{ position: 'relative', padding: '6rem 0', overflow: 'hidden' }}>
       {/* Background */}
       <div style={{ position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(160deg, #0b1320 0%, #0f2840 40%, #0d6978 100%)', zIndex: 0 }} />
-      <div style={{ position: 'absolute', inset: 0, backgroundImage: 'url(/meeting-bg.png)', backgroundSize: 'cover', backgroundPosition: 'center', opacity: 0.15, zIndex: 1 }} />
+      <div style={{ position: 'absolute', inset: 0, backgroundImage: 'url(/meeting-bg.webp)', backgroundSize: 'cover', backgroundPosition: 'center', opacity: 0.15, zIndex: 1 }} />
       <div style={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(circle at 30% 70%, rgba(237, 108, 35, 0.06), transparent 40%), radial-gradient(circle at 70% 20%, rgba(13, 105, 120, 0.08), transparent 40%)', zIndex: 2, pointerEvents: 'none' }} />
 
       <div className="container" style={{ position: 'relative', zIndex: 3 }}>

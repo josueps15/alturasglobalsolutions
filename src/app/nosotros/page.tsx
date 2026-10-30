@@ -31,7 +31,7 @@ export default function Nosotros() {
   return (
     <>
       {/* Hero Section */}
-      <section className="page-hero" style={{ backgroundImage: 'linear-gradient(rgba(11, 19, 32, 0.8), rgba(11, 19, 32, 0.95)), url(/coto.jpeg)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed' }}>
+      <section className="page-hero" style={{ backgroundImage: 'linear-gradient(rgba(11, 19, 32, 0.8), rgba(11, 19, 32, 0.95)), url(/coto.webp)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed' }}>
         <div className="container">
           <motion.span className="page-hero-subtitle" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}>
             Presentación Corporativa
@@ -196,7 +196,7 @@ export default function Nosotros() {
 
             {/* Center Logo */}
             <div className="valores-center-logo" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-              <img src="/logo_principal.png" alt="Alturas Global Solutions" style={{ width: '25%', maxWidth: '300px', objectFit: 'contain' }} />
+              <img src="/logo_principal.webp" alt="Alturas Global Solutions" style={{ width: '25%', maxWidth: '300px', objectFit: 'contain' }} />
             </div>
 
             {/* Circles */}

@@ -83,7 +83,7 @@ const SERVICES_DATA: Record<string, any> = {
   },
   "pintura-en-altura": {
     title: "Servicio de Pintura en Alturas",
-    bg: "/pintura-altura.png",
+    bg: "/pintura-altura.webp",
     theme: "pintura",
     desc: "Servicio especializado de pintura industrial para estructuras en alturas, torres de telecomunicaciones, puentes, tanques y fachadas. Utilizamos equipos de acceso por cuerdas y plataformas elevadoras para garantizar acabados de calidad profesional.",
     longDesc: "La pintura industrial en alturas requiere técnicas especializadas que combinan el dominio de sistemas anticaídas con el conocimiento de recubrimientos protectores. Nuestro equipo trabaja bajo los estándares IRATA para acceso por cuerdas, asegurando que cada superficie reciba el tratamiento adecuado según su exposición ambiental, tipo de sustrato y requerimientos de durabilidad. Controlamos espesores de película seca (DFT) y adherencia en cada aplicación.",
@@ -115,11 +115,11 @@ const SERVICES_DATA: Record<string, any> = {
       { step: "04", title: "Inspección de Calidad", desc: "Medición de espesores (DFT), adherencia y verificación visual del acabado." }
     ],
     norms: ["ISO 12944", "ISO 8501-1", "SSPC-SP", "NACE International", "IRATA"],
-    gallery: ["/pintura-altura.png", "/gallery/pintura_1.png", "/gallery/linea_vida_2.jpeg"]
+    gallery: ["/pintura-altura.webp", "/gallery/pintura_1.png", "/gallery/linea_vida_2.jpeg"]
   },
   "hidrolavado-fachadas": {
     title: "Hidrolavado de Fachadas",
-    bg: "/hidrolavado-fachadas.png",
+    bg: "/hidrolavado-fachadas.webp",
     theme: "hidrolavado",
     desc: "Limpieza profesional de fachadas mediante hidrolavado a presión. Restauramos la apariencia original de edificios comerciales, industriales y residenciales, eliminando suciedad acumulada, moho y contaminantes ambientales.",
     longDesc: "El hidrolavado profesional de fachadas es un servicio esencial para mantener la estética y la integridad estructural de los edificios. Utilizamos equipos de presión industrial calibrados según el tipo de superficie a tratar, garantizando una limpieza profunda sin dañar el material base. Nuestro servicio incluye tratamientos preventivos anti-hongos y selladores hidrófugos que prolongan la vida útil de la fachada.",
@@ -151,11 +151,11 @@ const SERVICES_DATA: Record<string, any> = {
       { step: "04", title: "Tratamiento Preventivo", desc: "Aplicación de sellador anti-hongos y protector hidrófugo según el caso." }
     ],
     norms: ["EN 12150 (Vidrio)", "ASTM C150", "EPA Clean Water Act", "Normativa Municipal"],
-    gallery: ["/hidrolavado-fachadas.png", "/gallery/hidrolavado_1.png", "/gallery/linea_vida_1.jpeg"]
+    gallery: ["/hidrolavado-fachadas.webp", "/gallery/hidrolavado_1.png", "/gallery/linea_vida_1.jpeg"]
   },
   "mantenimiento-industrial": {
     title: "Mantenimiento Industrial",
-    bg: "/coto.jpeg",
+    bg: "/coto.webp",
     theme: "mantenimiento",
     desc: "Servicio integral de mantenimiento preventivo y correctivo en instalaciones industriales de difícil acceso. Nuestro equipo técnico trabaja en alturas con total seguridad y eficiencia operativa.",
     longDesc: "El mantenimiento industrial en altura es una actividad crítica que requiere personal altamente capacitado y procedimientos de trabajo seguro rigurosos. Nuestro equipo realiza desde inspecciones rutinarias hasta reparaciones complejas en estructuras metálicas, cubiertas, torres de telecomunicaciones y equipos industriales ubicados en zonas de difícil acceso. Cada intervención se documenta con informes técnicos detallados y registros fotográficos.",
@@ -187,7 +187,7 @@ const SERVICES_DATA: Record<string, any> = {
       { step: "04", title: "Informe y Seguimiento", desc: "Documentación fotográfica, informe técnico y recomendaciones futuras." }
     ],
     norms: ["ISO 55000", "EN 13306", "OSHA 1926", "TIA-222-H", "ISO 17359"],
-    gallery: ["/coto.jpeg", "/gallery/linea_vida_2.jpeg", "/gallery/capacitacion_china_1.jpeg"]
+    gallery: ["/coto.webp", "/gallery/linea_vida_2.jpeg", "/gallery/capacitacion_china_1.jpeg"]
   },
   "capacitacion": {
     title: "Capacitación",

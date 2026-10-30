@@ -26,7 +26,7 @@ const SERVICES = [
   {
     title: "Servicio de Pintura en Altura",
     id: "pintura-en-altura",
-    img: "/pintura-altura.png",
+    img: "/pintura-altura.webp",
     desc: "Servicio especializado de pintura industrial para estructuras en altura, torres de telecomunicaciones, puentes, tanques y fachadas. Utilizamos equipos de acceso por cuerdas y plataformas elevadoras para garantizar acabados de calidad profesional.",
     features: ["Torres y estructuras metálicas", "Fachadas de edificios comerciales", "Tanques industriales y silos", "Señalización aérea de seguridad"],
     theme: "pintura"
@@ -34,7 +34,7 @@ const SERVICES = [
   {
     title: "Hidrolavado de Fachadas",
     id: "hidrolavado-fachadas",
-    img: "/hidrolavado-fachadas.png",
+    img: "/hidrolavado-fachadas.webp",
     desc: "Limpieza profesional de fachadas mediante hidrolavado a presión. Restauramos la apariencia original de edificios comerciales, industriales y residenciales, eliminando suciedad acumulada, moho y contaminantes ambientales.",
     features: ["Hidrolavado a alta presión", "Limpieza de vidrios en altura", "Tratamiento anti-hongos", "Mantenimiento preventivo programado"],
     theme: "hidrolavado"
@@ -42,7 +42,7 @@ const SERVICES = [
   {
     title: "Mantenimiento Industrial",
     id: "mantenimiento-industrial",
-    img: "/coto.jpeg",
+    img: "/coto.webp",
     desc: "Servicio integral de mantenimiento preventivo y correctivo en instalaciones industriales de difícil acceso. Nuestro equipo técnico trabaja en alturas con total seguridad y eficiencia operativa.",
     features: ["Mantenimiento de estructuras metálicas", "Reparación de cubiertas y techos", "Instalación de equipos en altura"],
     theme: "mantenimiento"

@@ -47,13 +47,13 @@ const PRODUCTS = [
     title: 'Barandillas Autoportantes',
     desc: 'Sistemas de protección perimetral colectiva sin perforación de membrana para techos planos. Diseñadas bajo normativa EN ISO 14122-3, ofrecen máxima seguridad sin comprometer la integridad de la cubierta.',
     spec: 'Normativa EN ISO 14122-3',
-    img: '/barandillas_autoportantes.png',
+    img: '/barandillas_autoportantes.webp',
   },
   {
     title: 'Pasarelas de Aluminio',
     desc: 'Tránsito seguro sobre cubiertas frágiles o propensas a resbalones, distribuyendo el peso uniformemente. Fabricadas en aluminio de grado marino para máxima durabilidad y resistencia a la corrosión.',
     spec: 'Aluminio de Grado Marino',
-    img: '/pasarelas_aluminio.png',
+    img: '/pasarelas_aluminio.webp',
   },
   {
     title: 'Puntos de Anclaje',
@@ -288,7 +288,7 @@ export default function LongdyesPage() {
       {/* Video Demonstrations Section */}
       <section style={{ 
         position: 'relative',
-        backgroundImage: 'url(/bg-kits.png)',
+        backgroundImage: 'url(/bg-kits.webp)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundAttachment: 'fixed',

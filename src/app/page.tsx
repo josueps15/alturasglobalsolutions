@@ -173,7 +173,7 @@ export default function Home() {
             {[
               {
                 title: "INSTALACIÓN LÍNEAS DE VIDA CERTIFICADAS",
-                img: "/foto-lineas-de-vida.jpeg",
+                img: "/foto-lineas-de-vida.webp",
                 icon: (
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="service-svg-icon">
                     <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
@@ -185,7 +185,7 @@ export default function Home() {
               },
               {
                 title: "INSTALACIÓN PUNTOS DE ANCLAJE",
-                img: "/foto-de-puntos-de-anclaje.jpeg",
+                img: "/foto-de-puntos-de-anclaje.webp",
                 icon: (
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="service-svg-icon">
                     <circle cx="12" cy="5" r="3" />
@@ -197,7 +197,7 @@ export default function Home() {
               },
               {
                 title: "SERVICIO DE PINTURA EN ALTURAS",
-                img: "/pintura-altura.png",
+                img: "/pintura-altura.webp",
                 icon: (
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="service-svg-icon">
                     <path d="M12 22V8M5 8h14M6 4h12a2 2 0 0 1 2 2v2H4V6a2 2 0 0 1 2-2z" />
@@ -208,7 +208,7 @@ export default function Home() {
               },
               {
                 title: "HIDROLAVADO DE FACHADAS",
-                img: "/hidrolavado-fachadas.png",
+                img: "/hidrolavado-fachadas.webp",
                 icon: (
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="service-svg-icon">
                     <path d="M12 22a7 7 0 0 0 7-7c0-4.3-7-13-7-13S5 10.7 5 15a7 7 0 0 0 7 7z" />
@@ -218,7 +218,7 @@ export default function Home() {
               },
               {
                 title: "VENTA DE EQUIPOS ESPECIALIZADOS PARA TRABAJOS EN ALTURAS",
-                img: "/kit-longdyes.png",
+                img: "/kit-longdyes.webp",
                 icon: (
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="service-svg-icon">
                     <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
@@ -265,7 +265,7 @@ export default function Home() {
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
         style={{
-          backgroundImage: 'linear-gradient(90deg, rgba(13,105,120,0.95) 0%, rgba(10,61,74,0.8) 100%), url("/inspection-bg.png")',
+          backgroundImage: 'linear-gradient(90deg, rgba(13,105,120,0.95) 0%, rgba(10,61,74,0.8) 100%), url("/inspection-bg.webp")',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundAttachment: 'fixed',
@@ -329,7 +329,7 @@ export default function Home() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <img src="/coto.jpeg" alt="Ingeniero Especialista en Seguridad Industrial" className="about-img" />
+            <img src="/coto.webp" alt="Ingeniero Especialista en Seguridad Industrial" className="about-img" />
           </motion.div>
         </div>
       </motion.section>
@@ -338,7 +338,7 @@ export default function Home() {
       <section style={{
         position: 'relative',
         overflow: 'hidden',
-        backgroundImage: 'linear-gradient(rgba(15,23,42,0.8), rgba(15,23,42,0.95)), url("/drone-tech-bg.png")',
+        backgroundImage: 'linear-gradient(rgba(15,23,42,0.8), rgba(15,23,42,0.95)), url("/drone-tech-bg.webp")',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundAttachment: 'fixed',
@@ -488,7 +488,7 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
-              <img src="/longdyes_logo.png" alt="Longdyes Logo" className="longdyes-brand-logo-img" />
+              <img src="/longdyes_logo.webp" alt="Longdyes Logo" className="longdyes-brand-logo-img" />
             </motion.div>
             <motion.p
               className="longdyes-brand-tagline"
@@ -507,19 +507,19 @@ export default function Home() {
                 title: "Barandillas Autoportantes",
                 desc: "Sistemas de protección perimetral colectiva sin perforación de membrana para techos planos.",
                 spec: "Normativa EN ISO 14122-3",
-                img: "/barandillas_autoportantes.png"
+                img: "/barandillas_autoportantes.webp"
               },
               {
                 title: "Pasarelas de Aluminio",
                 desc: "Tránsito seguro sobre cubiertas frágiles o propensas a resbalones, distribuyendo el peso uniformemente.",
                 spec: "Aluminio de Grado Marino",
-                img: "/pasarelas_aluminio.png"
+                img: "/pasarelas_aluminio.webp"
               },
               {
                 title: "Líneas de Vida Certificadas & Anclajes",
                 desc: "Sistemas anticaídas de alta resistencia diseñados a medida bajo estrictas especificaciones estructurales.",
                 spec: "Certificación EN 795 & OSHA",
-                img: "/longdyes-3.jpeg"
+                img: "/longdyes-3.webp"
               }
             ].map((prod, idx) => (
               <motion.div
@@ -599,7 +599,7 @@ export default function Home() {
           left: 0,
           right: 0,
           bottom: '-50%',
-          backgroundImage: 'linear-gradient(90deg, rgba(13,105,120,0.95) 0%, rgba(10,61,74,0.8) 100%), url("/bg-kits.png")',
+          backgroundImage: 'linear-gradient(90deg, rgba(13,105,120,0.95) 0%, rgba(10,61,74,0.8) 100%), url("/bg-kits.webp")',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           y: backgroundY,
@@ -636,7 +636,7 @@ export default function Home() {
             transition={{ duration: 0.6, type: 'spring' }}
             style={{ flex: '1 1 300px', textAlign: 'center' }}
           >
-            <img src="/kit-longdyes.png" alt="Kit de Trabajo en Alturas Longdyes" style={{ maxWidth: '100%', height: 'auto', borderRadius: '20px', boxShadow: '0 20px 50px rgba(0,0,0,0.4)', border: '1px solid rgba(255,255,255,0.1)' }} />
+            <img src="/kit-longdyes.webp" alt="Kit de Trabajo en Alturas Longdyes" style={{ maxWidth: '100%', height: 'auto', borderRadius: '20px', boxShadow: '0 20px 50px rgba(0,0,0,0.4)', border: '1px solid rgba(255,255,255,0.1)' }} />
           </motion.div>
         </div>
       </section>
